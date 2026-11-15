@@ -1,10 +1,16 @@
 # Capa de IA ArquiFusion
 
 Cloud Run con los tres endpoints de `contratos/ia.md`: `/ia/predecir`, `/ia/explicar` y `/ia/chat`.
-Modelo: Gemini en Vertex AI. Autenticacion: header `x-api-key`.
+Modelo: `gemini-3.8-flash` en Vertex AI, region `global`. Autenticacion: header `x-api-key`.
+
+Desplegado en: https://ia-1073552578418.us-central1.run.app
 
 Bedrock quedo descartado: `LabRole` no tiene `bedrock:InvokeModel` en `us-east-1` ni `us-west-2`,
 comprobado el 2026-11-15 desde una Lambda en las dos cuentas Learner Lab del equipo.
+
+El servicio corre en `us-central1` pero llama al modelo en `global`: los modelos Gemini de este
+proyecto solo resuelven en esa ubicacion. `gemini-4-carbon` responde pero devuelve 429 la mayoria
+de las veces; `gemini-3.8-flash` es estable. Ante 429 o 503 hay 3 reintentos con espera creciente.
 
 Despliegue:
 
@@ -16,11 +22,12 @@ Variables de entorno del servicio:
 
 | Variable | Para que |
 |---|---|
-| `GCP_PROJECT`, `VERTEX_LOCATION` | Proyecto y region de Vertex AI. |
-| `GEMINI_MODELO` | Por defecto `gemini-2.5-flash`. |
+| `GCP_PROJECT`, `VERTEX_LOCATION` | Proyecto y ubicacion del modelo. `global` por defecto. |
+| `GEMINI_MODELO` | Por defecto `gemini-3.8-flash`. |
+| `MAX_TOKENS` | 4000. El modelo razona antes de responder y gasta ~700 en eso. |
 | `IA_API_KEY` | Clave que exige este servicio. |
 | `API_AWS_URL`, `API_AWS_KEY` | API de A, la consulta `/ia/chat`. |
-| `TIMEOUT_MODELO`, `TIMEOUT_API` | Segundos. 20 y 8 por defecto. |
+| `TIMEOUT_MODELO`, `TIMEOUT_API`, `REINTENTOS` | 20 s, 8 s y 3 por defecto. |
 
 Ningun endpoint depende de que Gemini responda: si falla, devuelve `200` con `fuente: plantilla`
 y un texto determinista. `GET /health` no pide api key.

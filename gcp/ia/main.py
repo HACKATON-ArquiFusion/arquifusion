@@ -12,8 +12,10 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 
 PROJECT = os.environ.get("GCP_PROJECT", "")
-LOCATION = os.environ.get("VERTEX_LOCATION", "us-central1")
-MODELO = os.environ.get("GEMINI_MODELO", "gemini-2.5-flash")
+LOCATION = os.environ.get("VERTEX_LOCATION", "global")
+MODELO = os.environ.get("GEMINI_MODELO", "gemini-3.8-flash")
+MAX_TOKENS = int(os.environ.get("MAX_TOKENS", "4000"))
+REINTENTOS = int(os.environ.get("REINTENTOS", "3"))
 API_KEY = os.environ.get("IA_API_KEY", "").strip()
 API_AWS = os.environ.get("API_AWS_URL", "").rstrip("/")
 API_AWS_KEY = os.environ.get("API_AWS_KEY", "").strip()
@@ -110,27 +112,41 @@ def componente_por_desviacion(desviaciones):
     return COMPONENTE_POR_VARIABLE.get(top[0], "motor") if top else "motor"
 
 
+def es_transitorio(e):
+    codigo = getattr(e, "code", None) or getattr(getattr(e, "response", None), "status_code", None)
+    if codigo in (429, 500, 503, 504):
+        return True
+    return any(s in str(e).lower() for s in ("resource exhausted", "429", "unavailable", "deadline"))
+
+
 def generar(prompt, esquema, instruccion):
     from google.genai import types
 
-    t0 = time.perf_counter()
-    r = cliente().models.generate_content(
-        model=MODELO,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            temperature=0.2,
-            max_output_tokens=1200,
-            response_mime_type="application/json",
-            response_schema=esquema,
-            system_instruction=instruccion,
-            http_options=types.HttpOptions(timeout=int(TIMEOUT_MODELO * 1000)),
-        ),
+    config = types.GenerateContentConfig(
+        temperature=0.2,
+        max_output_tokens=MAX_TOKENS,
+        response_mime_type="application/json",
+        response_schema=esquema,
+        system_instruction=instruccion,
+        http_options=types.HttpOptions(timeout=int(TIMEOUT_MODELO * 1000)),
     )
-    ms = int((time.perf_counter() - t0) * 1000)
-    datos = json.loads(r.text)
-    if not isinstance(datos, dict):
-        raise ValueError("el modelo no devolvió un objeto")
-    return datos, ms
+
+    t0 = time.perf_counter()
+    ultimo = None
+    for intento in range(REINTENTOS):
+        try:
+            r = cliente().models.generate_content(model=MODELO, contents=prompt, config=config)
+            datos = json.loads(r.text)
+            if not isinstance(datos, dict):
+                raise ValueError("el modelo no devolvió un objeto")
+            return datos, int((time.perf_counter() - t0) * 1000)
+        except Exception as e:
+            ultimo = e
+            if intento == REINTENTOS - 1 or not es_transitorio(e):
+                raise
+            logging.warning("reintento %s tras error transitorio: %s", intento + 1, e)
+            time.sleep(0.6 * (2**intento))
+    raise ultimo
 
 
 def leer_api_aws(ruta):
