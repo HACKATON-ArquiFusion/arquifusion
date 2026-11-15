@@ -1,0 +1,21 @@
+{
+  "tipo": "incidente",
+  "registros": [
+    {
+      "incidente_id": "INC-2026-0001",
+      "maquina_id": "M-014",
+      "ts": "2026-11-15T14:35:00Z",
+      "severidad": "alta",
+      "estado": "abierto",
+      "descripcion": "Vibración y temperatura fuera de rango"
+    },
+    {
+      "incidente_id": "INC-2026-0002",
+      "maquina_id": "M-027",
+      "ts": "2026-11-15T14:40:00Z",
+      "severidad": "critica",
+      "estado": "en_proceso",
+      "descripcion": "Sobrecalentamiento en motor"
+    }
+  ]
+}

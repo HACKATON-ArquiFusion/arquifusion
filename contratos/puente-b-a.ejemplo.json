@@ -1,0 +1,21 @@
+{
+  "tipo": "prob_falla",
+  "generado_ts": "2026-11-15T15:00:00Z",
+  "version_modelo": "logit-v1",
+  "registros": [
+    {
+      "maquina_id": "M-014",
+      "ts": "2026-11-15T15:00:00Z",
+      "horizonte_dias": 7,
+      "prob_falla": 0.82,
+      "modelo": "logit-v1"
+    },
+    {
+      "maquina_id": "M-027",
+      "ts": "2026-11-15T15:00:00Z",
+      "horizonte_dias": 7,
+      "prob_falla": 0.37,
+      "modelo": "logit-v1"
+    }
+  ]
+}
