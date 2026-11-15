@@ -1,0 +1,47 @@
+{
+  "maquina_id": "M-027",
+  "modelo": "CAM-730",
+  "zona": "Z2",
+  "lat": -15.52,
+  "lon": -71.52,
+  "estado": "requiere_intervencion",
+  "riesgo": 91,
+  "horas_op": 23180.0,
+  "ultima_lectura": {
+    "ts": "2026-11-15T14:59:00Z",
+    "temp": 104.7,
+    "vib": 9.6,
+    "presion": 185.0,
+    "combustible_lph": 61.2,
+    "carga_t": 88.5,
+    "velocidad": 24.0,
+    "rpm": 1900
+  },
+  "z_scores": {
+    "temp": 3.4,
+    "vib": 3.9,
+    "presion": -0.8,
+    "combustible_lph": 2.7,
+    "rpm": 0.4
+  },
+  "tendencia_por_hora": {
+    "temp": 1.8,
+    "vib": 0.6,
+    "combustible_lph": 1.1
+  },
+  "prediccion": {
+    "prob_falla": 0.91,
+    "horizonte_dias": 7,
+    "componente_probable": "refrigeracion",
+    "modelo": "logit-v1",
+    "fuente": "bqml+ia"
+  },
+  "ultimos_incidentes": [
+    "INC-2026-0002"
+  ],
+  "preventivo": {
+    "fecha_recomendada": "2026-11-18",
+    "estado": "adelantar",
+    "motivo": "Riesgo alto antes de la fecha programada"
+  }
+}

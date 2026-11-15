@@ -1,0 +1,25 @@
+{
+  "ordenes": [
+    {
+      "maquina_id": "M-027",
+      "fecha_recomendada": "2026-11-18",
+      "horas_proyectadas": 23230.0,
+      "estado": "adelantar",
+      "motivo": "Riesgo de falla alto antes de la fecha programada"
+    },
+    {
+      "maquina_id": "M-014",
+      "fecha_recomendada": "2026-12-02",
+      "horas_proyectadas": 12700.0,
+      "estado": "a_tiempo",
+      "motivo": "Uso normal"
+    },
+    {
+      "maquina_id": "M-031",
+      "fecha_recomendada": "2026-12-20",
+      "horas_proyectadas": 8300.0,
+      "estado": "posponible",
+      "motivo": "Condición sana y baja utilización reciente"
+    }
+  ]
+}

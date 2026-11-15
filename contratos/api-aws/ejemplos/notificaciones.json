@@ -1,0 +1,28 @@
+{
+  "notificaciones": [
+    {
+      "rol": "operador",
+      "ts": "2026-11-15T14:41:00Z",
+      "severidad": "critica",
+      "incidente_id": "INC-2026-0002",
+      "titulo": "Detener M-027",
+      "mensaje": "Detenga el equipo y espere al técnico."
+    },
+    {
+      "rol": "tecnico",
+      "ts": "2026-11-15T14:41:00Z",
+      "severidad": "critica",
+      "incidente_id": "INC-2026-0002",
+      "titulo": "Asignado a M-027",
+      "mensaje": "Temp +3.4 sigma, vibración +3.9 sigma. Causa probable: refrigeración. Repuesto reservado: refrigeracion (Z5). Zona Z2."
+    },
+    {
+      "rol": "gerente",
+      "ts": "2026-11-15T14:45:00Z",
+      "severidad": "critica",
+      "incidente_id": "INC-2026-0002",
+      "titulo": "Incidente crítico en Tajo Sur",
+      "mensaje": "1 equipo detenido, técnico asignado, sin impacto adicional previsto."
+    }
+  ]
+}

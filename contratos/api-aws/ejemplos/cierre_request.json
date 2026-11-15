@@ -1,0 +1,14 @@
+{
+  "tecnico_id": "TEC-01",
+  "intervencion": "Reemplazo de bomba de agua y purga del sistema de refrigeración",
+  "componentes_reemplazados": [
+    "refrigeracion"
+  ],
+  "repuestos_usados": [
+    {
+      "componente": "refrigeracion",
+      "cantidad": 1,
+      "unidad": "unidad"
+    }
+  ]
+}
