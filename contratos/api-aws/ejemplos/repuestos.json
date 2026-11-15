@@ -1,0 +1,39 @@
+{
+  "stock": [
+    {
+      "zona": "Z5",
+      "componente": "filtros",
+      "descripcion": "Filtros de aceite e hidráulicos",
+      "stock": 4,
+      "minimo": 6,
+      "demanda_proyectada_7d": 9,
+      "estado": "faltante_proyectado"
+    },
+    {
+      "zona": "Z5",
+      "componente": "refrigeracion",
+      "descripcion": "Bombas de agua y radiadores",
+      "stock": 2,
+      "minimo": 1,
+      "demanda_proyectada_7d": 1,
+      "estado": "ok"
+    },
+    {
+      "zona": "Z4",
+      "componente": "frenos",
+      "descripcion": "Pastillas y discos de freno",
+      "stock": 12,
+      "minimo": 3,
+      "demanda_proyectada_7d": 1,
+      "estado": "sobre_stock"
+    }
+  ],
+  "alertas": [
+    {
+      "tipo": "faltante_proyectado",
+      "componente": "filtros",
+      "zona": "Z5",
+      "detalle": "La demanda proyectada a 7 días (9) supera el stock (4)"
+    }
+  ]
+}

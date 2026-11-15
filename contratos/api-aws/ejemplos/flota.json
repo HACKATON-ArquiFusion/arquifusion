@@ -1,0 +1,44 @@
+{
+  "generado_en": "2026-11-15T15:00:00Z",
+  "maquinas": [
+    {
+      "maquina_id": "M-014",
+      "modelo": "EXC-320",
+      "zona": "Z1",
+      "lat": -15.48,
+      "lon": -71.52,
+      "estado": "requiere_intervencion",
+      "riesgo": 82,
+      "severidad": "alta",
+      "incidente_abierto": "INC-2026-0001",
+      "horas_op": 12450.5,
+      "ultima_lectura": "2026-11-15T14:59:00Z"
+    },
+    {
+      "maquina_id": "M-027",
+      "modelo": "CAM-730",
+      "zona": "Z2",
+      "lat": -15.52,
+      "lon": -71.52,
+      "estado": "requiere_intervencion",
+      "riesgo": 91,
+      "severidad": "critica",
+      "incidente_abierto": "INC-2026-0002",
+      "horas_op": 23180.0,
+      "ultima_lectura": "2026-11-15T14:59:00Z"
+    },
+    {
+      "maquina_id": "M-031",
+      "modelo": "CAR-950",
+      "zona": "Z3",
+      "lat": -15.501,
+      "lon": -71.482,
+      "estado": "operativa",
+      "riesgo": 18,
+      "severidad": null,
+      "incidente_abierto": null,
+      "horas_op": 8120.0,
+      "ultima_lectura": "2026-11-15T14:59:00Z"
+    }
+  ]
+}

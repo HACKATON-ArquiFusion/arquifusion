@@ -1,0 +1,13 @@
+{
+  "generado_en": "2026-11-15T15:00:00Z",
+  "maquinas_total": 50,
+  "por_estado": {
+    "operativa": 41,
+    "detenida": 5,
+    "requiere_intervencion": 4
+  },
+  "incidentes_abiertos": 6,
+  "tiempo_medio_reparacion_h": 3.4,
+  "reincidencia_pct": 12.5,
+  "costo_por_maquina_dia_pen": 29.0
+}
