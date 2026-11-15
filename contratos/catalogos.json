@@ -1,0 +1,28 @@
+{
+  "zonas": [
+    { "id": "Z1", "nombre": "Tajo Norte", "lat": -15.480, "lon": -71.520 },
+    { "id": "Z2", "nombre": "Tajo Sur", "lat": -15.520, "lon": -71.520 },
+    { "id": "Z3", "nombre": "Botadero", "lat": -15.500, "lon": -71.480 },
+    { "id": "Z4", "nombre": "Planta", "lat": -15.500, "lon": -71.560 },
+    { "id": "Z5", "nombre": "Taller", "lat": -15.505, "lon": -71.535 }
+  ],
+  "modelos_maquina": [
+    { "id": "EXC-320", "tipo": "excavadora" },
+    { "id": "CAM-730", "tipo": "camión volquete" },
+    { "id": "CAR-950", "tipo": "cargador frontal" },
+    { "id": "TRC-D8", "tipo": "tractor de oruga" },
+    { "id": "PER-ROC", "tipo": "perforadora" }
+  ],
+  "componentes": [
+    "motor",
+    "sistema_hidraulico",
+    "transmision",
+    "frenos",
+    "tren_rodaje",
+    "refrigeracion",
+    "inyeccion_combustible",
+    "filtros"
+  ],
+  "clima": ["soleado", "lluvia", "polvo", "frio"],
+  "terreno": ["llano", "pendiente", "rocoso", "barro"]
+}

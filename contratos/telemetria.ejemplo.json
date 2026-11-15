@@ -1,0 +1,46 @@
+[
+  {
+    "maquina_id": "M-014",
+    "ts": "2026-11-15T14:30:00Z",
+    "modelo": "EXC-320",
+    "zona": "Z1",
+    "lat": -15.480,
+    "lon": -71.520,
+    "horas_op": 12450.5,
+    "temp": 92.4,
+    "vib": 4.8,
+    "presion": 210.0,
+    "combustible_lph": 32.5,
+    "carga_t": 0.0,
+    "velocidad": 0.0,
+    "rpm": 1450,
+    "estado": "operativa",
+    "contexto": {
+      "clima": "soleado",
+      "terreno": "llano",
+      "lote_combustible": "LC-2026-11-A"
+    }
+  },
+  {
+    "maquina_id": "M-027",
+    "ts": "2026-11-15T14:30:00Z",
+    "modelo": "CAM-730",
+    "zona": "Z2",
+    "lat": -15.520,
+    "lon": -71.520,
+    "horas_op": 23180.0,
+    "temp": 104.7,
+    "vib": 9.6,
+    "presion": 185.0,
+    "combustible_lph": 61.2,
+    "carga_t": 88.5,
+    "velocidad": 24.0,
+    "rpm": 1900,
+    "estado": "requiere_intervencion",
+    "contexto": {
+      "clima": "polvo",
+      "terreno": "pendiente",
+      "lote_combustible": "LC-2026-11-B"
+    }
+  }
+]
