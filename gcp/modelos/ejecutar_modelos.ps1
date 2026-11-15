@@ -1,4 +1,4 @@
-param(
+﻿param(
     [int]$Desde = 0,
     [int]$Solo = 0
 )
@@ -20,7 +20,11 @@ $pasos = @(
     [pscustomobject]@{ Numero = 3; Archivo = "03_modelo_boosted.sql" },
     [pscustomobject]@{ Numero = 4; Archivo = "04_metricas.sql" },
     [pscustomobject]@{ Numero = 5; Archivo = "05_pesos_export.sql" },
-    [pscustomobject]@{ Numero = 6; Archivo = "06_validar_falla.sql" }
+    [pscustomobject]@{ Numero = 6; Archivo = "06_validar_falla.sql" },
+    [pscustomobject]@{ Numero = 7; Archivo = "07_arima_horas.sql" },
+    [pscustomobject]@{ Numero = 8; Archivo = "08_arima_repuestos.sql" },
+    [pscustomobject]@{ Numero = 9; Archivo = "09_arima_combustible.sql" },
+    [pscustomobject]@{ Numero = 10; Archivo = "10_pronosticos.sql" }
 )
 
 if ($Desde -gt 0) {
@@ -53,3 +57,4 @@ foreach ($paso in $pasos) {
 }
 
 Write-Host "Pipeline de modelos completado."
+
