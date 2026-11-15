@@ -1,0 +1,319 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ArquiFusion - Fase 3 - Step Function de incidentes y parametros de deteccion
+
+Parameters:
+  Prefijo:
+    Type: String
+    Default: arquifusion
+
+Resources:
+  FlujoIncidente:
+    Type: AWS::StepFunctions::StateMachine
+    Properties:
+      StateMachineName: !Sub '${Prefijo}-incidente'
+      StateMachineType: STANDARD
+      RoleArn: !Sub 'arn:aws:iam::${AWS::AccountId}:role/LabRole'
+      DefinitionString: !Sub |
+        {
+          "Comment": "Incidente - explicar, repuestos, tecnico, notificar, esperar cierre, cerrar",
+          "StartAt": "Explicar",
+          "States": {
+            "Explicar": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Prefijo}-flujo",
+                "Payload": {
+                  "accion": "explicar",
+                  "incidente_id.$": "$.incidente_id"
+                }
+              },
+              "ResultPath": null,
+              "Retry": [
+                {
+                  "ErrorEquals": [
+                    "States.ALL"
+                  ],
+                  "IntervalSeconds": 2,
+                  "MaxAttempts": 3,
+                  "BackoffRate": 2
+                }
+              ],
+              "Catch": [
+                {
+                  "ErrorEquals": [
+                    "States.ALL"
+                  ],
+                  "ResultPath": "$.error_explicar",
+                  "Next": "Severidad"
+                }
+              ],
+              "Next": "Severidad"
+            },
+            "Severidad": {
+              "Type": "Choice",
+              "Choices": [
+                {
+                  "Or": [
+                    {
+                      "Variable": "$.severidad",
+                      "StringEquals": "critica"
+                    },
+                    {
+                      "Variable": "$.severidad",
+                      "StringEquals": "alta"
+                    }
+                  ],
+                  "Next": "ReservarRepuestos"
+                },
+                {
+                  "Variable": "$.severidad",
+                  "StringEquals": "media",
+                  "Next": "AsignarTecnico"
+                }
+              ],
+              "Default": "Notificar"
+            },
+            "ReservarRepuestos": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Prefijo}-flujo",
+                "Payload": {
+                  "accion": "reservar_repuestos",
+                  "incidente_id.$": "$.incidente_id"
+                }
+              },
+              "ResultPath": null,
+              "Retry": [
+                {
+                  "ErrorEquals": [
+                    "States.ALL"
+                  ],
+                  "IntervalSeconds": 2,
+                  "MaxAttempts": 3,
+                  "BackoffRate": 2
+                }
+              ],
+              "Next": "AsignarTecnico"
+            },
+            "AsignarTecnico": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Prefijo}-flujo",
+                "Payload": {
+                  "accion": "asignar",
+                  "incidente_id.$": "$.incidente_id"
+                }
+              },
+              "ResultPath": null,
+              "Retry": [
+                {
+                  "ErrorEquals": [
+                    "States.ALL"
+                  ],
+                  "IntervalSeconds": 2,
+                  "MaxAttempts": 3,
+                  "BackoffRate": 2
+                }
+              ],
+              "Next": "Notificar"
+            },
+            "Notificar": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Prefijo}-flujo",
+                "Payload": {
+                  "accion": "notificar",
+                  "incidente_id.$": "$.incidente_id"
+                }
+              },
+              "ResultPath": null,
+              "Retry": [
+                {
+                  "ErrorEquals": [
+                    "States.ALL"
+                  ],
+                  "IntervalSeconds": 2,
+                  "MaxAttempts": 3,
+                  "BackoffRate": 2
+                }
+              ],
+              "Next": "EsperarCierre"
+            },
+            "EsperarCierre": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
+              "TimeoutSecondsPath": "$.timeout_cierre_seg",
+              "Parameters": {
+                "FunctionName": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Prefijo}-flujo",
+                "Payload": {
+                  "accion": "registrar_token",
+                  "incidente_id.$": "$.incidente_id",
+                  "token.$": "$$.Task.Token"
+                }
+              },
+              "ResultPath": "$.cierre",
+              "Catch": [
+                {
+                  "ErrorEquals": [
+                    "States.ALL"
+                  ],
+                  "ResultPath": "$.error_espera",
+                  "Next": "Escalar"
+                }
+              ],
+              "Next": "Cerrar"
+            },
+            "Escalar": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Prefijo}-flujo",
+                "Payload": {
+                  "accion": "escalar",
+                  "incidente_id.$": "$.incidente_id"
+                }
+              },
+              "ResultPath": null,
+              "Next": "EsperarCierreEscalado"
+            },
+            "EsperarCierreEscalado": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
+              "TimeoutSeconds": 86400,
+              "Parameters": {
+                "FunctionName": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Prefijo}-flujo",
+                "Payload": {
+                  "accion": "registrar_token",
+                  "incidente_id.$": "$.incidente_id",
+                  "token.$": "$$.Task.Token"
+                }
+              },
+              "ResultPath": "$.cierre",
+              "Catch": [
+                {
+                  "ErrorEquals": [
+                    "States.ALL"
+                  ],
+                  "ResultPath": "$.error_espera",
+                  "Next": "CerrarVencido"
+                }
+              ],
+              "Next": "Cerrar"
+            },
+            "Cerrar": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Prefijo}-flujo",
+                "Payload": {
+                  "accion": "cerrar",
+                  "incidente_id.$": "$.incidente_id",
+                  "motivo": "confirmado"
+                }
+              },
+              "ResultPath": null,
+              "Retry": [
+                {
+                  "ErrorEquals": [
+                    "States.ALL"
+                  ],
+                  "IntervalSeconds": 2,
+                  "MaxAttempts": 3,
+                  "BackoffRate": 2
+                }
+              ],
+              "End": true
+            },
+            "CerrarVencido": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Prefijo}-flujo",
+                "Payload": {
+                  "accion": "cerrar",
+                  "incidente_id.$": "$.incidente_id",
+                  "motivo": "vencido_sin_confirmacion"
+                }
+              },
+              "ResultPath": null,
+              "End": true
+            }
+          }
+        }
+
+  PDeteccion:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/deteccion_activa'
+      Type: String
+      Value: 'true'
+      Description: true/false. Poner false durante cargas historicas masivas
+  PCooldown:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/cooldown_horas'
+      Type: String
+      Value: '6'
+      Description: Horas sin reabrir incidente de una maquina tras cerrarlo (tiempo de los datos)
+  PUmbralOverride:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/umbral_override'
+      Type: String
+      Value: auto
+      Description: auto = usa umbral_sugerido de pesos_modelo; o un numero entre 0 y 1
+  PUmbralReglas:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/umbral_reglas'
+      Type: String
+      Value: '0.6'
+      Description: Umbral del respaldo por reglas (solo si B aun no envio pesos_modelo)
+  PModelo:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/modelo_falla'
+      Type: String
+      Value: logit-v1
+      Description: Nombre del modelo de pesos_modelo a usar
+  PSevCritica:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/sev_critica'
+      Type: String
+      Value: '0.9'
+  PSevAlta:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/sev_alta'
+      Type: String
+      Value: '0.75'
+  PSevMedia:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/sev_media'
+      Type: String
+      Value: '0.6'
+  PTimeoutCierre:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/timeout_cierre_seg'
+      Type: String
+      Value: '3600'
+      Description: Segundos esperando el cierre antes de escalar
+  PPesosAsignacion:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/pesos_asignacion'
+      Type: String
+      Value: '{"especialidad":0.4,"cercania":0.25,"disponibilidad":0.2,"tiempo_estimado":0.15}'
+      Description: Pesos del puntaje de asignacion de tecnicos
+
+Outputs:
+  StateMachineArn:
+    Value: !Ref FlujoIncidente
+    Description: Pegar como variable STATE_MACHINE_ARN en la Lambda arquifusion-ingesta-procesar y en arquifusion-api
