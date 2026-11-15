@@ -389,6 +389,10 @@ def validar_score(tipo, r):
         vs = r["variables"]
         if not isinstance(vs, list) or not vs:
             return "variables debe ser una lista"
+        malas = [str(v) for v in vs if not isinstance(v, str) or not RE_VAR.match(v)]
+        if malas:  # una variable que no sé calcular cambiaría la probabilidad en silencio: se rechaza
+            return ("variables no reconocidas: " + ", ".join(malas) + ". Formato: <base>[_<estadistica>][_<N>h]; "
+                    "base = " + ", ".join(sorted(BASES)) + "; estadistica = ult, media, max, min, std, pend, rango")
         for d in ("pesos", "medias", "desviaciones"):
             if not isinstance(r[d], dict) or any(v not in r[d] for v in vs):
                 return d + " debe tener todas las variables"
