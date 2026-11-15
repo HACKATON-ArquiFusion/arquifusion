@@ -298,7 +298,7 @@ def guardar_lote(registros):
     for r in ultimos.values():
         if actualizar_maquina(r):  # solo si es la lectura más nueva de la máquina
             try:
-                evaluar_maquina(r["maquina_id"])
+                evaluar_maquina(r["maquina_id"], r["ts"])
             except Exception as ex:  # la detección nunca debe hacer fallar la ingesta
                 print("ERROR detección", r["maquina_id"], repr(ex))
     print(json.dumps({"insertados": ins, "duplicados": dup, "descartados": desc}))
@@ -622,12 +622,14 @@ def severidad_de(prob, estado):
 
 
 # ---------------------------------------------------------------- detección en línea
-def evaluar_maquina(maq_id):
-    if param("deteccion_activa", "true") != "true":
-        return None
+def calcular_riesgo(maq_id, ts_hasta=None):
+    """Riesgo de la máquina usando solo lecturas hasta ts_hasta (sin efectos). None si no hay datos."""
     n = int(pf("n_lecturas", 336))
-    items = tabla("telemetria").query(KeyConditionExpression=Key("maquina_id").eq(maq_id),
-                                      ScanIndexForward=False, Limit=n, ConsistentRead=True)["Items"]
+    cond = Key("maquina_id").eq(maq_id)
+    if ts_hasta:
+        cond = cond & Key("ts").lte(ts_hasta)
+    items = tabla("telemetria").query(KeyConditionExpression=cond, ScanIndexForward=False,
+                                      Limit=n, ConsistentRead=True)["Items"]
     lecturas = list(reversed(items))
     if not lecturas:
         return None
@@ -645,12 +647,23 @@ def evaluar_maquina(maq_id):
         prob, evid = riesgo_reglas(actual)
         metodo = "reglas"
         umbral = pf("umbral_reglas", 0.6)
+    return {"prob": prob, "evid": evid, "metodo": metodo, "umbral": umbral, "actual": actual,
+            "lecturas": len(lecturas)}
+
+
+def evaluar_maquina(maq_id, ts_hasta=None):
+    if param("deteccion_activa", "true") != "true":
+        return None
+    r = calcular_riesgo(maq_id, ts_hasta)
+    if not r:
+        return None
+    actual, prob, umbral = r["actual"], r["prob"], r["umbral"]
     tabla("maquinas").update_item(
         Key={"maquina_id": maq_id}, UpdateExpression="SET riesgo = :r, riesgo_ts = :t, metodo_riesgo = :m",
-        ExpressionAttributeValues=a_dec({":r": prob, ":t": actual["ts"], ":m": metodo}))
+        ExpressionAttributeValues=a_dec({":r": prob, ":t": actual["ts"], ":m": r["metodo"]}))
     if prob < umbral and actual["estado"] != "requiere_intervencion":
         return None
-    return abrir_incidente(maq_id, actual, prob, umbral, metodo, evid)
+    return abrir_incidente(maq_id, actual, prob, umbral, r["metodo"], r["evid"])
 
 
 def siguiente_id(ts):
@@ -721,7 +734,7 @@ def iniciar_flujo(item):
     entrada = {"incidente_id": item["incidente_id"], "maquina_id": item["maquina_id"],
                "severidad": item["severidad"], "timeout_cierre_seg": int(pf("timeout_cierre_seg", 3600))}
     try:
-        cliente("stepfunctions").start_execution(stateMachineArn=arn, name=item["incidente_id"],
+        cliente("stepfunctions").start_execution(stateMachineArn=arn, name=item["incidente_id"] + "-" + str(int(time.time())),
                                                  input=json.dumps(entrada))
         return True
     except ClientError as ex:
@@ -1145,6 +1158,66 @@ def post_admin_incidente(ev, m):
     return resp(201, {"incidente_id": inc["incidente_id"], "severidad": sev})
 
 
+def get_admin_riesgo(ev, m):
+    """Riesgo de una máquina en un instante, sin crear nada (para comparar con BigQuery)."""
+    maq = m.group(1)
+    if not RE_MAQ.match(maq):
+        return err400("maquina_id inválido", "formato M-001..M-999")
+    ts = query(ev).get("ts")
+    if ts and not ts_valido(ts):
+        return err400("ts inválido", "ISO 8601 UTC, p. ej. 2026-11-07T20:00:00Z")
+    r = calcular_riesgo(maq, ts)
+    if not r:
+        return resp(404, {"error": "sin lecturas", "maquina_id": maq})
+    return resp(200, {"maquina_id": maq, "ts": r["actual"]["ts"], "prob_falla": r["prob"], "umbral": r["umbral"],
+                      "supera_umbral": r["prob"] >= r["umbral"], "metodo": r["metodo"],
+                      "lecturas_usadas": r["lecturas"], "valores": r["evid"].get("valores"),
+                      "variables_desvio": r["evid"].get("variables"),
+                      "variables_faltantes": r["evid"].get("faltantes")})
+
+
+def get_admin_resumen(ev, m):
+    cuenta, kw = {}, {"ProjectionExpression": "maquina_id"}
+    while True:
+        r = tabla("telemetria").scan(**kw)
+        for i in r["Items"]:
+            cuenta[i["maquina_id"]] = cuenta.get(i["maquina_id"], 0) + 1
+        if "LastEvaluatedKey" not in r:
+            break
+        kw["ExclusiveStartKey"] = r["LastEvaluatedKey"]
+    n_inc = {}
+    for e in ("abierto", "en_proceso", "cerrado"):
+        n_inc[e] = tabla("incidentes").query(IndexName="estado-index", Select="COUNT",
+                                             KeyConditionExpression=Key("estado").eq(e))["Count"]
+    return resp(200, {"telemetria_total": sum(cuenta.values()), "maquinas": len(cuenta),
+                      "por_maquina": dict(sorted(cuenta.items())), "incidentes": n_inc})
+
+
+CLAVES_TABLA = {"maquinas": ["maquina_id"], "incidentes": ["incidente_id"], "notificaciones": ["rol", "ts_id"],
+                "mantenimientos": ["mantenimiento_id"]}
+
+
+def post_admin_reiniciar(ev, m):
+    """Deja en cero el estado operativo (incidentes, notificaciones, bloqueos, técnicos, stock).
+    Conserva telemetría y scores: al repetir la demo con los mismos ts, la detección vuelve a disparar."""
+    borrados = {}
+    for nombre, claves in CLAVES_TABLA.items():
+        t, kw, n = tabla(nombre), {"ProjectionExpression": ", ".join("#k%d" % i for i in range(len(claves))),
+                                    "ExpressionAttributeNames": {"#k%d" % i: c for i, c in enumerate(claves)}}, 0
+        while True:
+            r = t.scan(**kw)
+            with t.batch_writer() as bw:
+                for it in r["Items"]:
+                    bw.delete_item(Key={c: it[c] for c in claves})
+                    n += 1
+            if "LastEvaluatedKey" not in r:
+                break
+            kw["ExclusiveStartKey"] = r["LastEvaluatedKey"]
+        borrados[nombre] = n
+    sem = json.loads(post_semilla(ev, m)["body"])
+    return resp(200, {"borrados": borrados, "semilla": sem})
+
+
 RUTAS = [
     ("GET", r"^/flota$", fijo("flota.json")),
     ("GET", r"^/maquinas/([^/]+)$", get_maquina),
@@ -1164,6 +1237,9 @@ RUTAS = [
     ("POST", r"^/scores$", post_scores),
     ("POST", r"^/admin/semilla$", post_semilla),
     ("POST", r"^/admin/incidente$", post_admin_incidente),
+    ("GET", r"^/admin/riesgo/([^/]+)$", get_admin_riesgo),
+    ("GET", r"^/admin/resumen$", get_admin_resumen),
+    ("POST", r"^/admin/reiniciar$", post_admin_reiniciar),
 ]
 
 
