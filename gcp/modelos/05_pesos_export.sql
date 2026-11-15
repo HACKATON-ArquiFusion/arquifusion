@@ -9,7 +9,10 @@ WITH pesos AS (
     MAX(IF(processed_input = 'comb_m24_z', weight, NULL)) AS comb_m24,
     MAX(IF(processed_input = 'temp_d72_z', weight, NULL)) AS temp_d72,
     MAX(IF(processed_input = 'vib_d72_z', weight, NULL)) AS vib_d72,
-    MAX(IF(processed_input = 'comb_d72_z', weight, NULL)) AS comb_d72
+    MAX(IF(processed_input = 'comb_d72_z', weight, NULL)) AS comb_d72,
+    MAX(IF(processed_input = 'temp_d14_z', weight, NULL)) AS temp_d14,
+    MAX(IF(processed_input = 'vib_d14_z', weight, NULL)) AS vib_d14,
+    MAX(IF(processed_input = 'comb_d14_z', weight, NULL)) AS comb_d14
   FROM ML.WEIGHTS(MODEL `arquifusion.modelo_falla_logit`)
 ),
 stats AS (
@@ -20,19 +23,25 @@ stats AS (
     MAX(IF(variable = 'temp_d72', media, NULL)) AS temp_d72_media,
     MAX(IF(variable = 'vib_d72', media, NULL)) AS vib_d72_media,
     MAX(IF(variable = 'comb_d72', media, NULL)) AS comb_d72_media,
+    MAX(IF(variable = 'temp_d14', media, NULL)) AS temp_d14_media,
+    MAX(IF(variable = 'vib_d14', media, NULL)) AS vib_d14_media,
+    MAX(IF(variable = 'comb_d14', media, NULL)) AS comb_d14_media,
     MAX(IF(variable = 'temp_m24', desviacion, NULL)) AS temp_m24_desv,
     MAX(IF(variable = 'vib_m24', desviacion, NULL)) AS vib_m24_desv,
     MAX(IF(variable = 'comb_m24', desviacion, NULL)) AS comb_m24_desv,
     MAX(IF(variable = 'temp_d72', desviacion, NULL)) AS temp_d72_desv,
     MAX(IF(variable = 'vib_d72', desviacion, NULL)) AS vib_d72_desv,
-    MAX(IF(variable = 'comb_d72', desviacion, NULL)) AS comb_d72_desv
+    MAX(IF(variable = 'comb_d72', desviacion, NULL)) AS comb_d72_desv,
+    MAX(IF(variable = 'temp_d14', desviacion, NULL)) AS temp_d14_desv,
+    MAX(IF(variable = 'vib_d14', desviacion, NULL)) AS vib_d14_desv,
+    MAX(IF(variable = 'comb_d14', desviacion, NULL)) AS comb_d14_desv
   FROM `arquifusion.entrenamiento_stats`
 )
 SELECT
   'logit-v1' AS modelo,
   FORMAT_DATE('%Y-%m-%d', CURRENT_DATE()) AS version,
   7 AS horizonte_dias,
-  ['temp_m24', 'vib_m24', 'comb_m24', 'temp_d72', 'vib_d72', 'comb_d72'] AS variables,
+  ['temp_m24', 'vib_m24', 'comb_m24', 'temp_d72', 'vib_d72', 'comb_d72', 'temp_d14', 'vib_d14', 'comb_d14'] AS variables,
   p.intercepto,
   TO_JSON(STRUCT(
     p.temp_m24 AS temp_m24,
@@ -40,7 +49,10 @@ SELECT
     p.comb_m24 AS comb_m24,
     p.temp_d72 AS temp_d72,
     p.vib_d72 AS vib_d72,
-    p.comb_d72 AS comb_d72
+    p.comb_d72 AS comb_d72,
+    p.temp_d14 AS temp_d14,
+    p.vib_d14 AS vib_d14,
+    p.comb_d14 AS comb_d14
   )) AS pesos,
   TO_JSON(STRUCT(
     s.temp_m24_media AS temp_m24,
@@ -48,7 +60,10 @@ SELECT
     s.comb_m24_media AS comb_m24,
     s.temp_d72_media AS temp_d72,
     s.vib_d72_media AS vib_d72,
-    s.comb_d72_media AS comb_d72
+    s.comb_d72_media AS comb_d72,
+    s.temp_d14_media AS temp_d14,
+    s.vib_d14_media AS vib_d14,
+    s.comb_d14_media AS comb_d14
   )) AS medias,
   TO_JSON(STRUCT(
     s.temp_m24_desv AS temp_m24,
@@ -56,13 +71,16 @@ SELECT
     s.comb_m24_desv AS comb_m24,
     s.temp_d72_desv AS temp_d72,
     s.vib_d72_desv AS vib_d72,
-    s.comb_d72_desv AS comb_d72
+    s.comb_d72_desv AS comb_d72,
+    s.temp_d14_desv AS temp_d14,
+    s.vib_d14_desv AS vib_d14,
+    s.comb_d14_desv AS comb_d14
   )) AS desviaciones,
   (
     SELECT umbral
     FROM `arquifusion.metricas_modelos`
     WHERE modelo = 'logit'
-      AND particion = 'train'
+      AND particion = 'val'
     LIMIT 1
   ) AS umbral_sugerido,
   (

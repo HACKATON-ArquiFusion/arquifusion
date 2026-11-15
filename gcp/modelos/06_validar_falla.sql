@@ -1,9 +1,9 @@
 -- Validacion anti-fuga y de utilidad operativa sobre la particion test.
--- Para la sensibilidad se usan predicciones de gap y test en la ventana de 7 dias.
+-- Para la evaluacion se utilizan los umbrales seleccionados en la particion val.
 CREATE OR REPLACE TEMP TABLE umbrales_modelo AS
 SELECT
   modelo,
-  MAX(IF(particion = 'train', umbral, NULL)) AS umbral
+  MAX(IF(particion = 'val', umbral, NULL)) AS umbral
 FROM `arquifusion.metricas_modelos`
 WHERE modelo IN ('logit', 'boosted')
 GROUP BY modelo;
@@ -28,7 +28,10 @@ FROM ML.PREDICT(
       comb_m24_z,
       temp_d72_z,
       vib_d72_z,
-      comb_d72_z
+      comb_d72_z,
+      temp_d14_z,
+      vib_d14_z,
+      comb_d14_z
     FROM `arquifusion.v_features_z`
     WHERE particion IN ('gap', 'test')
   )
@@ -54,7 +57,10 @@ FROM ML.PREDICT(
       comb_m24_z,
       temp_d72_z,
       vib_d72_z,
-      comb_d72_z
+      comb_d72_z,
+      temp_d14_z,
+      vib_d14_z,
+      comb_d14_z
     FROM `arquifusion.v_features_z`
     WHERE particion IN ('gap', 'test')
   )
@@ -77,7 +83,10 @@ SELECT
   comb_m24_z,
   temp_d72_z,
   vib_d72_z,
-  comb_d72_z
+  comb_d72_z,
+  temp_d14_z,
+  vib_d14_z,
+  comb_d14_z
 FROM `arquifusion.v_features_z`
 WHERE particion = 'test'
 ORDER BY ts
@@ -94,6 +103,9 @@ SELECT
   temp_d72_z,
   vib_d72_z,
   comb_d72_z,
+  temp_d14_z,
+  vib_d14_z,
+  comb_d14_z,
   (SELECT p.prob FROM UNNEST(predicted_etiqueta_probs) AS p WHERE p.label = 1) AS prob_ml
 FROM ML.PREDICT(
   MODEL `arquifusion.modelo_falla_logit`,
@@ -107,12 +119,15 @@ FROM ML.PREDICT(
       comb_m24_z,
       temp_d72_z,
       vib_d72_z,
-      comb_d72_z
+      comb_d72_z,
+      temp_d14_z,
+      vib_d14_z,
+      comb_d14_z
     FROM `muestra_logit`
   )
 );
 
--- 1) Sigmoide manual con ML.WEIGHTS contra la probabilidad de ML.PREDICT.
+-- 1) Sigmoide manual con ML.WEIGHTS contra la probabilidad de ML.PREDICT (9 variables).
 WITH pesos AS (
   SELECT
     MAX(IF(processed_input = '__INTERCEPT__', weight, NULL)) AS intercepto,
@@ -121,7 +136,10 @@ WITH pesos AS (
     MAX(IF(processed_input = 'comb_m24_z', weight, NULL)) AS w_comb_m24,
     MAX(IF(processed_input = 'temp_d72_z', weight, NULL)) AS w_temp_d72,
     MAX(IF(processed_input = 'vib_d72_z', weight, NULL)) AS w_vib_d72,
-    MAX(IF(processed_input = 'comb_d72_z', weight, NULL)) AS w_comb_d72
+    MAX(IF(processed_input = 'comb_d72_z', weight, NULL)) AS w_comb_d72,
+    MAX(IF(processed_input = 'temp_d14_z', weight, NULL)) AS w_temp_d14,
+    MAX(IF(processed_input = 'vib_d14_z', weight, NULL)) AS w_vib_d14,
+    MAX(IF(processed_input = 'comb_d14_z', weight, NULL)) AS w_comb_d14
   FROM ML.WEIGHTS(MODEL `arquifusion.modelo_falla_logit`)
 )
 SELECT
@@ -138,6 +156,9 @@ SELECT
           + p.w_temp_d72 * m.temp_d72_z
           + p.w_vib_d72 * m.vib_d72_z
           + p.w_comb_d72 * m.comb_d72_z
+          + p.w_temp_d14 * m.temp_d14_z
+          + p.w_vib_d14 * m.vib_d14_z
+          + p.w_comb_d14 * m.comb_d14_z
         ))
       )
     )
@@ -152,7 +173,7 @@ WITH fallas_test AS (
     maquina_id,
     ts_falla
   FROM `arquifusion.fallas`
-  WHERE ts_falla >= TIMESTAMP '2026-10-17 00:00:00'
+  WHERE ts_falla >= (SELECT MIN(ts) FROM `arquifusion.v_features_z` WHERE particion = 'test')
 ),
 detectadas AS (
   SELECT DISTINCT
@@ -179,19 +200,121 @@ LEFT JOIN detectadas d
 GROUP BY u.modelo
 ORDER BY u.modelo;
 
--- 3) Alertas falsas por maquina y semana ISO en test.
+-- 3) Evaluacion por episodios de alertas confirmadas en la particion test.
+WITH pred_test AS (
+  SELECT
+    p.modelo,
+    p.maquina_id,
+    p.ts,
+    p.prob,
+    u.umbral,
+    COUNTIF(p.prob >= u.umbral) OVER (
+      PARTITION BY p.modelo, p.maquina_id
+      ORDER BY p.ts
+      ROWS BETWEEN 5 PRECEDING AND CURRENT ROW
+    ) >= 3 AS es_alerta_confirmada
+  FROM pred_eval_todos p
+  JOIN umbrales_modelo u ON u.modelo = p.modelo
+  WHERE p.particion = 'test'
+),
+alertas_confirmadas AS (
+  SELECT
+    modelo,
+    maquina_id,
+    ts,
+    IF(
+      LAG(ts) OVER (PARTITION BY modelo, maquina_id ORDER BY ts) IS NULL
+      OR TIMESTAMP_DIFF(ts, LAG(ts) OVER (PARTITION BY modelo, maquina_id ORDER BY ts), HOUR) >= 24,
+      1, 0
+    ) AS es_inicio_episodio
+  FROM pred_test
+  WHERE es_alerta_confirmada = TRUE
+),
+episodios_identificados AS (
+  SELECT
+    modelo,
+    maquina_id,
+    ts,
+    SUM(es_inicio_episodio) OVER (PARTITION BY modelo, maquina_id ORDER BY ts) AS episodio_id
+  FROM alertas_confirmadas
+),
+episodios AS (
+  SELECT
+    modelo,
+    maquina_id,
+    episodio_id,
+    MIN(ts) AS ts_inicio
+  FROM episodios_identificados
+  GROUP BY modelo, maquina_id, episodio_id
+),
+fallas_test_ep AS (
+  SELECT
+    falla_id,
+    maquina_id,
+    ts_falla
+  FROM `arquifusion.fallas`
+  WHERE ts_falla >= (SELECT MIN(ts) FROM `arquifusion.v_features_z` WHERE particion = 'test')
+),
+episodios_evaluados AS (
+  SELECT
+    e.modelo,
+    e.maquina_id,
+    e.episodio_id,
+    e.ts_inicio,
+    LOGICAL_OR(
+      f.falla_id IS NOT NULL
+      AND f.ts_falla >= e.ts_inicio
+      AND f.ts_falla <= TIMESTAMP_ADD(e.ts_inicio, INTERVAL 7 DAY)
+    ) AS es_verdadero
+  FROM episodios e
+  LEFT JOIN fallas_test_ep f
+    ON f.maquina_id = e.maquina_id
+   AND f.ts_falla >= e.ts_inicio
+   AND f.ts_falla <= TIMESTAMP_ADD(e.ts_inicio, INTERVAL 7 DAY)
+  GROUP BY e.modelo, e.maquina_id, e.episodio_id, e.ts_inicio
+),
+fallas_con_anticipacion AS (
+  SELECT
+    ee.modelo,
+    ft.falla_id,
+    TIMESTAMP_DIFF(ft.ts_falla, MIN(ee.ts_inicio), HOUR) AS anticipacion_horas
+  FROM fallas_test_ep ft
+  JOIN episodios_evaluados ee
+    ON ee.maquina_id = ft.maquina_id
+   AND ee.es_verdadero = TRUE
+   AND ft.ts_falla >= ee.ts_inicio
+   AND ft.ts_falla <= TIMESTAMP_ADD(ee.ts_inicio, INTERVAL 7 DAY)
+  GROUP BY ee.modelo, ft.falla_id, ft.ts_falla
+),
+stats_test_info AS (
+  SELECT
+    COUNT(DISTINCT maquina_id) AS n_maquinas,
+    SAFE_DIVIDE(DATE_DIFF(MAX(DATE(ts)), MIN(DATE(ts)), DAY), 7.0) AS semanas_test
+  FROM `arquifusion.v_features_z`
+  WHERE particion = 'test'
+),
+resumen_modelos AS (
+  SELECT
+    u.modelo,
+    COUNT(DISTINCT fca.falla_id) AS fallas_detectadas,
+    (SELECT COUNT(*) FROM fallas_test_ep) AS fallas_totales,
+    APPROX_QUANTILES(fca.anticipacion_horas, 100)[OFFSET(50)] AS anticipacion_mediana_horas,
+    COUNTIF(ee.es_verdadero = FALSE) AS episodios_falsos,
+    COUNTIF(ee.es_verdadero = TRUE) AS episodios_verdaderos,
+    COUNT(ee.episodio_id) AS episodios_totales
+  FROM umbrales_modelo u
+  LEFT JOIN episodios_evaluados ee ON ee.modelo = u.modelo
+  LEFT JOIN fallas_con_anticipacion fca ON fca.modelo = u.modelo
+  GROUP BY u.modelo
+)
 SELECT
-  p.modelo,
-  p.maquina_id,
-  FORMAT_DATE('%G-W%V', DATE(p.ts)) AS semana,
-  COUNTIF(p.prob >= u.umbral AND p.etiqueta = 0) AS alertas_falsas
-FROM pred_eval_todos p
-JOIN umbrales_modelo u
-  ON u.modelo = p.modelo
-WHERE p.particion = 'test'
-GROUP BY
-  p.modelo,
-  p.maquina_id,
-  FORMAT_DATE('%G-W%V', DATE(p.ts))
-HAVING COUNTIF(p.prob >= u.umbral AND p.etiqueta = 0) > 0
-ORDER BY p.modelo, p.maquina_id, semana;
+  rm.modelo,
+  rm.fallas_detectadas,
+  rm.fallas_totales,
+  ROUND(SAFE_DIVIDE(rm.fallas_detectadas, rm.fallas_totales), 4) AS sensibilidad_fallas,
+  rm.anticipacion_mediana_horas,
+  ROUND(SAFE_DIVIDE(rm.episodios_falsos, sti.n_maquinas * sti.semanas_test), 4) AS episodios_falsos_por_maquina_semana,
+  ROUND(SAFE_DIVIDE(rm.episodios_verdaderos, rm.episodios_totales), 4) AS precision_por_episodio
+FROM resumen_modelos rm
+CROSS JOIN stats_test_info sti
+ORDER BY rm.modelo;
