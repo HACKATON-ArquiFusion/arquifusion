@@ -47,7 +47,6 @@ largo AS (
   UNNEST([
     STRUCT('temp' AS variable, d.temp AS valor),
     STRUCT('vib', d.vib),
-    STRUCT('presion', d.presion),
     STRUCT('combustible_lph', d.combustible_lph)
   ]) v
   WHERE v.valor IS NOT NULL
