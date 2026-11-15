@@ -1,4 +1,4 @@
-﻿param(
+param(
     [int]$Desde = 0,
     [int]$Solo = 0
 )
@@ -27,7 +27,8 @@ $pasos = @(
     [pscustomobject]@{ Numero = 10; Archivo = "10_pronosticos.sql" },
     [pscustomobject]@{ Numero = 11; Archivo = "11_flota.sql" },
     [pscustomobject]@{ Numero = 12; Archivo = "12_causa_comun.sql" },
-    [pscustomobject]@{ Numero = 13; Archivo = "13_pares.sql" }
+    [pscustomobject]@{ Numero = 13; Archivo = "13_pares.sql" },
+    [pscustomobject]@{ Numero = 14; Archivo = "14_plan_semanal.sql" }
 )
 
 if ($Desde -gt 0) {

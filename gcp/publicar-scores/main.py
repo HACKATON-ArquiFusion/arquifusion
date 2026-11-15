@@ -161,6 +161,20 @@ WHERE alerta
 ORDER BY score_desvio DESC
 """)
 
+def reg_plan_semanal():
+    # RF-12: plan semanal por maquina; la tabla la genera 14_plan_semanal.sql.
+    return filas(f"""
+SELECT
+  maquina_id,
+  semana_inicio,
+  accion,
+  prioridad,
+  fecha_recomendada,
+  componente_probable,
+  motivo
+FROM `{DATASET}.plan_semanal`
+ORDER BY prioridad, fecha_recomendada, maquina_id
+""")
 
 def reg_pesos_modelo():
     # Sin redondeo: los pesos deben reproducir exactamente a ML.PREDICT.
@@ -195,6 +209,7 @@ TIPOS = {
     "causa_comun": ("bqgis-v1", reg_causa_comun),
     "pares": ("zscore-v1", reg_pares),
     "pesos_modelo": ("logit-v1", reg_pesos_modelo),
+    "plan_semanal": ("plan-v1", reg_plan_semanal),
 }
 
 
