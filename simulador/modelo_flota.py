@@ -410,6 +410,27 @@ class Flota:
             return None
         return self._crear_evento(maquina, "deriva_conjunta", evento["componente"], inicio_deriva, falla, reparacion, "", "desgaste")
 
+    def inyectar_deriva(self, maquina_id, ahora, componente="motor"):
+        maquina = next((m for m in self.maquinas if m.id == maquina_id), None)
+        if maquina is None:
+            return None
+        self.fallas = [evento for evento in self.fallas if evento["maquina_id"] != maquina_id]
+        maquina.fallas = []
+        maquina.anomalias = []
+        inicio_deriva = ahora - dt.timedelta(days=3.0)
+        falla = ahora + dt.timedelta(seconds=2.0)
+        reparacion = falla + dt.timedelta(minutes=30.0)
+        return self._crear_evento(
+            maquina,
+            "deriva_conjunta",
+            componente,
+            inicio_deriva,
+            falla,
+            reparacion,
+            "",
+            "demo",
+        )
+
     def _planificar_anomalias_benignas(self):
         for maquina in self.maquinas:
             cantidad = self.rng.randint(1, 3)
