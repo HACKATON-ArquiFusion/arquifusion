@@ -1,0 +1,8 @@
+[
+  {"name": "mantenimiento_id", "type": "STRING", "mode": "NULLABLE", "description": "Identificador del mantenimiento."},
+  {"name": "maquina_id", "type": "STRING", "mode": "NULLABLE", "description": "Identificador de la maquina."},
+  {"name": "ts", "type": "TIMESTAMP", "mode": "NULLABLE", "description": "Marca de tiempo UTC."},
+  {"name": "tipo_mantenimiento", "type": "STRING", "mode": "NULLABLE", "description": "Preventivo o correctivo."},
+  {"name": "estado", "type": "STRING", "mode": "NULLABLE", "description": "Estado del mantenimiento."},
+  {"name": "componentes", "type": "STRING", "mode": "NULLABLE", "description": "Componentes separados por punto y coma."}
+]

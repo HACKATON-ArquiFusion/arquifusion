@@ -1,0 +1,8 @@
+[
+  {"name": "incidente_id", "type": "STRING", "mode": "NULLABLE", "description": "Identificador del incidente."},
+  {"name": "maquina_id", "type": "STRING", "mode": "NULLABLE", "description": "Identificador de la maquina."},
+  {"name": "ts", "type": "TIMESTAMP", "mode": "NULLABLE", "description": "Marca de tiempo UTC."},
+  {"name": "severidad", "type": "STRING", "mode": "NULLABLE", "description": "Severidad del incidente."},
+  {"name": "estado", "type": "STRING", "mode": "NULLABLE", "description": "Estado del incidente."},
+  {"name": "descripcion", "type": "STRING", "mode": "NULLABLE", "description": "Descripcion breve."}
+]

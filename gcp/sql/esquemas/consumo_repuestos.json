@@ -1,0 +1,8 @@
+[
+  {"name": "consumo_id", "type": "STRING", "mode": "NULLABLE", "description": "Identificador del consumo."},
+  {"name": "maquina_id", "type": "STRING", "mode": "NULLABLE", "description": "Identificador de la maquina."},
+  {"name": "ts", "type": "TIMESTAMP", "mode": "NULLABLE", "description": "Marca de tiempo UTC."},
+  {"name": "componente", "type": "STRING", "mode": "NULLABLE", "description": "Componente consumido."},
+  {"name": "cantidad", "type": "INTEGER", "mode": "NULLABLE", "description": "Cantidad consumida."},
+  {"name": "unidad", "type": "STRING", "mode": "NULLABLE", "description": "Unidad de medida."}
+]

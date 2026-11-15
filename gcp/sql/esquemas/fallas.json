@@ -1,0 +1,12 @@
+[
+  {"name": "falla_id", "type": "STRING", "mode": "NULLABLE", "description": "Identificador de la falla."},
+  {"name": "maquina_id", "type": "STRING", "mode": "NULLABLE", "description": "Identificador de la maquina."},
+  {"name": "zona", "type": "STRING", "mode": "NULLABLE", "description": "Zona de la maquina."},
+  {"name": "componente", "type": "STRING", "mode": "NULLABLE", "description": "Componente afectado."},
+  {"name": "escenario", "type": "STRING", "mode": "NULLABLE", "description": "Escenario simulado."},
+  {"name": "ts_inicio_deriva", "type": "TIMESTAMP", "mode": "NULLABLE", "description": "Inicio de la deriva."},
+  {"name": "ts_falla", "type": "TIMESTAMP", "mode": "NULLABLE", "description": "Momento de la falla."},
+  {"name": "ts_reparacion", "type": "TIMESTAMP", "mode": "NULLABLE", "description": "Momento de la reparacion."},
+  {"name": "grupo_id", "type": "STRING", "mode": "NULLABLE", "description": "Grupo de causa comun."},
+  {"name": "causa_verdadera", "type": "STRING", "mode": "NULLABLE", "description": "Causa simulada de la falla."}
+]
