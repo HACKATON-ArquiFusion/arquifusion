@@ -1,0 +1,89 @@
+{
+  "peticion": {
+    "maquina_id": "M-027",
+    "ts": "2026-11-15T14:40:00Z",
+    "modelo": "CAM-730",
+    "zona": "Z2",
+    "score_modelo": {
+      "prob_falla": 0.78,
+      "horizonte_dias": 7,
+      "modelo": "logit-v1"
+    },
+    "ventana": [
+      {
+        "maquina_id": "M-027",
+        "ts": "2026-11-15T12:40:00Z",
+        "modelo": "CAM-730",
+        "zona": "Z2",
+        "lat": -15.52,
+        "lon": -71.52,
+        "horas_op": 9810.5,
+        "temp": 92.4,
+        "vib": 7.1,
+        "presion": 182.0,
+        "combustible_lph": 38.2,
+        "carga_t": 58.0,
+        "velocidad": 22.0,
+        "rpm": 1650,
+        "estado": "operativa",
+        "contexto": { "clima": "polvo", "terreno": "pendiente", "lote_combustible": "LC-2026-11-A" }
+      },
+      {
+        "maquina_id": "M-027",
+        "ts": "2026-11-15T13:40:00Z",
+        "modelo": "CAM-730",
+        "zona": "Z2",
+        "lat": -15.52,
+        "lon": -71.52,
+        "horas_op": 9811.5,
+        "temp": 98.1,
+        "vib": 9.4,
+        "presion": 179.0,
+        "combustible_lph": 44.6,
+        "carga_t": 57.0,
+        "velocidad": 19.0,
+        "rpm": 1710,
+        "estado": "operativa",
+        "contexto": { "clima": "polvo", "terreno": "pendiente", "lote_combustible": "LC-2026-11-A" }
+      },
+      {
+        "maquina_id": "M-027",
+        "ts": "2026-11-15T14:40:00Z",
+        "modelo": "CAM-730",
+        "zona": "Z2",
+        "lat": -15.52,
+        "lon": -71.52,
+        "horas_op": 9812.5,
+        "temp": 104.7,
+        "vib": 11.8,
+        "presion": 176.0,
+        "combustible_lph": 51.3,
+        "carga_t": 56.0,
+        "velocidad": 16.0,
+        "rpm": 1780,
+        "estado": "operativa",
+        "contexto": { "clima": "polvo", "terreno": "pendiente", "lote_combustible": "LC-2026-11-A" }
+      }
+    ]
+  },
+  "respuesta": {
+    "maquina_id": "M-027",
+    "prob_falla": 0.78,
+    "horizonte_dias": 5,
+    "componente_probable": "refrigeracion",
+    "confianza": 0.72,
+    "variables_clave": ["temp", "vib", "combustible_lph"],
+    "fuente": "modelo",
+    "latencia_ms": 1240
+  },
+  "respuesta_con_plantilla": {
+    "maquina_id": "M-027",
+    "prob_falla": 0.78,
+    "horizonte_dias": 7,
+    "componente_probable": "motor",
+    "confianza": 0.3,
+    "variables_clave": ["rpm", "temp", "vib"],
+    "fuente": "plantilla",
+    "latencia_ms": 0
+  }
+}

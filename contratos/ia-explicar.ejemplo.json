@@ -1,0 +1,77 @@
+{
+  "peticion": {
+    "incidente_id": "INC-2026-0002",
+    "maquina_id": "M-027",
+    "ts": "2026-11-15T14:41:00Z",
+    "severidad": "critica",
+    "zona": "Z2",
+    "modelo": "CAM-730",
+    "desviaciones": { "temp": 3.4, "vib": 3.9, "combustible_lph": 2.1 },
+    "contexto": { "clima": "polvo", "terreno": "pendiente", "lote_combustible": "LC-2026-11-A" },
+    "repuesto_reservado": "refrigeracion",
+    "tecnico_asignado": "T-004",
+    "roles": ["operador", "tecnico", "supervisor", "gerente"]
+  },
+  "respuesta": {
+    "incidente_id": "INC-2026-0002",
+    "causa_probable": "Sobrecalentamiento por pérdida de capacidad de refrigeración, agravado por operación en pendiente con polvo.",
+    "componente": "refrigeracion",
+    "accion_recomendada": "Detener el equipo, revisar radiador y nivel de refrigerante antes de reanudar.",
+    "urgencia": "inmediata",
+    "mensajes": [
+      {
+        "rol": "operador",
+        "titulo": "Detener M-027 ahora",
+        "mensaje": "Detenga el equipo en zona segura y espere al técnico. No lo reinicie."
+      },
+      {
+        "rol": "tecnico",
+        "titulo": "Asignado a M-027 (Z2)",
+        "mensaje": "Temp +3.4 sigma, vibración +3.9 sigma, combustible +2.1 sigma. Causa probable: refrigeración. Repuesto reservado en Z5. Revisar radiador y refrigerante."
+      },
+      {
+        "rol": "supervisor",
+        "titulo": "1 volquete fuera de servicio en Tajo Sur",
+        "mensaje": "M-027 detenido por sobrecalentamiento. T-004 asignado, repuesto reservado. Estimado 3 h. Sin otras máquinas afectadas en la zona."
+      },
+      {
+        "rol": "gerente",
+        "titulo": "Incidente crítico en Tajo Sur",
+        "mensaje": "1 equipo detenido, técnico asignado, sin impacto adicional previsto."
+      }
+    ],
+    "fuente": "modelo",
+    "latencia_ms": 1510
+  },
+  "respuesta_con_plantilla": {
+    "incidente_id": "INC-2026-0002",
+    "causa_probable": "Desviación alta en temp y vib respecto al historial de la máquina.",
+    "componente": "refrigeracion",
+    "accion_recomendada": "Inspeccionar refrigeracion antes de reanudar la operación.",
+    "urgencia": "inmediata",
+    "mensajes": [
+      {
+        "rol": "operador",
+        "titulo": "Detener M-027",
+        "mensaje": "Detenga el equipo y espere al técnico."
+      },
+      {
+        "rol": "tecnico",
+        "titulo": "Asignado a M-027 (Z2)",
+        "mensaje": "Severidad critica. Desviaciones: temp +3.4 sigma, vib +3.9 sigma, combustible_lph +2.1 sigma. Repuesto reservado: refrigeracion."
+      },
+      {
+        "rol": "supervisor",
+        "titulo": "M-027 requiere intervención en Z2",
+        "mensaje": "Incidente critica en M-027 (Z2). Técnico T-004 asignado."
+      },
+      {
+        "rol": "gerente",
+        "titulo": "Incidente critica en Z2",
+        "mensaje": "1 equipo detenido en Z2, técnico asignado."
+      }
+    ],
+    "fuente": "plantilla",
+    "latencia_ms": 6
+  }
+}

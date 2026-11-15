@@ -1,0 +1,36 @@
+{
+  "peticion": {
+    "mensaje": "¿Qué máquinas están detenidas ahora y cuál es la más urgente?",
+    "rol": "supervisor",
+    "historial": []
+  },
+  "respuesta": {
+    "respuesta": "Hay 5 máquinas detenidas y 4 que requieren intervención, de 50 en total. La más urgente es M-014 (EXC-320, Tajo Norte) con riesgo 82 y severidad alta, con el incidente INC-2026-0001 abierto.",
+    "datos_usados": [
+      { "endpoint": "/kpis", "resumen": "5 detenidas, 4 requieren intervención, 50 máquinas" },
+      { "endpoint": "/flota", "resumen": "M-014 riesgo 82, severidad alta, zona Z1" }
+    ],
+    "fuente": "modelo",
+    "latencia_ms": 1830
+  },
+  "peticion_sin_datos": {
+    "mensaje": "¿Cuánto cuesta reemplazar el motor de la M-014?",
+    "rol": "gerente"
+  },
+  "respuesta_sin_datos": {
+    "respuesta": "La API no expone costos de repuestos por componente, así que no puedo responderlo con datos de la operación. Lo que sí hay es el costo operativo por máquina y día: 29.0 PEN de promedio en la flota.",
+    "datos_usados": [
+      { "endpoint": "/kpis", "resumen": "costo_por_maquina_dia_pen 29.0" }
+    ],
+    "fuente": "modelo",
+    "latencia_ms": 1420
+  },
+  "respuesta_con_plantilla": {
+    "respuesta": "No puedo generar una respuesta en lenguaje natural en este momento. Estado actual de la flota: 50 máquinas, 41 operativas, 5 detenidas, 4 requieren intervención, 6 incidentes abiertos.",
+    "datos_usados": [
+      { "endpoint": "/kpis", "resumen": "estado general de la flota" }
+    ],
+    "fuente": "plantilla",
+    "latencia_ms": 240
+  }
+}
