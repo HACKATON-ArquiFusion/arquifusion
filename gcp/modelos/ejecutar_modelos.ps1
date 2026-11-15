@@ -25,7 +25,8 @@ $pasos = @(
     [pscustomobject]@{ Numero = 8; Archivo = "08_arima_repuestos.sql" },
     [pscustomobject]@{ Numero = 9; Archivo = "09_arima_combustible.sql" },
     [pscustomobject]@{ Numero = 10; Archivo = "10_pronosticos.sql" },
-    [pscustomobject]@{ Numero = 11; Archivo = "11_flota.sql" }
+    [pscustomobject]@{ Numero = 11; Archivo = "11_flota.sql" },
+    [pscustomobject]@{ Numero = 12; Archivo = "12_causa_comun.sql" }
 )
 
 if ($Desde -gt 0) {

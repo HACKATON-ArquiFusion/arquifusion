@@ -127,6 +127,27 @@ ORDER BY maquina_id
 """)
 
 
+def reg_causa_comun():
+    # RF-11: solo grupos de confianza alta; la tabla la genera 12_causa_comun.sql.
+    # hipotesis_detalle y los indicadores de confianza se quedan en BigQuery.
+    return filas(f"""
+SELECT
+  grupo_id,
+  zona,
+  ts_inicio,
+  ts_fin,
+  maquina_ids,
+  variable_comun,
+  hipotesis,
+  centro_lat,
+  centro_lon,
+  radio_m
+FROM `{DATASET}.causa_comun_grupos`
+WHERE confianza = 'alta'
+ORDER BY ts_inicio, grupo_id
+""")
+
+
 def reg_pesos_modelo():
     # Sin redondeo: los pesos deben reproducir exactamente a ML.PREDICT.
     regs = filas(f"""
@@ -157,6 +178,7 @@ TIPOS = {
     "preventivo": ("arima-plus-v1", reg_preventivo),
     "combustible": ("arima-plus-v1", reg_combustible),
     "flota": ("reglas-v1", reg_flota),
+    "causa_comun": ("bqgis-v1", reg_causa_comun),
     "pesos_modelo": ("logit-v1", reg_pesos_modelo),
 }
 
