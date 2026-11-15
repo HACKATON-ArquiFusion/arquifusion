@@ -1,0 +1,54 @@
+{
+  "incidente_id": "INC-2026-0002",
+  "maquina_id": "M-027",
+  "zona": "Z2",
+  "severidad": "critica",
+  "estado": "en_proceso",
+  "fase": "en_atencion",
+  "inicio": "2026-11-15T14:40:00Z",
+  "fin": null,
+  "variables_desvio": [
+    "temp",
+    "vib",
+    "combustible_lph"
+  ],
+  "causa_probable": "Sobrecalentamiento por falla incipiente del sistema de refrigeración",
+  "accion_recomendada": "Detener el equipo y revisar bomba de agua y radiador",
+  "tecnico_id": "TEC-01",
+  "eta_min": null,
+  "justificacion_asignacion": {
+    "especialidad": 1.0,
+    "cercania": 0.82,
+    "disponibilidad": 1.0,
+    "tiempo_estimado": 0.7,
+    "score": 0.88
+  },
+  "repuestos_reservados": [
+    {
+      "componente": "refrigeracion",
+      "cantidad": 1,
+      "zona": "Z5"
+    }
+  ],
+  "reincidente": false,
+  "tiempo_detenido_min": 20,
+  "intervencion": null,
+  "componentes_reemplazados": [],
+  "eventos": [
+    {
+      "fase": "detectado",
+      "estado": "abierto",
+      "ts": "2026-11-15T14:40:00Z"
+    },
+    {
+      "fase": "asignado",
+      "estado": "en_proceso",
+      "ts": "2026-11-15T14:41:00Z"
+    },
+    {
+      "fase": "en_atencion",
+      "estado": "en_proceso",
+      "ts": "2026-11-15T14:58:00Z"
+    }
+  ]
+}
