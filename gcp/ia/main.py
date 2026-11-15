@@ -246,6 +246,24 @@ INSTRUCCION_CHAT = (
 )
 
 
+@app.get("/")
+def indice():
+    return jsonify(
+        {
+            "servicio": "arquifusion-ia",
+            "contrato": "contratos/ia.md",
+            "modelo": MODELO,
+            "endpoints": [
+                {"metodo": "GET", "ruta": "/health", "api_key": False},
+                {"metodo": "POST", "ruta": "/ia/predecir", "api_key": True},
+                {"metodo": "POST", "ruta": "/ia/explicar", "api_key": True},
+                {"metodo": "POST", "ruta": "/ia/chat", "api_key": True},
+            ],
+            "cabecera": "x-api-key",
+        }
+    )
+
+
 @app.get("/health")
 def health():
     return jsonify({"estado": "ok", "modelo": MODELO, "proyecto": PROJECT, "region": LOCATION})
@@ -549,7 +567,12 @@ def chat():
 
 @app.errorhandler(404)
 def no_encontrado(_):
-    return jsonify({"error": "ruta no encontrada"}), 404
+    return jsonify({"error": "ruta no encontrada", "ver": "/"}), 404
+
+
+@app.errorhandler(405)
+def metodo_no_permitido(_):
+    return jsonify({"error": "método no permitido", "detalle": "los endpoints /ia/* son POST", "ver": "/"}), 405
 
 
 if __name__ == "__main__":
