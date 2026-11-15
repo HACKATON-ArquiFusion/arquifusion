@@ -24,7 +24,8 @@ $pasos = @(
     [pscustomobject]@{ Numero = 7; Archivo = "07_arima_horas.sql" },
     [pscustomobject]@{ Numero = 8; Archivo = "08_arima_repuestos.sql" },
     [pscustomobject]@{ Numero = 9; Archivo = "09_arima_combustible.sql" },
-    [pscustomobject]@{ Numero = 10; Archivo = "10_pronosticos.sql" }
+    [pscustomobject]@{ Numero = 10; Archivo = "10_pronosticos.sql" },
+    [pscustomobject]@{ Numero = 11; Archivo = "11_flota.sql" }
 )
 
 if ($Desde -gt 0) {
@@ -57,4 +58,5 @@ foreach ($paso in $pasos) {
 }
 
 Write-Host "Pipeline de modelos completado."
+
 

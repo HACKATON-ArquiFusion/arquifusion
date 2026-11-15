@@ -112,6 +112,21 @@ ORDER BY a.fecha, a.maquina_id
 """)
 
 
+def reg_flota():
+    # Productividad semanal por maquina (RF-07); la tabla la genera 11_flota.sql.
+    return filas(f"""
+SELECT
+  maquina_id,
+  periodo,
+  utilizacion_pct,
+  horas_op,
+  costo_op,
+  categoria
+FROM `{DATASET}.flota_semanal`
+ORDER BY maquina_id
+""")
+
+
 def reg_pesos_modelo():
     # Sin redondeo: los pesos deben reproducir exactamente a ML.PREDICT.
     regs = filas(f"""
@@ -141,6 +156,7 @@ TIPOS = {
     "pron_repuestos": ("arima-plus-v1", reg_pron_repuestos),
     "preventivo": ("arima-plus-v1", reg_preventivo),
     "combustible": ("arima-plus-v1", reg_combustible),
+    "flota": ("reglas-v1", reg_flota),
     "pesos_modelo": ("logit-v1", reg_pesos_modelo),
 }
 
