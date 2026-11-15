@@ -148,6 +148,20 @@ ORDER BY ts_inicio, grupo_id
 """)
 
 
+def reg_pares():
+    # RF-08: solo maquinas en alerta; comparado_con = modelo (contrato). tipo_comparacion queda en BigQuery.
+    return filas(f"""
+SELECT
+  maquina_id,
+  score_desvio,
+  variable_principal,
+  comparado_con
+FROM `{DATASET}.pares_desvio`
+WHERE alerta
+ORDER BY score_desvio DESC
+""")
+
+
 def reg_pesos_modelo():
     # Sin redondeo: los pesos deben reproducir exactamente a ML.PREDICT.
     regs = filas(f"""
@@ -179,6 +193,7 @@ TIPOS = {
     "combustible": ("arima-plus-v1", reg_combustible),
     "flota": ("reglas-v1", reg_flota),
     "causa_comun": ("bqgis-v1", reg_causa_comun),
+    "pares": ("zscore-v1", reg_pares),
     "pesos_modelo": ("logit-v1", reg_pesos_modelo),
 }
 
