@@ -4,6 +4,7 @@ import math
 import os
 import re
 import time
+import urllib.request
 import uuid
 from datetime import datetime, timezone
 from decimal import Decimal
@@ -17,6 +18,8 @@ PREFIJO = os.environ.get("PREFIJO", "arquifusion")
 QUEUE_URL = os.environ.get("QUEUE_URL", "")
 API_KEY_ENV = os.environ.get("API_KEY", "")  # respaldo si Secrets Manager no responde
 SECRET_API_KEY = os.environ.get("SECRET_API_KEY", PREFIJO + "/api-key")
+IA_URL = os.environ.get("IA_URL", "")      # capa de IA en Cloud Run; vacío = solo plantilla
+IA_TIMEOUT = float(os.environ.get("IA_TIMEOUT", "25"))
 BASE = os.path.join(os.path.dirname(__file__), "ejemplos")
 
 MAX_INGESTA = 1000  # registros por llamada a /ingesta
@@ -775,6 +778,29 @@ def accion_explicar(inc, ev):
                 texto, fuente = t, "bedrock"
         except Exception as ex:
             print("Bedrock no disponible, uso plantilla:", type(ex).__name__)
+    if fuente == "plantilla" and IA_URL:
+        # Bedrock no existe en el Learner Lab: la explicación sale de /ia/explicar (Gemini en Cloud Run).
+        # Sobrescribe causa_probable y accion_recomendada, que son los campos que lee notificar().
+        try:
+            pedido = json.dumps(json_seguro({
+                "incidente_id": inc["incidente_id"], "maquina_id": inc["maquina_id"], "ts": ahora_iso(),
+                "severidad": inc["severidad"], "zona": inc["zona"],
+                "desviaciones": inc.get("valores") or {},
+                "repuesto_reservado": inc.get("componente_probable"),
+                "tecnico_asignado": inc.get("tecnico_id")}), ensure_ascii=False).encode("utf-8")
+            pet = urllib.request.Request(IA_URL, data=pedido, method="POST")
+            pet.add_header("Content-Type", "application/json")
+            pet.add_header("x-api-key", api_key())
+            with urllib.request.urlopen(pet, timeout=IA_TIMEOUT) as r:
+                d = json.loads(r.read().decode("utf-8"))
+            causa, accion = d["causa_probable"], d["accion_recomendada"]
+            tabla("incidentes").update_item(
+                Key={"incidente_id": inc["incidente_id"]},
+                UpdateExpression="SET causa_probable = :c, accion_recomendada = :a",
+                ExpressionAttributeValues={":c": causa, ":a": accion})
+            texto, fuente = causa + " " + accion, "gemini"
+        except Exception as ex:
+            print("IA no disponible, uso plantilla:", type(ex).__name__)
     tabla("incidentes").update_item(Key={"incidente_id": inc["incidente_id"]},
                                     UpdateExpression="SET explicacion = :e",
                                     ExpressionAttributeValues={":e": {"texto": texto, "fuente": fuente}})
