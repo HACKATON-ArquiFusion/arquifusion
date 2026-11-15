@@ -1,6 +1,7 @@
 import csv
 import datetime as dt
 import json
+import math
 import os
 import random
 
@@ -26,6 +27,28 @@ CAMPOS_FALLAS = [
     "falla_id", "maquina_id", "zona", "componente", "escenario",
     "ts_inicio_deriva", "ts_falla", "ts_reparacion", "grupo_id", "causa_verdadera",
 ]
+
+CAMPOS_INCIDENTES = [
+    "incidente_id", "maquina_id", "ts", "severidad", "estado", "descripcion",
+]
+
+CAMPOS_MANTENIMIENTOS = [
+    "mantenimiento_id", "maquina_id", "ts", "tipo_mantenimiento", "estado", "componentes",
+]
+
+CAMPOS_CONSUMOS = [
+    "consumo_id", "maquina_id", "ts", "componente", "cantidad", "unidad",
+]
+
+MANTENIMIENTO_CADA_H = 500.0
+
+COMPONENTES_PREVENTIVO = {
+    "EXC-320": ["filtros", "sistema_hidraulico", "motor"],
+    "CAM-730": ["filtros", "frenos", "motor"],
+    "CAR-950": ["filtros", "transmision", "frenos"],
+    "TRC-D8": ["filtros", "tren_rodaje", "motor"],
+    "PER-ROC": ["filtros", "refrigeracion", "motor"],
+}
 
 PROB_CAMBIO_CLIMA = 0.12
 PROB_CAMBIO_TERRENO = 0.03
@@ -153,6 +176,10 @@ class Maquina:
         self.temp = BASE_MODELO[modelo]["temp"] + rng.uniform(-3.0, 3.0)
         self.vib = BASE_MODELO[modelo]["vib"] + rng.uniform(-0.5, 0.5)
         self.fallas = []
+        self.anomalias = []
+        self.proximo_mantenimiento = None
+        self.combustible_inicio = None
+        self.combustible_tasa = 0.0
 
 
 class Flota:
@@ -171,8 +198,15 @@ class Flota:
         self.lotes = []
         self.lotes_malos = set()
         self.fallas = []
+        self.incidentes = []
+        self.mantenimientos = []
+        self.consumos_repuestos = []
+        self.registrar_eventos = True
         self._falla_seq = 0
         self._grupo_seq = 0
+        self._incidente_seq = 0
+        self._mantenimiento_seq = 0
+        self._consumo_seq = 0
         self._preparar_lotes()
         self.maquinas = self._crear_maquinas()
         self._planificar(tasa_falla)
@@ -202,6 +236,10 @@ class Flota:
             maquinas.append(Maquina(i, asignacion_modelos[i], zonas_por_id[asignacion_zonas[i]], self.rng))
         for maquina in maquinas:
             self._elegir_lote(maquina, self.inicio)
+            base = math.floor(maquina.horas_op / MANTENIMIENTO_CADA_H) * MANTENIMIENTO_CADA_H
+            maquina.proximo_mantenimiento = base + MANTENIMIENTO_CADA_H
+            while maquina.proximo_mantenimiento <= maquina.horas_op:
+                maquina.proximo_mantenimiento += MANTENIMIENTO_CADA_H
         return maquinas
 
     def _elegir_lote(self, maquina, ts):
@@ -222,18 +260,38 @@ class Flota:
             maquina.ultimo_dia = dia
 
     def _planificar(self, tasa_falla):
-        if tasa_falla <= 0:
-            return
         indices = list(range(self.n))
         self.rng.shuffle(indices)
         cantidad_sobreuso = max(1, int(round(self.n * 0.15))) if self.n >= 3 else 0
-        for i in indices[:cantidad_sobreuso]:
+        cantidad_inactividad = max(1, int(round(self.n * 0.10))) if self.n >= 5 else 0
+        cantidad_combustible = max(1, int(round(self.n * 0.10))) if self.n >= 5 else 0
+        pos = 0
+        for i in indices[pos:pos + cantidad_sobreuso]:
             self.maquinas[i].escenario_base = "sobreuso"
-        self._planificar_clusters()
-        self._planificar_derivas(tasa_falla)
+        pos += cantidad_sobreuso
+        for i in indices[pos:pos + cantidad_inactividad]:
+            self.maquinas[i].escenario_base = "inactividad"
+        pos += cantidad_inactividad
+        for i in indices[pos:pos + cantidad_combustible]:
+            maquina = self.maquinas[i]
+            maquina.escenario_base = "combustible_creciente"
+            maquina.combustible_inicio = self.inicio + dt.timedelta(
+                days=self.rng.uniform(0.0, self.dias * 0.35),
+                hours=self.rng.uniform(0.0, 24.0),
+            )
+            maquina.combustible_tasa = self.rng.uniform(0.004, 0.009)
+        if tasa_falla > 0:
+            self._planificar_clusters()
+            self._planificar_derivas(tasa_falla)
+        self._planificar_anomalias_benignas()
+        self._registrar_eventos_fallas()
+        self._generar_consumo_irregular()
         for maquina in self.maquinas:
             maquina.fallas.sort(key=lambda e: e["ts_falla"])
         self.fallas.sort(key=lambda e: (e["ts_falla"], e["maquina_id"]))
+        self.incidentes.sort(key=lambda e: (e["ts"], e["incidente_id"]))
+        self.mantenimientos.sort(key=lambda e: (e["ts"], e["mantenimiento_id"]))
+        self.consumos_repuestos.sort(key=lambda e: (e["ts"], e["consumo_id"]))
 
     def _nueva_falla_id(self):
         self._falla_seq += 1
@@ -352,10 +410,161 @@ class Flota:
             return None
         return self._crear_evento(maquina, "deriva_conjunta", evento["componente"], inicio_deriva, falla, reparacion, "", "desgaste")
 
+    def _planificar_anomalias_benignas(self):
+        for maquina in self.maquinas:
+            cantidad = self.rng.randint(1, 3)
+            intentos = 0
+            while len(maquina.anomalias) < cantidad and intentos < 50:
+                intentos += 1
+                dia = self.rng.uniform(1.0, max(1.1, self.dias - 1.5))
+                hora = self.rng.uniform(7.0, 17.0)
+                inicio = self.inicio + dt.timedelta(days=dia, hours=hora)
+                duracion = self.rng.uniform(2.0, 8.0)
+                fin = inicio + dt.timedelta(hours=duracion)
+                if fin >= self.fin:
+                    continue
+                if self._solapa_prohibido(maquina, inicio, fin):
+                    continue
+                if any(not (fin <= a["inicio"] or inicio >= a["fin"]) for a in maquina.anomalias):
+                    continue
+                variable = self.rng.choice(["temp", "vib", "combustible_lph"])
+                if variable == "temp":
+                    magnitud = self.rng.uniform(8.0, 18.0)
+                elif variable == "vib":
+                    magnitud = self.rng.uniform(3.0, 6.0)
+                else:
+                    magnitud = self.rng.uniform(0.15, 0.35)
+                maquina.anomalias.append({
+                    "variable": variable,
+                    "inicio": inicio,
+                    "fin": fin,
+                    "magnitud": magnitud,
+                })
+
+    def _solapa_prohibido(self, maquina, inicio, fin):
+        for evento in maquina.fallas:
+            prohibido_inicio = min(
+                evento["ts_inicio_deriva"],
+                evento["ts_falla"] - dt.timedelta(days=7.0),
+            )
+            prohibido_fin = evento["ts_reparacion"]
+            if not (fin <= prohibido_inicio or inicio >= prohibido_fin):
+                return True
+        return False
+
+    def _anomalia_activa(self, maquina, ts):
+        for anomalia in maquina.anomalias:
+            if anomalia["inicio"] <= ts < anomalia["fin"]:
+                return anomalia
+        return None
+
+    def _combustible_mult(self, maquina, ts):
+        if maquina.escenario_base != "combustible_creciente" or maquina.combustible_inicio is None:
+            return 1.0
+        if ts < maquina.combustible_inicio:
+            return 1.0
+        dias = (ts - maquina.combustible_inicio).total_seconds() / 86400.0
+        return min(1.45, 1.0 + maquina.combustible_tasa * dias)
+
+    def _registrar_eventos_fallas(self):
+        for evento in self.fallas:
+            self._registrar_incidente(evento)
+            self._registrar_correctivo(evento)
+
+    def _registrar_incidente(self, evento):
+        self._incidente_seq += 1
+        if evento["escenario"] == "cluster_zona":
+            severidad = "alta"
+        elif evento["componente"] == "motor":
+            severidad = "critica"
+        elif evento["componente"] in ("transmision", "sistema_hidraulico"):
+            severidad = "alta"
+        else:
+            severidad = "media"
+        estado = "cerrado" if evento["ts_reparacion"] < self.fin - dt.timedelta(hours=1.0) else "en_proceso"
+        if evento["escenario"] == "cluster_zona":
+            descripcion = "Falla de %s por %s" % (evento["componente"], evento["causa_verdadera"])
+        else:
+            descripcion = "Falla de %s por desgaste" % evento["componente"]
+        self.incidentes.append({
+            "incidente_id": "INC-%04d" % self._incidente_seq,
+            "maquina_id": evento["maquina_id"],
+            "ts": _iso(evento["ts_falla"]),
+            "severidad": severidad,
+            "estado": estado,
+            "descripcion": descripcion,
+        })
+
+    def _registrar_correctivo(self, evento):
+        self._mantenimiento_seq += 1
+        self.mantenimientos.append({
+            "mantenimiento_id": "MT-%04d" % self._mantenimiento_seq,
+            "maquina_id": evento["maquina_id"],
+            "ts": _iso(evento["ts_reparacion"]),
+            "tipo_mantenimiento": "correctivo",
+            "estado": "completado",
+            "componentes": [evento["componente"]],
+        })
+        self._registrar_consumo(evento["maquina_id"], evento["ts_reparacion"], evento["componente"], 1)
+
+    def _registrar_consumo(self, maquina_id, ts, componente, cantidad):
+        self._consumo_seq += 1
+        self.consumos_repuestos.append({
+            "consumo_id": "CR-%04d" % self._consumo_seq,
+            "maquina_id": maquina_id,
+            "ts": _iso(ts),
+            "componente": componente,
+            "cantidad": cantidad,
+            "unidad": "unidad",
+        })
+
+    def _registrar_preventivo(self, maquina, ts):
+        if not self.registrar_eventos or maquina.proximo_mantenimiento is None:
+            return
+        while maquina.horas_op >= maquina.proximo_mantenimiento:
+            self._mantenimiento_seq += 1
+            componentes = COMPONENTES_PREVENTIVO.get(maquina.modelo, ["filtros", "motor"])
+            self.mantenimientos.append({
+                "mantenimiento_id": "MT-%04d" % self._mantenimiento_seq,
+                "maquina_id": maquina.id,
+                "ts": _iso(ts),
+                "tipo_mantenimiento": "preventivo",
+                "estado": "completado",
+                "componentes": list(componentes),
+            })
+            for componente in componentes:
+                cantidad = 2 if componente == "filtros" else 1
+                self._registrar_consumo(maquina.id, ts, componente, cantidad)
+            maquina.proximo_mantenimiento += MANTENIMIENTO_CADA_H
+
+    def _generar_consumo_irregular(self):
+        if not self.componentes:
+            return
+        zonas = sorted(set(m.zona for m in self.maquinas))
+        if not zonas:
+            return
+        componentes = self.rng.sample(self.componentes, min(2, len(self.componentes)))
+        zonas_sel = self.rng.sample(zonas, min(2, len(zonas)))
+        for componente in componentes:
+            for zona in zonas_sel:
+                disponibles = [m for m in self.maquinas if m.zona == zona]
+                if not disponibles:
+                    continue
+                for _ in range(self.rng.randint(5, 9)):
+                    maquina = self.rng.choice(disponibles)
+                    dia = self.rng.uniform(1.0, max(1.1, self.dias - 1.0))
+                    hora = self.rng.uniform(0.0, 24.0)
+                    ts = self.inicio + dt.timedelta(days=dia, hours=hora)
+                    if ts >= self.fin:
+                        continue
+                    self._registrar_consumo(maquina.id, ts, componente, self.rng.randint(3, 8))
+
     def _factor_actividad(self, maquina, ts):
         hora = (ts.hour + ts.minute / 60.0 + maquina.turno_offset) % 24.0
         if maquina.escenario_base == "sobreuso":
             return 1.0 if 4.0 <= hora < 24.0 else 0.0
+        if maquina.escenario_base == "inactividad":
+            return 1.0 if 9.0 <= hora < 12.0 else 0.0
         if 6.0 <= hora < 18.0:
             return 1.0
         if 18.0 <= hora < 22.0:
@@ -382,7 +591,7 @@ class Flota:
                 lote = valor
         return clima, terreno, lote
 
-    def _etiquetas(self, maquina, ts, evento_activo):
+    def _etiquetas(self, maquina, ts, evento_activo, anomalia_activa):
         proximo = None
         for evento in maquina.fallas:
             if evento["ts_falla"] >= ts:
@@ -410,11 +619,14 @@ class Flota:
                 falla_id = proximo["falla_id"]
                 grupo_id = proximo["grupo_id"]
                 escenario = proximo["escenario"]
+        if anomalia_activa and not evento_activo and not etiqueta:
+            escenario = "anomalias_benignas"
         return etiqueta, dias, componente, escenario, grupo_id, falla_id
 
     def leer(self, maquina, ts):
         self._actualizar_contexto(maquina, ts)
         evento = self._evento_activo(maquina, ts)
+        anomalia = self._anomalia_activa(maquina, ts)
         en_falla = bool(evento and evento["ts_falla"] <= ts < evento["ts_reparacion"])
         if en_falla:
             horas = (ts - evento["ts_falla"]).total_seconds() / 3600.0
@@ -446,6 +658,19 @@ class Flota:
                 der_vib = c_vib
                 der_fuel = c_fuel
 
+        anom_temp = 0.0
+        anom_vib = 0.0
+        anom_fuel = 1.0
+        if anomalia:
+            p = _progreso(anomalia["inicio"], anomalia["fin"], ts)
+            bump = math.sin(math.pi * p)
+            if anomalia["variable"] == "temp":
+                anom_temp = anomalia["magnitud"] * bump
+            elif anomalia["variable"] == "vib":
+                anom_vib = anomalia["magnitud"] * bump
+            else:
+                anom_fuel = 1.0 + anomalia["magnitud"] * bump
+
         base = BASE_MODELO[maquina.modelo]
         if en_falla:
             if estado == "requiere_intervencion":
@@ -466,19 +691,21 @@ class Flota:
             velocidad = 0.0
             rpm = 0.0
         elif factor > 0:
-            temp_obj = base["temp"] + ctx_temp + der_temp
-            vib_obj = base["vib"] * (0.55 + 0.45 * factor) + ctx_vib + der_vib
+            temp_obj = base["temp"] + ctx_temp + der_temp + anom_temp
+            vib_obj = base["vib"] * (0.55 + 0.45 * factor) + ctx_vib + der_vib + anom_vib
             pres_obj = base["presion"] * (0.85 + 0.15 * factor)
             fuel_obj = base["combustible_lph"] * (0.55 + 0.45 * factor) * ctx_fuel * der_fuel
+            fuel_obj *= self._combustible_mult(maquina, ts) * anom_fuel
             carga = base["carga_t"] * (0.55 + 0.45 * factor) * self.rng.uniform(0.75, 1.20)
             velocidad = base["velocidad"] * factor * self.rng.uniform(0.80, 1.20)
             rpm = base["rpm"] * (0.65 + 0.35 * factor)
             alpha_temp = 0.45
             alpha_vib = 0.55
             maquina.horas_op += self.paso_horas * factor
+            self._registrar_preventivo(maquina, ts)
         else:
-            temp_obj = 28.0
-            vib_obj = 0.15
+            temp_obj = 28.0 + anom_temp
+            vib_obj = 0.15 + anom_vib
             pres_obj = 12.0
             fuel_obj = 0.7
             carga = 0.0
@@ -502,7 +729,7 @@ class Flota:
             velocidad = 0.0
             rpm = 0.0
 
-        etiqueta, dias, componente, escenario, grupo_id, falla_id = self._etiquetas(maquina, ts, evento)
+        etiqueta, dias, componente, escenario, grupo_id, falla_id = self._etiquetas(maquina, ts, evento, anomalia)
         return {
             "maquina_id": maquina.id,
             "ts": _iso(ts),
@@ -552,6 +779,9 @@ def generar_historico(catalogos, n, dias, semilla, salida, paso_min=60, tasa_fal
     os.makedirs(salida, exist_ok=True)
     ruta_telemetria = os.path.join(salida, "telemetria.csv")
     ruta_fallas = os.path.join(salida, "fallas.csv")
+    ruta_incidentes = os.path.join(salida, "incidentes.csv")
+    ruta_mantenimientos = os.path.join(salida, "mantenimientos.csv")
+    ruta_consumos = os.path.join(salida, "consumo_repuestos.csv")
     filas = 0
     positivos = 0
     with open(ruta_telemetria, "w", newline="", encoding="utf-8") as archivo:
@@ -578,6 +808,28 @@ def generar_historico(catalogos, n, dias, semilla, salida, paso_min=60, tasa_fal
                 "grupo_id": evento["grupo_id"],
                 "causa_verdadera": evento["causa_verdadera"],
             })
+    with open(ruta_incidentes, "w", newline="", encoding="utf-8") as archivo:
+        escritor = csv.DictWriter(archivo, fieldnames=CAMPOS_INCIDENTES)
+        escritor.writeheader()
+        for evento in sorted(flota.incidentes, key=lambda e: (e["ts"], e["incidente_id"])):
+            escritor.writerow(evento)
+    with open(ruta_mantenimientos, "w", newline="", encoding="utf-8") as archivo:
+        escritor = csv.DictWriter(archivo, fieldnames=CAMPOS_MANTENIMIENTOS)
+        escritor.writeheader()
+        for evento in sorted(flota.mantenimientos, key=lambda e: (e["ts"], e["mantenimiento_id"])):
+            escritor.writerow({
+                "mantenimiento_id": evento["mantenimiento_id"],
+                "maquina_id": evento["maquina_id"],
+                "ts": evento["ts"],
+                "tipo_mantenimiento": evento["tipo_mantenimiento"],
+                "estado": evento["estado"],
+                "componentes": ";".join(evento["componentes"]),
+            })
+    with open(ruta_consumos, "w", newline="", encoding="utf-8") as archivo:
+        escritor = csv.DictWriter(archivo, fieldnames=CAMPOS_CONSUMOS)
+        escritor.writeheader()
+        for evento in sorted(flota.consumos_repuestos, key=lambda e: (e["ts"], e["consumo_id"])):
+            escritor.writerow(evento)
     conteo = {}
     for evento in flota.fallas:
         conteo[evento["escenario"]] = conteo.get(evento["escenario"], 0) + 1
@@ -585,7 +837,16 @@ def generar_historico(catalogos, n, dias, semilla, salida, paso_min=60, tasa_fal
         "salida": salida,
         "ruta_telemetria": ruta_telemetria,
         "ruta_fallas": ruta_fallas,
-        "filas_por_archivo": {"telemetria.csv": filas, "fallas.csv": len(flota.fallas)},
+        "ruta_incidentes": ruta_incidentes,
+        "ruta_mantenimientos": ruta_mantenimientos,
+        "ruta_consumos": ruta_consumos,
+        "filas_por_archivo": {
+            "telemetria.csv": filas,
+            "fallas.csv": len(flota.fallas),
+            "incidentes.csv": len(flota.incidentes),
+            "mantenimientos.csv": len(flota.mantenimientos),
+            "consumo_repuestos.csv": len(flota.consumos_repuestos),
+        },
         "fallas_por_escenario": conteo,
         "maquinas_con_falla": len(set(evento["maquina_id"] for evento in flota.fallas)),
         "positivos": positivos,

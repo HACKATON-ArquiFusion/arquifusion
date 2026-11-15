@@ -47,7 +47,10 @@ def _historico(args):
 def main():
     parser = argparse.ArgumentParser(description="Simulador de telemetria de flota ArquiFusion")
     sub = parser.add_subparsers(dest="comando", required=True)
-    historico = sub.add_parser("historico", help="Genera CSV historicos de telemetria y fallas")
+    historico = sub.add_parser(
+        "historico",
+        help="Genera CSV historicos de telemetria, fallas, incidentes, mantenimientos y consumo de repuestos",
+    )
     historico.add_argument("--n", type=int, default=50)
     historico.add_argument("--dias", type=int, default=90)
     historico.add_argument("--semilla", type=int, default=42)
