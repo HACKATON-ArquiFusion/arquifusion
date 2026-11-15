@@ -12,3 +12,6 @@ __pycache__/
 *.pyc
 .venv/
 simulador/salida/
+samconfig.toml
+.aws-sam/
+*.zip
