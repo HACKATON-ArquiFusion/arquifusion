@@ -1,0 +1,214 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ArquiFusion - Fase 2 - tablas DynamoDB, cola SQS con DLQ, parametros SSM y secretos
+
+Parameters:
+  Prefijo:
+    Type: String
+    Default: arquifusion
+    Description: Prefijo de todos los recursos
+  ApiKey:
+    Type: String
+    NoEcho: true
+    MinLength: 12
+    Description: API key nueva (se guarda en Secrets Manager)
+  Pitr:
+    Type: String
+    Default: 'false'
+    AllowedValues: ['true', 'false']
+    Description: Recuperacion a un punto en el tiempo (activar solo si el lab lo permite)
+
+Conditions:
+  ConPitr: !Equals [!Ref Pitr, 'true']
+
+Resources:
+  # ---------------- DynamoDB ----------------
+  Telemetria:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${Prefijo}-telemetria'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: maquina_id, AttributeType: S }
+        - { AttributeName: ts, AttributeType: S }
+      KeySchema:
+        - { AttributeName: maquina_id, KeyType: HASH }
+        - { AttributeName: ts, KeyType: RANGE }
+      TimeToLiveSpecification: { AttributeName: ttl, Enabled: true }
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: !If [ConPitr, true, false]
+
+  Maquinas:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${Prefijo}-maquinas'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: maquina_id, AttributeType: S }
+      KeySchema:
+        - { AttributeName: maquina_id, KeyType: HASH }
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: !If [ConPitr, true, false]
+
+  Incidentes:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${Prefijo}-incidentes'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: incidente_id, AttributeType: S }
+        - { AttributeName: estado, AttributeType: S }
+        - { AttributeName: maquina_id, AttributeType: S }
+        - { AttributeName: abierto_ts, AttributeType: S }
+      KeySchema:
+        - { AttributeName: incidente_id, KeyType: HASH }
+      GlobalSecondaryIndexes:
+        - IndexName: estado-index
+          KeySchema:
+            - { AttributeName: estado, KeyType: HASH }
+            - { AttributeName: abierto_ts, KeyType: RANGE }
+          Projection: { ProjectionType: ALL }
+        - IndexName: maquina-index
+          KeySchema:
+            - { AttributeName: maquina_id, KeyType: HASH }
+            - { AttributeName: abierto_ts, KeyType: RANGE }
+          Projection: { ProjectionType: ALL }
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: !If [ConPitr, true, false]
+
+  Tecnicos:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${Prefijo}-tecnicos'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: tecnico_id, AttributeType: S }
+      KeySchema:
+        - { AttributeName: tecnico_id, KeyType: HASH }
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: !If [ConPitr, true, false]
+
+  RepuestosStock:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${Prefijo}-repuestos_stock'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: zona, AttributeType: S }
+        - { AttributeName: componente, AttributeType: S }
+      KeySchema:
+        - { AttributeName: zona, KeyType: HASH }
+        - { AttributeName: componente, KeyType: RANGE }
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: !If [ConPitr, true, false]
+
+  Mantenimientos:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${Prefijo}-mantenimientos'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: mantenimiento_id, AttributeType: S }
+      KeySchema:
+        - { AttributeName: mantenimiento_id, KeyType: HASH }
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: !If [ConPitr, true, false]
+
+  Notificaciones:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${Prefijo}-notificaciones'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: rol, AttributeType: S }
+        - { AttributeName: ts_id, AttributeType: S }
+      KeySchema:
+        - { AttributeName: rol, KeyType: HASH }
+        - { AttributeName: ts_id, KeyType: RANGE }
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: !If [ConPitr, true, false]
+
+  Scores:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${Prefijo}-scores'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: tipo, AttributeType: S }
+        - { AttributeName: clave, AttributeType: S }
+      KeySchema:
+        - { AttributeName: tipo, KeyType: HASH }
+        - { AttributeName: clave, KeyType: RANGE }
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: !If [ConPitr, true, false]
+
+  # ---------------- SQS ----------------
+  IngestaDlq:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub '${Prefijo}-ingesta-dlq'
+      MessageRetentionPeriod: 1209600
+
+  IngestaCola:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub '${Prefijo}-ingesta'
+      VisibilityTimeout: 180
+      MessageRetentionPeriod: 345600
+      RedrivePolicy:
+        deadLetterTargetArn: !GetAtt IngestaDlq.Arn
+        maxReceiveCount: 3
+
+  # ---------------- SSM (parametros globales) ----------------
+  PUmbral:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/umbral_riesgo'
+      Type: String
+      Value: '0.5'
+      Description: Umbral de probabilidad de falla para abrir incidente
+  PVentana:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/ventana_horas'
+      Type: String
+      Value: '24'
+      Description: Ventana de deteccion en linea (horas)
+  PLecturas:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/n_lecturas'
+      Type: String
+      Value: '336'
+      Description: Lecturas por maquina que lee el modelo (14 dias x 24 h)
+  PTtl:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub '/${Prefijo}/ttl_dias'
+      Type: String
+      Value: '30'
+      Description: Dias que se conserva la telemetria en DynamoDB
+
+  # ---------------- Secrets Manager ----------------
+  SecretApiKey:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub '${Prefijo}/api-key'
+      Description: API key de la API de AWS
+      SecretString: !Ref ApiKey
+
+  SecretPuenteGcp:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub '${Prefijo}/puente-gcp'
+      Description: URL y token del Cloud Run de GCP (editar cuando B los entregue)
+      SecretString: '{"ingest_url":"pendiente","ingest_token":"pendiente"}'
+
+Outputs:
+  QueueUrl:
+    Value: !Ref IngestaCola
+    Description: Pegar como variable QUEUE_URL en la Lambda arquifusion-api
+  QueueArn:
+    Value: !GetAtt IngestaCola.Arn
+    Description: ARN para el trigger SQS de la Lambda procesadora
+  DlqUrl:
+    Value: !Ref IngestaDlq

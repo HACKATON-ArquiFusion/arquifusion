@@ -1,0 +1,46 @@
+{
+  "tecnicos": [
+    {
+      "tecnico_id": "TEC-01",
+      "nombre": "Carlos Quispe",
+      "especialidades": [
+        "motor",
+        "refrigeracion"
+      ],
+      "lat": -15.519,
+      "lon": -71.521,
+      "zona": "Z2",
+      "disponibilidad": "en_atencion",
+      "incidente_actual": "INC-2026-0002",
+      "atendidos_mes": 14
+    },
+    {
+      "tecnico_id": "TEC-02",
+      "nombre": "Lucía Mamani",
+      "especialidades": [
+        "sistema_hidraulico",
+        "filtros"
+      ],
+      "lat": -15.49,
+      "lon": -71.519,
+      "zona": "Z1",
+      "disponibilidad": "asignado",
+      "incidente_actual": "INC-2026-0001",
+      "atendidos_mes": 11
+    },
+    {
+      "tecnico_id": "TEC-03",
+      "nombre": "Jorge Huamán",
+      "especialidades": [
+        "transmision",
+        "frenos"
+      ],
+      "lat": -15.505,
+      "lon": -71.535,
+      "zona": "Z5",
+      "disponibilidad": "disponible",
+      "incidente_actual": null,
+      "atendidos_mes": 9
+    }
+  ]
+}
