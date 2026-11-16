@@ -1,0 +1,32 @@
+[
+    {
+        "creado_ts":  "2026-11-15T17:43:53Z",
+        "horizonte_dias":  14,
+        "mae":  1.9458255058155947,
+        "mejora_pct":  5.7871578373870776,
+        "modelo":  "arima_combustible",
+        "n_series":  150,
+        "wape":  0.04538538224976741,
+        "wape_baseline":  0.048173243910242608
+    },
+    {
+        "creado_ts":  "2026-11-15T17:41:00Z",
+        "horizonte_dias":  14,
+        "mae":  1.2592059200168557,
+        "mejora_pct":  2.4488694374293725,
+        "modelo":  "arima_repuestos",
+        "n_series":  8,
+        "wape":  0.56867364129793474,
+        "wape_baseline":  0.58294930875576034
+    },
+    {
+        "creado_ts":  "2026-11-15T17:37:52Z",
+        "horizonte_dias":  14,
+        "mae":  0.085085354896675708,
+        "mejora_pct":  48.015182170360255,
+        "modelo":  "arima_horas",
+        "n_series":  150,
+        "wape":  0.0055956171014348889,
+        "wape_baseline":  0.010763944811295429
+    }
+]

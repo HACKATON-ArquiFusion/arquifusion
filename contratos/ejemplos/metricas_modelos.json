@@ -1,0 +1,74 @@
+[
+    {
+        "creado_ts":  "2026-11-15T16:47:40Z",
+        "f1":  0.42979127134724859,
+        "modelo":  "logit",
+        "n_positivos":  2715,
+        "n_total":  64800,
+        "particion":  "test",
+        "precision":  0.603597601598934,
+        "roc_auc":  0.89187612387612392,
+        "sensibilidad":  0.33370165745856356,
+        "umbral":  0.65
+    },
+    {
+        "creado_ts":  "2026-11-15T16:47:40Z",
+        "f1":  0.52586206896551724,
+        "modelo":  "boosted",
+        "n_positivos":  2715,
+        "n_total":  64800,
+        "particion":  "test",
+        "precision":  0.59388038942976351,
+        "roc_auc":  0.8396013986013986,
+        "sensibilidad":  0.47182320441988951,
+        "umbral":  0.7
+    },
+    {
+        "creado_ts":  "2026-11-15T16:47:40Z",
+        "f1":  0.59204505455825418,
+        "modelo":  "boosted",
+        "n_positivos":  3148,
+        "n_total":  64800,
+        "particion":  "val",
+        "precision":  0.66377269139700079,
+        "roc_auc":  0.8296483516483516,
+        "sensibilidad":  0.53430749682338,
+        "umbral":  0.7
+    },
+    {
+        "creado_ts":  "2026-11-15T16:47:40Z",
+        "f1":  0.6072128577028616,
+        "modelo":  "logit",
+        "n_positivos":  3148,
+        "n_total":  64800,
+        "particion":  "val",
+        "precision":  0.7927328556806551,
+        "roc_auc":  0.87263236763236762,
+        "sensibilidad":  0.49205844980940278,
+        "umbral":  0.65
+    },
+    {
+        "creado_ts":  "2026-11-15T16:47:40Z",
+        "f1":  0.44285544035275892,
+        "modelo":  "logit",
+        "n_positivos":  5310,
+        "n_total":  201600,
+        "particion":  "train",
+        "precision":  0.60305095748133719,
+        "roc_auc":  0.79048251748251752,
+        "sensibilidad":  0.34990583804143127,
+        "umbral":  0.65
+    },
+    {
+        "creado_ts":  "2026-11-15T16:47:40Z",
+        "f1":  0.59520958083832332,
+        "modelo":  "boosted",
+        "n_positivos":  5310,
+        "n_total":  201600,
+        "particion":  "train",
+        "precision":  0.63312101910828023,
+        "roc_auc":  0.94732467532467535,
+        "sensibilidad":  0.56158192090395476,
+        "umbral":  0.7
+    }
+]

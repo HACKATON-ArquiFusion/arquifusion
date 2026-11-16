@@ -38,3 +38,7 @@ Las fechas son ISO 8601 UTC. Los `scores_*.json` traen solo 10 registros de mues
 ## Pendiente
 
 - `pronostico_horas_uso.json` sale plano (límite inferior = superior = previsto), así que la banda de confianza aún no se ve.
+## Métricas y pesos
+
+- `metricas_modelos.json` (6 filas) y `metricas_arima.json` (3 filas): precisión, sensibilidad y error de los modelos, para el pitch.
+- `pesos_modelo.json` es el payload que B envía a A para el scoring en línea. El dashboard no lo usa.

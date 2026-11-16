@@ -1,0 +1,55 @@
+{
+    "desviaciones":  {
+                         "combustible_lph_media_24h":  1,
+                         "combustible_lph_media_336h":  1,
+                         "combustible_lph_media_96h":  1,
+                         "temp_media_24h":  1,
+                         "temp_media_336h":  1,
+                         "temp_media_96h":  1,
+                         "vib_media_24h":  1,
+                         "vib_media_336h":  1,
+                         "vib_media_96h":  1
+                     },
+    "horizonte_dias":  7,
+    "intercepto":  -0.007053615132184191,
+    "medias":  {
+                   "combustible_lph_media_24h":  0,
+                   "combustible_lph_media_336h":  0,
+                   "combustible_lph_media_96h":  0,
+                   "temp_media_24h":  0,
+                   "temp_media_336h":  0,
+                   "temp_media_96h":  0,
+                   "vib_media_24h":  0,
+                   "vib_media_336h":  0,
+                   "vib_media_96h":  0
+               },
+    "metricas":  {
+                     "precision":  0.603597601598934,
+                     "sensibilidad":  0.33370165745856356
+                 },
+    "modelo":  "logit-v1",
+    "pesos":  {
+                  "combustible_lph_media_24h":  0.07657378008184801,
+                  "combustible_lph_media_336h":  -0.040547827932862865,
+                  "combustible_lph_media_96h":  -0.036849932722794077,
+                  "temp_media_24h":  0.03290137441136262,
+                  "temp_media_336h":  -0.014084872231937814,
+                  "temp_media_96h":  -0.019467978386262626,
+                  "vib_media_24h":  0.6285023766756344,
+                  "vib_media_336h":  -0.2744571212302665,
+                  "vib_media_96h":  -0.3388430839696547
+              },
+    "umbral_sugerido":  0.65,
+    "variables":  [
+                      "temp_media_24h",
+                      "temp_media_96h",
+                      "temp_media_336h",
+                      "vib_media_24h",
+                      "vib_media_96h",
+                      "vib_media_336h",
+                      "combustible_lph_media_24h",
+                      "combustible_lph_media_96h",
+                      "combustible_lph_media_336h"
+                  ],
+    "version":  "2026-11-15"
+}
