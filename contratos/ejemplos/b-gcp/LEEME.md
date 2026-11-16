@@ -42,3 +42,8 @@ Las fechas son ISO 8601 UTC. Los `scores_*.json` traen solo 10 registros de mues
 
 - `metricas_modelos.json` (6 filas) y `metricas_arima.json` (3 filas): precisión, sensibilidad y error de los modelos, para el pitch.
 - `pesos_modelo.json` es el payload que B envía a A para el scoring en línea. El dashboard no lo usa.
+## Cifras para el pitch (logit)
+
+- Detecta 12 de 23 fallas del periodo de prueba (52 %), con una mediana de 62 horas de aviso.
+- En la falla de la demo (F-0065, máquina M-008) avisó 64 horas antes.
+- Unas 0,96 falsas alarmas por máquina y semana: presentarlo como lista de máquinas a revisar, no como sentencia de falla.
