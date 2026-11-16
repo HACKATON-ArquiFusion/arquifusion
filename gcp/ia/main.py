@@ -167,6 +167,79 @@ def leer_api_aws(ruta):
         return None
 
 
+RUTAS_PROXY = {
+    "flota": "/flota",
+    "kpis": "/kpis",
+    "incidentes": "/incidentes",
+    "tecnicos": "/tecnicos",
+    "repuestos": "/repuestos",
+    "preventivo": "/preventivo",
+}
+
+
+@app.after_request
+def cors(r):
+    r.headers["Access-Control-Allow-Origin"] = "*"
+    r.headers["Access-Control-Allow-Headers"] = "Content-Type,x-api-key"
+    r.headers["Access-Control-Allow-Methods"] = "GET,POST,OPTIONS"
+    return r
+
+
+@app.route("/api/<path:resto>", methods=["OPTIONS"])
+@app.route("/ia/<path:resto>", methods=["OPTIONS"])
+def preflight(resto):
+    return ("", 204)
+
+
+@app.get("/api/<nombre>")
+def proxy(nombre):
+    if nombre not in RUTAS_PROXY:
+        return jsonify({"error": "recurso no disponible", "disponibles": sorted(RUTAS_PROXY)}), 404
+    ruta = RUTAS_PROXY[nombre]
+    if nombre == "incidentes" and request.args.get("estado"):
+        ruta += "?estado=" + request.args["estado"]
+    d = leer_api_aws(ruta)
+    if d is None:
+        return jsonify({"error": "api de operaciones no disponible"}), 503
+    return jsonify(d)
+
+
+@app.get("/api/notificaciones")
+def proxy_notificaciones():
+    rol = request.args.get("rol", "")
+    if rol and rol not in ROLES:
+        return jsonify({"error": "rol inválido", "roles": ROLES}), 400
+    d = leer_api_aws("/notificaciones" + (f"?rol={rol}" if rol else ""))
+    if d is None:
+        return jsonify({"error": "api de operaciones no disponible"}), 503
+    return jsonify(d)
+
+
+@app.get("/api/maquinas/<maquina_id>")
+def proxy_maquina(maquina_id):
+    d = leer_api_aws(f"/maquinas/{maquina_id}")
+    if d is None:
+        return jsonify({"error": "api de operaciones no disponible"}), 503
+    return jsonify(d)
+
+
+@app.get("/api/telemetria/<maquina_id>")
+def proxy_telemetria(maquina_id):
+    d = leer_api_aws(f"/telemetria/{maquina_id}")
+    if d is None:
+        return jsonify({"error": "api de operaciones no disponible"}), 503
+    return jsonify(d)
+
+
+@app.get("/api/riesgo/<maquina_id>")
+def proxy_riesgo(maquina_id):
+    ts = request.args.get("ts", "")
+    d = leer_api_aws(f"/admin/riesgo/{maquina_id}" + (f"?ts={ts}" if ts else ""))
+    if d is None:
+        return jsonify({"error": "riesgo no disponible"}), 503
+    return jsonify(d)
+
+
 ESQUEMA_PREDECIR = {
     "type": "OBJECT",
     "properties": {
@@ -258,7 +331,10 @@ def indice():
                 {"metodo": "POST", "ruta": "/ia/predecir", "api_key": True},
                 {"metodo": "POST", "ruta": "/ia/explicar", "api_key": True},
                 {"metodo": "POST", "ruta": "/ia/chat", "api_key": True},
+                {"metodo": "GET", "ruta": "/api/<recurso>", "api_key": False},
+                {"metodo": "POST", "ruta": "/api/chat", "api_key": False},
             ],
+            "recursos_api": sorted(RUTAS_PROXY),
             "cabecera": "x-api-key",
         }
     )
@@ -488,6 +564,15 @@ def resumen_kpis(kpis):
 def chat():
     if not autorizado():
         return jsonify({"error": "api key inválida"}), 401
+    return responder_chat()
+
+
+@app.post("/api/chat")
+def chat_publico():
+    return responder_chat()
+
+
+def responder_chat():
     try:
         d = cuerpo()
         mensaje = exigir(d, "mensaje")

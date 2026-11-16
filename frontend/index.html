@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArquiFusion — Operación</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<header>
+  <h1>Arqui<span>Fusion</span> · Mantenimiento predictivo</h1>
+  <div class="rol">
+    <span class="sutil">Rol</span>
+    <select id="rol">
+      <option value="supervisor">Supervisor</option>
+      <option value="operador">Operador</option>
+      <option value="tecnico">Técnico</option>
+      <option value="gerente">Gerente</option>
+    </select>
+    <button id="recargar">Actualizar</button>
+  </div>
+</header>
+
+<nav id="nav"></nav>
+
+<main>
+  <div id="aviso"></div>
+
+  <section class="vista activa" data-vista="flota">
+    <div class="tarjetas" id="kpis"></div>
+    <div class="panel">
+      <h2>Mapa de la operación</h2>
+      <div class="mapa" id="mapa"></div>
+      <div class="leyenda">
+        <span><i style="background:#3fb950"></i>Operativa</span>
+        <span><i style="background:#8b98a8"></i>Detenida</span>
+        <span><i style="background:#f85149"></i>Requiere intervención</span>
+        <span class="sutil">· Haz clic en una máquina para ver su detalle</span>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Flota</h2>
+      <div class="scroll"><table id="tabla-flota"></table></div>
+    </div>
+  </section>
+
+  <section class="vista" data-vista="maquina">
+    <div class="panel">
+      <h2>Detalle por máquina</h2>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <select id="sel-maquina"></select>
+        <button id="ver-maquina">Ver</button>
+        <span class="sutil">Telemetría y riesgo reales desde la API</span>
+      </div>
+    </div>
+    <div id="detalle"></div>
+  </section>
+
+  <section class="vista" data-vista="incidentes">
+    <div class="panel">
+      <h2>Cola de incidentes</h2>
+      <div id="lista-incidentes"></div>
+    </div>
+    <div class="panel">
+      <h2>Técnicos</h2>
+      <div id="lista-tecnicos"></div>
+    </div>
+  </section>
+
+  <section class="vista" data-vista="preventivo">
+    <div class="dos">
+      <div class="panel">
+        <h2>Mantenimiento preventivo</h2>
+        <div id="lista-preventivo"></div>
+      </div>
+      <div class="panel">
+        <h2>Repuestos</h2>
+        <div id="lista-repuestos"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vista" data-vista="bandeja">
+    <div class="panel">
+      <h2>Bandeja del rol seleccionado</h2>
+      <div id="lista-notificaciones"></div>
+    </div>
+  </section>
+
+  <section class="vista" data-vista="chat">
+    <div class="panel chat">
+      <h2>Asistente de operación</h2>
+      <div class="hilo" id="hilo"></div>
+      <form id="form-chat">
+        <input id="pregunta" placeholder="¿Qué máquinas están detenidas y cuál es la más urgente?" autocomplete="off">
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script src="datos-demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

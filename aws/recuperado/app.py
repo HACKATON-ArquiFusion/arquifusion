@@ -3,13 +3,16 @@ import json
 import math
 import os
 import re
+import urllib.request
 import time
+import urllib.error
+import urllib.request
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 
 import boto3
-from boto3.dynamodb.conditions import Key
+from boto3.dynamodb.conditions import Attr, Key
 from botocore.exceptions import ClientError
 
 # ---------------------------------------------------------------- configuración
@@ -17,6 +20,8 @@ PREFIJO = os.environ.get("PREFIJO", "arquifusion")
 QUEUE_URL = os.environ.get("QUEUE_URL", "")
 API_KEY_ENV = os.environ.get("API_KEY", "")  # respaldo si Secrets Manager no responde
 SECRET_API_KEY = os.environ.get("SECRET_API_KEY", PREFIJO + "/api-key")
+IA_URL = os.environ.get("IA_URL", "")      # capa de IA en Cloud Run; vacio = solo plantilla
+IA_TIMEOUT = float(os.environ.get("IA_TIMEOUT", "25"))
 BASE = os.path.join(os.path.dirname(__file__), "ejemplos")
 
 MAX_INGESTA = 1000  # registros por llamada a /ingesta
@@ -273,6 +278,7 @@ def guardar_lote(registros):
     ttl_s = int(float(param("ttl_dias", "30")) * 86400)
     ahora = int(time.time())
     ultimos = {}
+    nuevos = []
     ins = dup = desc = 0
     for r in registros:
         motivo = validar_telemetria(r)
@@ -290,6 +296,7 @@ def guardar_lote(registros):
             # idempotencia: la clave maquina_id + ts solo se inserta una vez
             t.put_item(Item=item, ConditionExpression="attribute_not_exists(maquina_id)")
             ins += 1
+            nuevos.append(r)
         except ClientError as ex:
             if ex.response["Error"]["Code"] == "ConditionalCheckFailedException":
                 dup += 1
@@ -301,6 +308,7 @@ def guardar_lote(registros):
                 evaluar_maquina(r["maquina_id"], r["ts"])
             except Exception as ex:  # la detección nunca debe hacer fallar la ingesta
                 print("ERROR detección", r["maquina_id"], repr(ex))
+    exportar_encolar("telemetria", nuevos)
     print(json.dumps({"insertados": ins, "duplicados": dup, "descartados": desc}))
     return ins, dup, desc
 
@@ -413,6 +421,8 @@ def post_scores(ev, m):
     registros = b.get("registros")
     if not isinstance(registros, list):
         return err400("registros inválidos", "registros debe ser una lista")
+    if len(registros) > 500:
+        return err400("demasiados registros", "máximo 500 por llamada; recibidos " + str(len(registros)))
     errores = []
     for i, r in enumerate(registros):
         motivo = validar_score(tipo, r)
@@ -460,18 +470,26 @@ def get_salud(ev, m):
                 "dlq": int(d["ApproximateNumberOfMessages"])}
     except Exception as ex:
         cola = {"error": type(ex).__name__}
-    return resp(200, {"cola": cola, "fase": 2})
+    exp = None
+    url = os.environ.get("EXPORT_QUEUE_URL", "")
+    if url:
+        try:
+            sqs = cliente("sqs")
+            a = sqs.get_queue_attributes(QueueUrl=url, AttributeNames=[
+                "ApproximateNumberOfMessages", "ApproximateNumberOfMessagesNotVisible"])["Attributes"]
+            d = sqs.get_queue_attributes(QueueUrl=url + "-dlq", AttributeNames=[
+                "ApproximateNumberOfMessages"])["Attributes"]
+            exp = {"pendientes": int(a["ApproximateNumberOfMessages"]),
+                   "en_proceso": int(a["ApproximateNumberOfMessagesNotVisible"]),
+                   "dlq": int(d["ApproximateNumberOfMessages"]),
+                   "puente_gcp": "configurado" if puente_gcp() else "pendiente"}
+        except Exception as ex:
+            exp = {"error": type(ex).__name__}
+    return resp(200, {"cola": cola, "exportacion": exp, "fase": 8})
 
 
-# ---------------------------------------------------------------- endpoints todavía con ejemplos (Fase 1)
 def fijo(nombre):
     return lambda ev, m: resp(200, cargar(nombre))
-
-
-def get_maquina(ev, m):
-    d = cargar("maquina_detalle.json")
-    d["maquina_id"] = m.group(1)
-    return resp(200, d)
 
 
 # ================================================================= FASE 3: detección e incidentes
@@ -726,6 +744,10 @@ def abrir_incidente(maq_id, lectura, prob, umbral, metodo, evid, severidad=None,
     except Exception:
         tabla("maquinas").update_item(Key={"maquina_id": maq_id}, UpdateExpression="REMOVE incidente_abierto")
         raise
+    try:
+        correlacionar(item)
+    except Exception as ex:
+        print("AVISO: correlación falló:", repr(ex))
     iniciar_flujo(item)
     return item
 
@@ -792,6 +814,29 @@ def accion_explicar(inc, ev):
                 texto, fuente = t, "bedrock"
         except Exception as ex:
             print("Bedrock no disponible, uso plantilla:", type(ex).__name__)
+    if fuente == "plantilla" and IA_URL:
+        # Bedrock no existe en el Learner Lab: la explicacion sale de /ia/explicar (Gemini en Cloud Run).
+        # Sobrescribe causa_probable y accion_recomendada, que son los campos que lee notificar().
+        try:
+            pedido = json.dumps(json_seguro({
+                "incidente_id": inc["incidente_id"], "maquina_id": inc["maquina_id"], "ts": ahora_iso(),
+                "severidad": inc["severidad"], "zona": inc["zona"],
+                "desviaciones": inc.get("valores") or {},
+                "repuesto_reservado": inc.get("componente_probable"),
+                "tecnico_asignado": inc.get("tecnico_id")}), ensure_ascii=False).encode("utf-8")
+            pet = urllib.request.Request(IA_URL, data=pedido, method="POST")
+            pet.add_header("Content-Type", "application/json")
+            pet.add_header("x-api-key", api_key())
+            with urllib.request.urlopen(pet, timeout=IA_TIMEOUT) as r:
+                d = json.loads(r.read().decode("utf-8"))
+            causa, accion = d["causa_probable"], d["accion_recomendada"]
+            tabla("incidentes").update_item(
+                Key={"incidente_id": inc["incidente_id"]},
+                UpdateExpression="SET causa_probable = :c, accion_recomendada = :a",
+                ExpressionAttributeValues={":c": causa, ":a": accion})
+            texto, fuente = causa + " " + accion, "gemini"
+        except Exception as ex:
+            print("IA no disponible, uso plantilla:", type(ex).__name__)
     tabla("incidentes").update_item(Key={"incidente_id": inc["incidente_id"]},
                                     UpdateExpression="SET explicacion = :e",
                                     ExpressionAttributeValues={":e": {"texto": texto, "fuente": fuente}})
@@ -954,6 +999,8 @@ ACCIONES = {"explicar": accion_explicar, "reservar_repuestos": accion_reservar, 
 
 def flujo(event, context):
     """Lambda que ejecuta cada paso de la Step Function de incidentes."""
+    if event.get("accion") in ACCIONES_NOCTURNO:
+        return json_seguro(ACCIONES_NOCTURNO[event["accion"]](event))
     fn = ACCIONES.get(event.get("accion"))
     if not fn:
         raise ValueError("accion desconocida: " + str(event.get("accion")))
@@ -1008,11 +1055,15 @@ def cerrar_incidente(inc_id, datos, motivo):
         UpdateExpression="SET ultimo_cierre_ts = :u REMOVE incidente_abierto",
         ExpressionAttributeValues={":u": maq.get("ultimo_ts", ahora)})
     comps = datos.get("componentes_reemplazados") or []
-    tabla("mantenimientos").put_item(Item=a_dec({
+    man = a_dec({
         "mantenimiento_id": "MAN-" + inc_id[4:], "maquina_id": inc["maquina_id"], "ts": ahora,
         "tipo_mantenimiento": "correctivo", "estado": "completado", "componentes": comps,
         "repuestos_usados": datos.get("repuestos_usados") or [], "incidente_id": inc_id,
-        "intervencion": datos.get("intervencion")}))
+        "intervencion": datos.get("intervencion")})
+    tabla("mantenimientos").put_item(Item=man)
+    exportar_encolar("incidente", [registro_incidente(inc)])
+    exportar_encolar("mantenimiento", [registro_mantenimiento(man)])
+    exportar_encolar("consumo_repuesto", registros_consumo(man))
     try:
         asignar_pendientes()
     except Exception as ex:
@@ -1035,10 +1086,11 @@ def asignar_pendientes():
 # ---------------------------------------------------------------- endpoints de incidentes, técnicos, notificaciones
 CAMPOS_LISTA = ["incidente_id", "maquina_id", "zona", "severidad", "estado", "fase", "inicio", "fin",
                 "variables_desvio", "causa_probable", "accion_recomendada", "tecnico_id", "eta_min",
-                "justificacion_asignacion", "repuestos_reservados", "reincidente", "prob_falla", "en_cola"]
+                "justificacion_asignacion", "repuestos_reservados", "reincidente", "prob_falla", "en_cola",
+                "grupo_causa_comun"]
 CAMPOS_DETALLE = CAMPOS_LISTA + ["tiempo_detenido_min", "intervencion", "componentes_reemplazados", "eventos",
                                  "explicacion", "escalado", "motivo_cierre", "componente_probable", "umbral",
-                                 "metodo", "faltante_repuesto"]
+                                 "metodo", "faltante_repuesto", "grupo_causa_comun"]
 
 
 def vista(item, campos):
@@ -1222,8 +1274,604 @@ def post_admin_reiniciar(ev, m):
     return resp(200, {"borrados": borrados, "semilla": sem})
 
 
+# ================================================================= PUENTE AWS -> GCP (Fase 4)
+def puente_gcp():
+    """(url, token) del secreto arquifusion/puente-gcp, o None si aún dice 'pendiente'."""
+    def leer():
+        try:
+            d = json.loads(cliente("secretsmanager").get_secret_value(SecretId=PREFIJO + "/puente-gcp")["SecretString"])
+            url, tok = str(d.get("ingest_url", "")), str(d.get("ingest_token", ""))
+            return (url, tok) if url.startswith("https://") and tok and tok != "pendiente" else None
+        except Exception as ex:
+            print("secreto puente-gcp no disponible:", type(ex).__name__)
+            return None
+    return _cacheado("puente", 120, leer)
+
+
+def registro_incidente(inc):
+    desc = ((inc.get("causa_probable") or "") + ". " + (inc.get("accion_recomendada") or "")).strip(". ")
+    return {"incidente_id": inc["incidente_id"], "maquina_id": inc["maquina_id"], "ts": inc["inicio"],
+            "severidad": inc["severidad"], "estado": inc["estado"], "descripcion": desc[:500]}
+
+
+def registro_mantenimiento(man):
+    return {"mantenimiento_id": man["mantenimiento_id"], "maquina_id": man["maquina_id"], "ts": man["ts"],
+            "tipo_mantenimiento": man["tipo_mantenimiento"], "estado": man["estado"],
+            "componentes": [c for c in (man.get("componentes") or []) if c in COMPONENTES]}
+
+
+def registros_consumo(man):
+    out = []
+    for i, u in enumerate(man.get("repuestos_usados") or []):
+        if isinstance(u, dict) and u.get("componente") in COMPONENTES and es_num(u.get("cantidad")) and u["cantidad"] > 0:
+            out.append({"consumo_id": "CON-" + man["mantenimiento_id"][4:] + "-" + str(i + 1),
+                        "maquina_id": man["maquina_id"], "ts": man["ts"], "componente": u["componente"],
+                        "cantidad": u["cantidad"], "unidad": u.get("unidad") or "unidad"})
+    return out
+
+
+def exportar_encolar(tipo, registros):
+    """Deja los registros en la cola de exportación. Nunca rompe a quien lo llama."""
+    url = os.environ.get("EXPORT_QUEUE_URL", "")
+    if not url or not registros:
+        return 0
+    try:
+        sqs = cliente("sqs")
+        mensajes = [registros[i:i + CHUNK] for i in range(0, len(registros), CHUNK)]
+        for j in range(0, len(mensajes), 10):
+            entradas = [{"Id": str(k), "MessageBody": json.dumps({"tipo": tipo, "registros": chunk}, default=_dec)}
+                        for k, chunk in enumerate(mensajes[j:j + 10])]
+            r = sqs.send_message_batch(QueueUrl=url, Entries=entradas)
+            if r.get("Failed"):
+                print("AVISO: no se encolaron", len(r["Failed"]), "mensajes de exportación")
+        return len(registros)
+    except Exception as ex:
+        print("ERROR encolando exportación:", repr(ex))
+        return 0
+
+
+def post_gcp(url, token, tipo, registros):
+    cuerpo = json.dumps({"tipo": tipo, "registros": registros}, default=_dec).encode("utf-8")
+    req = urllib.request.Request(url, data=cuerpo, method="POST", headers={
+        "Content-Type": "application/json", "Authorization": "Bearer " + token})
+    try:
+        with urllib.request.urlopen(req, timeout=25) as r:
+            return json.loads(r.read() or b"{}")
+    except urllib.error.HTTPError as ex:
+        raise RuntimeError("GCP respondió %s: %s" % (ex.code, ex.read()[:300].decode("utf-8", "replace")))
+
+
+def exportar(event, context):
+    """Lambda disparada por la cola de exportación: manda lotes (<= 500) al Cloud Run de B."""
+    msgs = event.get("Records", [])
+    cfg = puente_gcp()
+    if not cfg:
+        print("puente-gcp sin configurar: los mensajes volverán a la cola")
+        return {"batchItemFailures": [{"itemIdentifier": m["messageId"]} for m in msgs]}
+    url, token = cfg
+    por_tipo, fallos = {}, set()
+    for m in msgs:
+        try:
+            c = json.loads(m["body"], parse_float=Decimal)
+            por_tipo.setdefault(c["tipo"], []).append((m["messageId"], c["registros"]))
+        except Exception as ex:
+            print("mensaje ilegible:", m.get("messageId"), repr(ex))
+            fallos.add(m["messageId"])
+    resumen = {}
+    for tipo, lista in por_tipo.items():
+        lote, ids = [], []
+        def enviar():
+            if not lote:
+                return
+            try:
+                r = post_gcp(url, token, tipo, lote)
+                for k in ("recibidos", "insertados", "duplicados"):
+                    resumen[tipo + "." + k] = resumen.get(tipo + "." + k, 0) + int(r.get(k, 0))
+            except Exception as ex:
+                print("ERROR enviando", tipo, repr(ex)[:300])
+                fallos.update(ids)
+        for mid, regs in lista:
+            if lote and len(lote) + len(regs) > 500:
+                enviar()
+                lote, ids = [], []
+            lote = lote + regs
+            ids = ids + [mid]
+        enviar()
+    print(json.dumps(resumen))
+    return {"batchItemFailures": [{"itemIdentifier": i} for i in sorted(fallos)]}
+
+
+def post_exportar_historial(ev, m):
+    """Reenvía a GCP lo que ya está guardado (telemetría, incidentes cerrados, mantenimientos)."""
+    if not os.environ.get("EXPORT_QUEUE_URL"):
+        return resp(500, {"error": "exportación no configurada", "detalle": "falta la variable EXPORT_QUEUE_URL"})
+    b = cuerpo_json(ev)
+    b = b if isinstance(b, dict) else {}
+    t0, total = time.time(), {"telemetria": 0, "incidente": 0, "mantenimiento": 0, "consumo_repuesto": 0}
+    kw = {}
+    if isinstance(b.get("continuar"), dict) and b["continuar"].get("maquina_id") and b["continuar"].get("ts"):
+        kw["ExclusiveStartKey"] = {"maquina_id": b["continuar"]["maquina_id"], "ts": b["continuar"]["ts"]}
+    if b.get("maquina_id"):
+        kw["FilterExpression"] = Attr("maquina_id").eq(b["maquina_id"])
+    while True:
+        r = tabla("telemetria").scan(**kw)
+        regs = [{k: v for k, v in i.items() if k not in ("ttl", "recibido_ts")} for i in r["Items"]]
+        total["telemetria"] += exportar_encolar("telemetria", regs)
+        if "LastEvaluatedKey" not in r:
+            break
+        kw["ExclusiveStartKey"] = r["LastEvaluatedKey"]
+        if time.time() - t0 > 9:
+            return resp(200, {"parcial": True, "encolados": total, "continuar": r["LastEvaluatedKey"],
+                              "detalle": "repite la llamada con {\"continuar\": <este valor>}"})
+    incs = [i for i in tabla("incidentes").scan()["Items"]
+            if str(i.get("incidente_id", "")).startswith("INC-") and i.get("estado") == "cerrado"]
+    mans = tabla("mantenimientos").scan()["Items"]
+    total["incidente"] = exportar_encolar("incidente", [registro_incidente(i) for i in incs])
+    total["mantenimiento"] = exportar_encolar("mantenimiento", [registro_mantenimiento(x) for x in mans])
+    total["consumo_repuesto"] = exportar_encolar("consumo_repuesto", [c for x in mans for c in registros_consumo(x)])
+    return resp(200, {"parcial": False, "encolados": total})
+
+
+
+# ================================================================= FASES 5-8: datos reales, correlación y flujo nocturno
+def scan_todo(nombre, **kw):
+    out = []
+    while True:
+        r = tabla(nombre).scan(**kw)
+        out += r["Items"]
+        if "LastEvaluatedKey" not in r:
+            return out
+        kw["ExclusiveStartKey"] = r["LastEvaluatedKey"]
+
+
+def scores_tipo(tipo):
+    out, kw = [], {"KeyConditionExpression": Key("tipo").eq(tipo)}
+    while True:
+        r = tabla("scores").query(**kw)
+        out += r["Items"]
+        if "LastEvaluatedKey" not in r:
+            return out
+        kw["ExclusiveStartKey"] = r["LastEvaluatedKey"]
+
+
+def incidentes_estado(estado):
+    out, kw = [], {"IndexName": "estado-index", "KeyConditionExpression": Key("estado").eq(estado)}
+    while True:
+        r = tabla("incidentes").query(**kw)
+        out += r["Items"]
+        if "LastEvaluatedKey" not in r:
+            return out
+        kw["ExclusiveStartKey"] = r["LastEvaluatedKey"]
+
+
+def guardar_score(tipo, clave, datos, version="aws-v1"):
+    tabla("scores").put_item(Item=a_dec({"tipo": tipo, "clave": clave, "generado_ts": ahora_iso(),
+                                         "version_modelo": version, "datos": datos}))
+
+
+def fnum(x, d=0.0):
+    return float(x) if es_num(x) else d
+
+
+def referencia_fecha(maqs):
+    """Fecha 'de hoy' para la simulación: la lectura más reciente (o hoy si no hay datos)."""
+    ts = [m["ultimo_ts"] for m in maqs if m.get("ultimo_ts")]
+    return (max(ts) if ts else ahora_iso())[:10]
+
+
+def sumar_dias(fecha, n):
+    return (datetime.strptime(fecha, "%Y-%m-%d") + timedelta(days=n)).strftime("%Y-%m-%d")
+
+
+def riesgo_pct(maq, probs):
+    r = maq.get("riesgo")
+    if r is None and maq["maquina_id"] in probs:
+        r = probs[maq["maquina_id"]].get("prob_falla")
+    return int(round(fnum(r) * 100))
+
+
+def probs_por_maquina():
+    d = {}
+    for it in scores_tipo("prob_falla"):
+        r = it["datos"]
+        if r["maquina_id"] not in d or r["ts"] > d[r["maquina_id"]]["ts"]:
+            d[r["maquina_id"]] = r
+    return d
+
+
+def abiertos_por_maquina():
+    d = {}
+    for e in ("abierto", "en_proceso"):
+        for i in incidentes_estado(e):
+            d[i["maquina_id"]] = i
+    return d
+
+
+def estado_prev(riesgo, abierto):
+    if abierto or riesgo >= 60:
+        return "adelantar"
+    return "posponible" if riesgo < 20 else "a_tiempo"
+
+
+# ---------------------------------------------------------------- /flota
+def get_flota(ev, m):
+    q = query(ev)
+    maqs, ab, probs = scan_todo("maquinas"), abiertos_por_maquina(), probs_por_maquina()
+    out = []
+    for x in sorted(maqs, key=lambda y: y["maquina_id"]):
+        inc = ab.get(x["maquina_id"])
+        estado = "requiere_intervencion" if inc else (x.get("estado") or "operativa")
+        if q.get("zona") and x.get("zona") != q["zona"]:
+            continue
+        if q.get("estado") and estado != q["estado"]:
+            continue
+        out.append({"maquina_id": x["maquina_id"], "modelo": x.get("modelo"), "zona": x.get("zona"),
+                    "lat": x.get("lat"), "lon": x.get("lon"), "estado": estado, "riesgo": riesgo_pct(x, probs),
+                    "severidad": inc["severidad"] if inc else None,
+                    "incidente_abierto": inc["incidente_id"] if inc else None,
+                    "horas_op": x.get("horas_op"), "ultima_lectura": x.get("ultimo_ts")})
+    return resp(200, {"generado_en": ahora_iso(), "maquinas": out})
+
+
+# ---------------------------------------------------------------- /maquinas/{id}
+def _pendiente_h(lects, v):
+    pts = [(a_epoch(l["ts"]) / 3600.0, float(l[v])) for l in lects if es_num(l.get(v))]
+    if len(pts) < 3:
+        return None
+    mx, my = sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts)
+    den = sum((p[0] - mx) ** 2 for p in pts)
+    return round(sum((p[0] - mx) * (p[1] - my) for p in pts) / den, 3) if den else 0.0
+
+
+def get_maquina(ev, m):
+    mid = m.group(1)
+    maq = tabla("maquinas").get_item(Key={"maquina_id": mid}).get("Item")
+    if not maq:
+        return resp(404, {"error": "máquina no existe", "maquina_id": mid})
+    n = int(pf("n_lecturas", 336))
+    items = tabla("telemetria").query(KeyConditionExpression=Key("maquina_id").eq(mid), ScanIndexForward=False,
+                                      Limit=n)["Items"]
+    lects = list(reversed(items))
+    z, tend = {}, {}
+    for v in ("temp", "vib", "presion", "combustible_lph", "rpm"):
+        xs = [float(l[v]) for l in lects if es_num(l.get(v))]
+        if len(xs) >= 3:
+            mu = sum(xs) / len(xs)
+            sd = math.sqrt(sum((x - mu) ** 2 for x in xs) / (len(xs) - 1))
+            z[v] = round((xs[-1] - mu) / sd, 2) if sd > 0 else 0.0
+    for v in ("temp", "vib", "combustible_lph"):
+        p = _pendiente_h(lects[-24:], v)
+        if p is not None:
+            tend[v] = p
+    ult = lects[-1] if lects else {}
+    ab = abiertos_por_maquina().get(mid)
+    probs = probs_por_maquina()
+    r = calcular_riesgo(mid)
+    pred = None
+    if r:
+        mod = modelo_activo()
+        var = max(z, key=lambda k: abs(z[k])) if z else None
+        pred = {"prob_falla": round(r["prob"], 4), "horizonte_dias": int((mod or {}).get("horizonte_dias", 7)),
+                "componente_probable": (ab or {}).get("componente_probable") or MAP_COMP.get(var, "motor"),
+                "modelo": r["metodo"], "fuente": "logit-aws"}
+    elif mid in probs:
+        pr = probs[mid]
+        pred = {"prob_falla": pr["prob_falla"], "horizonte_dias": pr["horizonte_dias"], "componente_probable": None,
+                "modelo": pr["modelo"], "fuente": "bqml"}
+    riesgo = int(round(pred["prob_falla"] * 100)) if pred else riesgo_pct(maq, probs)
+    prev = tabla("scores").get_item(Key={"tipo": "preventivo", "clave": mid}).get("Item")
+    prev_o = None
+    if prev:
+        prev_o = {"fecha_recomendada": prev["datos"]["fecha_recomendada"], "estado": estado_prev(riesgo, bool(ab)),
+                  "motivo": prev["datos"]["motivo"]}
+    hist = tabla("incidentes").query(IndexName="maquina-index", KeyConditionExpression=Key("maquina_id").eq(mid))["Items"]
+    hist.sort(key=lambda i: i["abierto_ts"], reverse=True)
+    return resp(200, {
+        "maquina_id": mid, "modelo": maq.get("modelo"), "zona": maq.get("zona"), "lat": maq.get("lat"),
+        "lon": maq.get("lon"), "estado": "requiere_intervencion" if ab else (maq.get("estado") or "operativa"),
+        "riesgo": riesgo, "horas_op": maq.get("horas_op"), "incidente_abierto": ab["incidente_id"] if ab else None,
+        "ultima_lectura": {k: ult.get(k) for k in ("ts", "temp", "vib", "presion", "combustible_lph", "carga_t",
+                                                   "velocidad", "rpm")} if ult else None,
+        "contexto": maq.get("contexto"), "z_scores": z, "tendencia_por_hora": tend, "prediccion": pred,
+        "ultimos_incidentes": [i["incidente_id"] for i in hist[:5]], "preventivo": prev_o})
+
+
+# ---------------------------------------------------------------- /preventivo
+def ordenes_preventivo():
+    maqs, ab, probs = scan_todo("maquinas"), abiertos_por_maquina(), probs_por_maquina()
+    por_id = {x["maquina_id"]: x for x in maqs}
+    hoy = referencia_fecha(maqs)
+    scs = {it["datos"]["maquina_id"]: it["datos"] for it in scores_tipo("preventivo")}
+    out = []
+    for mid in sorted(por_id):
+        x = por_id[mid]
+        riesgo = riesgo_pct(x, probs)
+        if mid in scs:
+            d, fuente = scs[mid], "bqml"
+            fecha, horas, motivo = d["fecha_recomendada"], d["horas_proyectadas"], d["motivo"]
+        else:  # sin pronóstico de B: intervalo de 250 h con 16 h/día de uso
+            h = fnum(x.get("horas_op"))
+            falta = 250 - (h % 250)
+            fecha, horas, fuente = sumar_dias(hoy, int(math.ceil(falta / 16.0))), round(h + falta, 1), "reglas"
+            motivo = "Intervalo de 250 h (estimado sin pronóstico del modelo)"
+        out.append({"maquina_id": mid, "zona": x.get("zona"), "fecha_recomendada": fecha, "horas_proyectadas": horas,
+                    "estado": estado_prev(riesgo, mid in ab), "motivo": motivo, "riesgo": riesgo, "fuente": fuente})
+    out.sort(key=lambda o: o["fecha_recomendada"])
+    return out
+
+
+def get_preventivo(ev, m):
+    return resp(200, {"ordenes": ordenes_preventivo()})
+
+
+# ---------------------------------------------------------------- /repuestos
+def calcular_repuestos():
+    stock = scan_todo("repuestos_stock")
+    pron = [it["datos"] for it in scores_tipo("pron_repuestos")]
+    dem = {}
+    if pron:
+        f0 = min(p["fecha"] for p in pron)
+        fin = sumar_dias(f0, 6)
+        for p in pron:
+            if p["fecha"] <= fin:
+                k = (p["zona"], p["componente"])
+                dem[k] = dem.get(k, 0.0) + fnum(p["demanda_prevista"])
+    filas, alertas = [], []
+    for s in sorted(stock, key=lambda y: (y["zona"], y["componente"])):
+        st, mn = fnum(s.get("stock")), fnum(s.get("minimo"), 1.0)
+        d = round(dem.get((s["zona"], s["componente"]), fnum(s.get("demanda_proyectada_7d"))), 1)
+        if d > st:
+            est = "faltante_proyectado"
+            alertas.append({"tipo": est, "componente": s["componente"], "zona": s["zona"],
+                            "detalle": "La demanda proyectada a 7 días (%g) supera el stock (%g)" % (d, st)})
+        elif st < mn:
+            est = "bajo_minimo"
+            alertas.append({"tipo": est, "componente": s["componente"], "zona": s["zona"],
+                            "detalle": "El stock (%g) está bajo el mínimo (%g)" % (st, mn)})
+        elif st > 3 * max(mn, 1):
+            est = "sobre_stock"
+        else:
+            est = "ok"
+        filas.append({"zona": s["zona"], "componente": s["componente"], "descripcion": s.get("descripcion"),
+                      "stock": s.get("stock"), "minimo": s.get("minimo"), "demanda_proyectada_7d": d, "estado": est})
+    return filas, alertas
+
+
+def get_repuestos(ev, m):
+    filas, alertas = calcular_repuestos()
+    return resp(200, {"stock": filas, "alertas": alertas})
+
+
+# ---------------------------------------------------------------- /kpis
+def calcular_kpis():
+    maqs, ab = scan_todo("maquinas"), abiertos_por_maquina()
+    por_estado = {}
+    for x in maqs:
+        e = "requiere_intervencion" if x["maquina_id"] in ab else (x.get("estado") or "operativa")
+        por_estado[e] = por_estado.get(e, 0) + 1
+    incs = []
+    for e in ("abierto", "en_proceso", "cerrado"):
+        incs += incidentes_estado(e)
+    tiempos = [fnum(i["tiempo_detenido_min"]) for i in incs if i["estado"] == "cerrado" and es_num(i.get("tiempo_detenido_min"))]
+    reinc = sum(1 for i in incs if i.get("reincidente"))
+    costos = []
+    for it in scores_tipo("flota"):
+        d = it["datos"]
+        if es_num(d.get("costo_op")):
+            costos.append(float(d["costo_op"]) / (7.0 if "W" in str(d.get("periodo", "")) else 1.0))
+    return {"generado_en": ahora_iso(), "maquinas_total": len(maqs), "por_estado": por_estado,
+            "incidentes_abiertos": len(ab), "tiempo_medio_reparacion_h": round(sum(tiempos) / len(tiempos) / 60, 1) if tiempos else 0.0,
+            "reincidencia_pct": round(100.0 * reinc / len(incs), 1) if incs else 0.0,
+            "costo_por_maquina_dia_pen": round(sum(costos) / len(costos), 1) if costos else None}
+
+
+def get_kpis(ev, m):
+    return resp(200, calcular_kpis())
+
+
+# ================================================================= FASE 5: correlación (causa común)
+def _ctx(maq, k):
+    return (maq.get("contexto") or {}).get(k)
+
+
+def correlacionar(inc):
+    """Si varias máquinas abren incidente casi a la vez y comparten zona o lote de combustible,
+    registra un grupo de causa común, lo enlaza a los incidentes y avisa a supervisor y gerente."""
+    ventana = pf("ventana_corr_horas", 6) * 3600
+    minimo = int(pf("correlacion_min", 2))
+    ref = a_epoch(inc["inicio"])
+    cand = {}
+    for e in ("abierto", "en_proceso"):
+        for i in incidentes_estado(e):
+            if abs(ref - a_epoch(i["inicio"])) <= ventana:
+                cand[i["incidente_id"]] = i
+    cand[inc["incidente_id"]] = inc
+    maqs = {}
+    for i in cand.values():
+        maqs[i["maquina_id"]] = tabla("maquinas").get_item(Key={"maquina_id": i["maquina_id"]}).get("Item") or {}
+    yo = maqs[inc["maquina_id"]]
+    lote_yo = _ctx(yo, "lote_combustible")
+    grupo = [i for i in cand.values() if i["incidente_id"] == inc["incidente_id"]
+             or i["zona"] == inc["zona"]
+             or (lote_yo and _ctx(maqs[i["maquina_id"]], "lote_combustible") == lote_yo)]
+    ids_maq = sorted({i["maquina_id"] for i in grupo})
+    if len(ids_maq) < minimo:
+        return None
+    ms = [maqs[x] for x in ids_maq]
+
+    def igual(k):
+        vs = {_ctx(x, k) for x in ms}
+        return len(vs) == 1 and None not in vs
+    if igual("lote_combustible"):
+        hip, det = "lote_combustible", "lote " + str(_ctx(ms[0], "lote_combustible"))
+    elif len({i.get("componente_probable") for i in grupo}) == 1:
+        hip, det = "componente", "componente " + str(grupo[0].get("componente_probable"))
+    elif igual("clima"):
+        hip, det = "clima", "clima " + str(_ctx(ms[0], "clima"))
+    elif igual("terreno"):
+        hip, det = "terreno", "terreno " + str(_ctx(ms[0], "terreno"))
+    else:
+        hip, det = "otra", "sin factor común claro"
+        if len(ids_maq) < max(minimo, 3):  # solo coincidir en la zona no basta con 2 máquinas
+            return None
+    cuenta = {}
+    for i in grupo:
+        for v in i.get("variables_desvio") or []:
+            cuenta[v] = cuenta.get(v, 0) + 1
+    var = max(cuenta, key=cuenta.get) if cuenta else "temp"
+    grupo.sort(key=lambda i: i["inicio"])
+    lat = sum(fnum(x.get("lat")) for x in ms) / len(ms)
+    lon = sum(fnum(x.get("lon")) for x in ms) / len(ms)
+    radio = max([km(lat, lon, fnum(x.get("lat")), fnum(x.get("lon"))) * 1000 for x in ms] + [100.0])
+    gid = "CC-%s-%s-%s" % (grupo[0]["zona"], hip, re.sub(r"\D", "", grupo[0]["inicio"])[:10])
+    datos = {"grupo_id": gid, "zona": grupo[0]["zona"], "ts_inicio": grupo[0]["inicio"], "ts_fin": grupo[-1]["inicio"],
+             "maquina_ids": ids_maq, "variable_comun": var, "hipotesis": hip, "detalle": det,
+             "centro_lat": round(lat, 5), "centro_lon": round(lon, 5), "radio_m": round(radio),
+             "incidentes": [i["incidente_id"] for i in grupo], "origen": "aws"}
+    guardar_score("causa_comun", gid, datos, "reglas-aws-v1")
+    for i in grupo:
+        tabla("incidentes").update_item(Key={"incidente_id": i["incidente_id"]}, UpdateExpression="SET grupo_causa_comun = :g",
+                                        ExpressionAttributeValues={":g": gid})
+    inc["grupo_causa_comun"] = gid
+    for rol in ("supervisor", "gerente"):
+        ts = ahora_iso()
+        tabla("notificaciones").put_item(Item={
+            "rol": rol, "ts_id": ts + "#" + inc["incidente_id"] + "#" + uuid.uuid4().hex[:6], "ts": ts,
+            "severidad": inc["severidad"], "incidente_id": inc["incidente_id"],
+            "titulo": "Posible causa común (%s)" % hip,
+            "mensaje": "%d máquinas (%s) con desvío en %s. Factor compartido: %s." % (len(ids_maq), ", ".join(ids_maq), var, det)})
+    return datos
+
+
+def get_causas_comunes(ev, m):
+    gs = [it["datos"] for it in scores_tipo("causa_comun")]
+    q = query(ev)
+    if q.get("origen"):
+        gs = [g for g in gs if g.get("origen", "bqml") == q["origen"]]
+    gs.sort(key=lambda g: g["ts_inicio"], reverse=True)
+    return resp(200, {"grupos": gs})
+
+
+# ================================================================= FASE 6: flujo nocturno
+def semana_clave(hoy):
+    return datetime.strptime(hoy, "%Y-%m-%d").strftime("%G-W%V")
+
+
+def accion_plan_preventivo(ev):
+    maqs = scan_todo("maquinas")
+    hoy = referencia_fecha(maqs)
+    ordenes = ordenes_preventivo()
+    cap = max(1, len(scan_todo("tecnicos")))
+    pesos = {"adelantar": 1.0, "a_tiempo": 0.5, "posponible": 0.1}
+    for o in ordenes:
+        dias = (datetime.strptime(o["fecha_recomendada"], "%Y-%m-%d") - datetime.strptime(hoy, "%Y-%m-%d")).days
+        urg = 1.0 if dias <= 3 else (0.6 if dias <= 7 else (0.3 if dias <= 14 else 0.0))
+        o["prioridad"] = round(0.5 * o["riesgo"] / 100.0 + 0.3 * urg + 0.2 * pesos[o["estado"]], 3)
+    ordenes.sort(key=lambda o: o["prioridad"], reverse=True)
+    tareas = []
+    for i, o in enumerate(ordenes):
+        d = i // cap
+        tareas.append({"maquina_id": o["maquina_id"], "zona": o["zona"], "prioridad": o["prioridad"],
+                       "estado": o["estado"], "motivo": o["motivo"],
+                       "dia": sumar_dias(hoy, 1 + d) if d < 7 else "semana_siguiente"})
+    datos = {"semana": semana_clave(hoy), "generado": ahora_iso(), "capacidad_diaria": cap, "tareas": tareas}
+    guardar_score("plan_semanal", datos["semana"], datos)
+    return {"tareas": len(tareas), "capacidad_diaria": cap}
+
+
+def accion_reposicion(ev):
+    _, alertas = calcular_repuestos()
+    hoy = referencia_fecha(scan_todo("maquinas"))
+    guardar_score("alertas_repuestos", semana_clave(hoy), {"generado": ahora_iso(), "alertas": alertas})
+    return {"alertas": len(alertas)}
+
+
+def accion_kpis(ev):
+    k = calcular_kpis()
+    guardar_score("kpis_snapshot", k["generado_en"][:10], k)
+    return {"maquinas": k["maquinas_total"], "incidentes_abiertos": k["incidentes_abiertos"]}
+
+
+def accion_resumen(ev):
+    k = calcular_kpis()
+    filas, alertas = calcular_repuestos()
+    maqs, probs = scan_todo("maquinas"), probs_por_maquina()
+    top = sorted(({"maquina_id": x["maquina_id"], "riesgo": riesgo_pct(x, probs), "zona": x.get("zona")} for x in maqs),
+                 key=lambda t: t["riesgo"], reverse=True)[:3]
+    causas = [it["datos"] for it in scores_tipo("causa_comun")]
+    causas.sort(key=lambda g: g["ts_inicio"], reverse=True)
+    planes = sorted(scores_tipo("plan_semanal"), key=lambda i: i["generado_ts"], reverse=True)
+    tareas = planes[0]["datos"]["tareas"] if planes else []
+    ab = [i for e in ("abierto", "en_proceso") for i in incidentes_estado(e)]
+    crit = sum(1 for i in ab if i["severidad"] == "critica")
+    pe = k["por_estado"]
+    partes = ["Flota de %d máquinas: %d operativas y %d requieren intervención." % (
+        k["maquinas_total"], pe.get("operativa", 0), pe.get("requiere_intervencion", 0)),
+        "Incidentes abiertos: %d (%d críticos). Tiempo medio de reparación: %.1f h; reincidencia: %.1f%%." % (
+            len(ab), crit, k["tiempo_medio_reparacion_h"], k["reincidencia_pct"])]
+    if top and top[0]["riesgo"] > 0:
+        partes.append("Mayor riesgo: " + ", ".join("%s (%d%%)" % (t["maquina_id"], t["riesgo"]) for t in top) + ".")
+    if alertas:
+        partes.append("Repuestos con alerta: " + ", ".join("%s en %s" % (a["componente"], a["zona"]) for a in alertas[:5]) + ".")
+    if causas:
+        partes.append("Causas comunes recientes: %d (última: %s en %s)." % (len(causas), causas[0]["hipotesis"], causas[0]["zona"]))
+    if tareas:
+        partes.append("Plan semanal: %d tareas; primera: %s el %s." % (len(tareas), tareas[0]["maquina_id"], tareas[0]["dia"]))
+    texto, fuente = " ".join(partes), "plantilla"
+    modelo_id = os.environ.get("BEDROCK_MODEL_ID", "")
+    if modelo_id:
+        try:
+            r = cliente("bedrock-runtime").converse(
+                modelId=modelo_id, inferenceConfig={"maxTokens": 300, "temperature": 0.2},
+                messages=[{"role": "user", "content": [{"text": "Redacta en español, en 4 frases, un resumen ejecutivo "
+                                                         "para un gerente de operaciones mineras con estos datos: " + texto}]}])
+            t = r["output"]["message"]["content"][0]["text"].strip()
+            if t:
+                texto, fuente = t, "bedrock"
+        except Exception as ex:
+            print("Bedrock no disponible, uso plantilla:", type(ex).__name__)
+    datos = {"generado": ahora_iso(), "texto": texto, "fuente": fuente, "kpis": k, "top_riesgo": top,
+             "alertas_repuestos": alertas, "causas_comunes": len(causas), "tareas_semana": len(tareas)}
+    guardar_score("resumen_ejecutivo", "ultimo", datos)
+    guardar_score("resumen_ejecutivo", k["generado_en"][:10], datos)
+    return {"fuente": fuente}
+
+
+ACCIONES_NOCTURNO = {"plan_preventivo": accion_plan_preventivo, "reposicion": accion_reposicion,
+                     "kpis": accion_kpis, "resumen": accion_resumen}
+
+
+def get_plan_semanal(ev, m):
+    planes = sorted(scores_tipo("plan_semanal"), key=lambda i: i["generado_ts"], reverse=True)
+    if not planes:
+        return resp(404, {"error": "aún no hay plan semanal", "detalle": "ejecuta POST /admin/nocturno"})
+    return resp(200, planes[0]["datos"])
+
+
+def get_resumen_ejecutivo(ev, m):
+    it = tabla("scores").get_item(Key={"tipo": "resumen_ejecutivo", "clave": "ultimo"}).get("Item")
+    if not it:
+        return resp(404, {"error": "aún no hay resumen ejecutivo", "detalle": "ejecuta POST /admin/nocturno"})
+    return resp(200, it["datos"])
+
+
+def post_admin_nocturno(ev, m):
+    """Lanza el flujo nocturno. Con {"directo": true} lo ejecuta aquí mismo, sin Step Functions."""
+    b = cuerpo_json(ev)
+    b = b if isinstance(b, dict) else {}
+    arn = os.environ.get("NOCTURNO_ARN", "")
+    if b.get("directo") or not arn:
+        out = {}
+        for nombre in ("plan_preventivo", "reposicion", "kpis", "resumen"):
+            out[nombre] = ACCIONES_NOCTURNO[nombre]({})
+        return resp(200, {"modo": "directo", "resultado": out})
+    r = cliente("stepfunctions").start_execution(stateMachineArn=arn, name="manual-" + str(int(time.time())),
+                                                 input=json.dumps({"origen": "manual"}))
+    return resp(202, {"modo": "step_functions", "ejecucion": r["executionArn"]})
+
+
 RUTAS = [
-    ("GET", r"^/flota$", fijo("flota.json")),
+    ("GET", r"^/flota$", get_flota),
     ("GET", r"^/maquinas/([^/]+)$", get_maquina),
     ("GET", r"^/telemetria/([^/]+)$", get_historial),
     ("GET", r"^/incidentes$", get_incidentes),
@@ -1231,9 +1879,12 @@ RUTAS = [
     ("POST", r"^/incidentes/([^/]+)/cierre$", post_cierre),
     ("POST", r"^/incidentes/([^/]+)/atencion$", post_atencion),
     ("GET", r"^/tecnicos$", get_tecnicos),
-    ("GET", r"^/repuestos$", fijo("repuestos.json")),
-    ("GET", r"^/preventivo$", fijo("preventivo.json")),
-    ("GET", r"^/kpis$", fijo("kpis.json")),
+    ("GET", r"^/repuestos$", get_repuestos),
+    ("GET", r"^/preventivo$", get_preventivo),
+    ("GET", r"^/kpis$", get_kpis),
+    ("GET", r"^/causas-comunes$", get_causas_comunes),
+    ("GET", r"^/plan-semanal$", get_plan_semanal),
+    ("GET", r"^/resumen-ejecutivo$", get_resumen_ejecutivo),
     ("GET", r"^/notificaciones$", get_notificaciones),
     ("GET", r"^/salud$", get_salud),
     ("GET", r"^/scores/([^/]+)$", get_scores),
@@ -1244,6 +1895,8 @@ RUTAS = [
     ("GET", r"^/admin/riesgo/([^/]+)$", get_admin_riesgo),
     ("GET", r"^/admin/resumen$", get_admin_resumen),
     ("POST", r"^/admin/reiniciar$", post_admin_reiniciar),
+    ("POST", r"^/admin/exportar-historial$", post_exportar_historial),
+    ("POST", r"^/admin/nocturno$", post_admin_nocturno),
 ]
 
 
