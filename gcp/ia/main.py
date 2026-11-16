@@ -185,10 +185,10 @@ def cors(r):
     return r
 
 
-@app.route("/api/<path:resto>", methods=["OPTIONS"])
-@app.route("/ia/<path:resto>", methods=["OPTIONS"])
-def preflight(resto):
-    return ("", 204)
+@app.before_request
+def preflight():
+    if request.method == "OPTIONS":
+        return ("", 204)
 
 
 @app.get("/api/<nombre>")
@@ -228,6 +228,22 @@ def proxy_telemetria(maquina_id):
     d = leer_api_aws(f"/telemetria/{maquina_id}")
     if d is None:
         return jsonify({"error": "api de operaciones no disponible"}), 503
+    return jsonify(d)
+
+
+TIPOS_SCORE = {
+    "prob_falla", "pron_repuestos", "preventivo", "flota",
+    "combustible", "pares", "causa_comun", "pesos_modelo", "plan_semanal",
+}
+
+
+@app.get("/api/scores/<tipo>")
+def proxy_scores(tipo):
+    if tipo not in TIPOS_SCORE:
+        return jsonify({"error": "tipo no válido", "tipos": sorted(TIPOS_SCORE)}), 404
+    d = leer_api_aws(f"/scores/{tipo}")
+    if d is None:
+        return jsonify({"error": "scores no disponibles"}), 503
     return jsonify(d)
 
 

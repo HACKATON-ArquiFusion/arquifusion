@@ -133,6 +133,53 @@ function avisoApi(texto, malo) {
   if (!malo) setTimeout(() => e.remove(), 4000);
 }
 
+function ultimoPorMaquina(registros, clave) {
+  const por = {};
+  registros.forEach((r) => {
+    const id = r.maquina_id;
+    if (!id) return;
+    const prev = por[id];
+    if (!prev || String(r[clave] || "") >= String(prev[clave] || "")) por[id] = r;
+  });
+  return por;
+}
+
+async function aplicarScores() {
+  try {
+    const flota = await traer("/api/scores/flota");
+    const porMaq = ultimoPorMaquina(flota.registros || [], "periodo");
+    let n = 0;
+    M.forEach((m) => {
+      const s = porMaq[m.id];
+      if (!s) return;
+      if (typeof s.utilizacion_pct === "number") m.u = Math.round(s.utilizacion_pct);
+      if (typeof s.costo_op === "number") m.$ = Math.round(s.costo_op);
+      m.categoria = s.categoria || null;
+      n++;
+    });
+    estadoApi.scoresFlota = n;
+  } catch (e) {
+    console.warn("scores flota:", e.message);
+  }
+
+  try {
+    const pf = await traer("/api/scores/prob_falla");
+    const porMaq = ultimoPorMaquina(pf.registros || [], "ts");
+    let n = 0;
+    M.forEach((m) => {
+      const s = porMaq[m.id];
+      if (!s || typeof s.prob_falla !== "number") return;
+      m.prob_modelo = s.prob_falla;
+      m.horizonte = s.horizonte_dias;
+      if (!m.r) m.r = Math.round(s.prob_falla * 100);
+      n++;
+    });
+    estadoApi.scoresProb = n;
+  } catch (e) {
+    console.warn("scores prob_falla:", e.message);
+  }
+}
+
 async function cargarReal() {
   try {
     const flota = await traer("/api/flota");
@@ -150,6 +197,8 @@ async function cargarReal() {
     if ((rep.stock || []).length) reemplazar(R, rep.stock.map(aRepuesto));
 
     estadoApi.kpis = await traer("/api/kpis");
+
+    await aplicarScores();
 
     const notis = await traer("/api/notificaciones");
     N.length = 0;
