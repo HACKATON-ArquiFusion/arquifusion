@@ -1,0 +1,5049 @@
+[
+    {
+        "combustible_lph":  2.3,
+        "estado":  "detenida",
+        "temp":  68.04,
+        "ts":  "2026-10-15T23:00:00Z",
+        "vib":  2.898
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  53.34,
+        "ts":  "2026-10-16T00:00:00Z",
+        "vib":  1.973
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  43.13,
+        "ts":  "2026-10-16T01:00:00Z",
+        "vib":  0.995
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  38.08,
+        "ts":  "2026-10-16T02:00:00Z",
+        "vib":  0.708
+    },
+    {
+        "combustible_lph":  0.2,
+        "estado":  "detenida",
+        "temp":  34.7,
+        "ts":  "2026-10-16T03:00:00Z",
+        "vib":  0.579
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  32.05,
+        "ts":  "2026-10-16T04:00:00Z",
+        "vib":  0.653
+    },
+    {
+        "combustible_lph":  2.91,
+        "estado":  "detenida",
+        "temp":  29.58,
+        "ts":  "2026-10-16T05:00:00Z",
+        "vib":  0.538
+    },
+    {
+        "combustible_lph":  2.04,
+        "estado":  "detenida",
+        "temp":  28.99,
+        "ts":  "2026-10-16T06:00:00Z",
+        "vib":  0.08
+    },
+    {
+        "combustible_lph":  53.44,
+        "estado":  "operativa",
+        "temp":  57.91,
+        "ts":  "2026-10-16T07:00:00Z",
+        "vib":  4.465
+    },
+    {
+        "combustible_lph":  52.4,
+        "estado":  "operativa",
+        "temp":  72.53,
+        "ts":  "2026-10-16T08:00:00Z",
+        "vib":  6.05
+    },
+    {
+        "combustible_lph":  51.02,
+        "estado":  "operativa",
+        "temp":  80.9,
+        "ts":  "2026-10-16T09:00:00Z",
+        "vib":  6.918
+    },
+    {
+        "combustible_lph":  51.34,
+        "estado":  "operativa",
+        "temp":  86.02,
+        "ts":  "2026-10-16T10:00:00Z",
+        "vib":  7.075
+    },
+    {
+        "combustible_lph":  52.49,
+        "estado":  "operativa",
+        "temp":  88.75,
+        "ts":  "2026-10-16T11:00:00Z",
+        "vib":  7.024
+    },
+    {
+        "combustible_lph":  55.45,
+        "estado":  "operativa",
+        "temp":  91.55,
+        "ts":  "2026-10-16T12:00:00Z",
+        "vib":  7.339
+    },
+    {
+        "combustible_lph":  52.9,
+        "estado":  "operativa",
+        "temp":  91.98,
+        "ts":  "2026-10-16T13:00:00Z",
+        "vib":  7.622
+    },
+    {
+        "combustible_lph":  51.21,
+        "estado":  "operativa",
+        "temp":  92.37,
+        "ts":  "2026-10-16T14:00:00Z",
+        "vib":  7.503
+    },
+    {
+        "combustible_lph":  53.65,
+        "estado":  "operativa",
+        "temp":  92.83,
+        "ts":  "2026-10-16T15:00:00Z",
+        "vib":  7.943
+    },
+    {
+        "combustible_lph":  54.57,
+        "estado":  "operativa",
+        "temp":  92.88,
+        "ts":  "2026-10-16T16:00:00Z",
+        "vib":  7.471
+    },
+    {
+        "combustible_lph":  51.66,
+        "estado":  "operativa",
+        "temp":  92.71,
+        "ts":  "2026-10-16T17:00:00Z",
+        "vib":  7.387
+    },
+    {
+        "combustible_lph":  54.05,
+        "estado":  "operativa",
+        "temp":  91.53,
+        "ts":  "2026-10-16T18:00:00Z",
+        "vib":  7.469
+    },
+    {
+        "combustible_lph":  44.23,
+        "estado":  "operativa",
+        "temp":  91.59,
+        "ts":  "2026-10-16T19:00:00Z",
+        "vib":  7.223
+    },
+    {
+        "combustible_lph":  43.37,
+        "estado":  "operativa",
+        "temp":  92.73,
+        "ts":  "2026-10-16T20:00:00Z",
+        "vib":  7.014
+    },
+    {
+        "combustible_lph":  42.28,
+        "estado":  "operativa",
+        "temp":  92.17,
+        "ts":  "2026-10-16T21:00:00Z",
+        "vib":  6.856
+    },
+    {
+        "combustible_lph":  42.57,
+        "estado":  "operativa",
+        "temp":  91.98,
+        "ts":  "2026-10-16T22:00:00Z",
+        "vib":  6.851
+    },
+    {
+        "combustible_lph":  0.37,
+        "estado":  "detenida",
+        "temp":  69.17,
+        "ts":  "2026-10-16T23:00:00Z",
+        "vib":  3.444
+    },
+    {
+        "combustible_lph":  1.98,
+        "estado":  "detenida",
+        "temp":  54.1,
+        "ts":  "2026-10-17T00:00:00Z",
+        "vib":  1.528
+    },
+    {
+        "combustible_lph":  1.84,
+        "estado":  "detenida",
+        "temp":  44.64,
+        "ts":  "2026-10-17T01:00:00Z",
+        "vib":  0.902
+    },
+    {
+        "combustible_lph":  1.22,
+        "estado":  "detenida",
+        "temp":  39.73,
+        "ts":  "2026-10-17T02:00:00Z",
+        "vib":  0.659
+    },
+    {
+        "combustible_lph":  0.3,
+        "estado":  "detenida",
+        "temp":  34.74,
+        "ts":  "2026-10-17T03:00:00Z",
+        "vib":  0.327
+    },
+    {
+        "combustible_lph":  0.35,
+        "estado":  "detenida",
+        "temp":  31.85,
+        "ts":  "2026-10-17T04:00:00Z",
+        "vib":  0.068
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  29.86,
+        "ts":  "2026-10-17T05:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  2.69,
+        "estado":  "detenida",
+        "temp":  29.63,
+        "ts":  "2026-10-17T06:00:00Z",
+        "vib":  0.104
+    },
+    {
+        "combustible_lph":  53.66,
+        "estado":  "operativa",
+        "temp":  57.88,
+        "ts":  "2026-10-17T07:00:00Z",
+        "vib":  4.288
+    },
+    {
+        "combustible_lph":  52.93,
+        "estado":  "operativa",
+        "temp":  73.98,
+        "ts":  "2026-10-17T08:00:00Z",
+        "vib":  6.234
+    },
+    {
+        "combustible_lph":  52.81,
+        "estado":  "operativa",
+        "temp":  83.41,
+        "ts":  "2026-10-17T09:00:00Z",
+        "vib":  7.576
+    },
+    {
+        "combustible_lph":  52.09,
+        "estado":  "operativa",
+        "temp":  87.33,
+        "ts":  "2026-10-17T10:00:00Z",
+        "vib":  7.776
+    },
+    {
+        "combustible_lph":  54.18,
+        "estado":  "operativa",
+        "temp":  90.3,
+        "ts":  "2026-10-17T11:00:00Z",
+        "vib":  7.835
+    },
+    {
+        "combustible_lph":  56.18,
+        "estado":  "operativa",
+        "temp":  91.35,
+        "ts":  "2026-10-17T12:00:00Z",
+        "vib":  7.851
+    },
+    {
+        "combustible_lph":  50.25,
+        "estado":  "operativa",
+        "temp":  92.1,
+        "ts":  "2026-10-17T13:00:00Z",
+        "vib":  8.156
+    },
+    {
+        "combustible_lph":  52.38,
+        "estado":  "operativa",
+        "temp":  92.54,
+        "ts":  "2026-10-17T14:00:00Z",
+        "vib":  8.065
+    },
+    {
+        "combustible_lph":  50.5,
+        "estado":  "operativa",
+        "temp":  93.07,
+        "ts":  "2026-10-17T15:00:00Z",
+        "vib":  8.005
+    },
+    {
+        "combustible_lph":  55.88,
+        "estado":  "operativa",
+        "temp":  92.06,
+        "ts":  "2026-10-17T16:00:00Z",
+        "vib":  8.182
+    },
+    {
+        "combustible_lph":  54.22,
+        "estado":  "operativa",
+        "temp":  92.51,
+        "ts":  "2026-10-17T17:00:00Z",
+        "vib":  8.195
+    },
+    {
+        "combustible_lph":  56.76,
+        "estado":  "operativa",
+        "temp":  92.96,
+        "ts":  "2026-10-17T18:00:00Z",
+        "vib":  8.463
+    },
+    {
+        "combustible_lph":  44.54,
+        "estado":  "operativa",
+        "temp":  92.49,
+        "ts":  "2026-10-17T19:00:00Z",
+        "vib":  7.799
+    },
+    {
+        "combustible_lph":  43.52,
+        "estado":  "operativa",
+        "temp":  93.33,
+        "ts":  "2026-10-17T20:00:00Z",
+        "vib":  7.782
+    },
+    {
+        "combustible_lph":  43.52,
+        "estado":  "operativa",
+        "temp":  93.66,
+        "ts":  "2026-10-17T21:00:00Z",
+        "vib":  7.374
+    },
+    {
+        "combustible_lph":  42.81,
+        "estado":  "operativa",
+        "temp":  93.62,
+        "ts":  "2026-10-17T22:00:00Z",
+        "vib":  7.247
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  71.3,
+        "ts":  "2026-10-17T23:00:00Z",
+        "vib":  3.528
+    },
+    {
+        "combustible_lph":  1,
+        "estado":  "detenida",
+        "temp":  56.38,
+        "ts":  "2026-10-18T00:00:00Z",
+        "vib":  2.303
+    },
+    {
+        "combustible_lph":  2.17,
+        "estado":  "detenida",
+        "temp":  46.83,
+        "ts":  "2026-10-18T01:00:00Z",
+        "vib":  0.993
+    },
+    {
+        "combustible_lph":  3.06,
+        "estado":  "detenida",
+        "temp":  40.33,
+        "ts":  "2026-10-18T02:00:00Z",
+        "vib":  0.47
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  35.97,
+        "ts":  "2026-10-18T03:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  1.35,
+        "estado":  "detenida",
+        "temp":  32.64,
+        "ts":  "2026-10-18T04:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  1.37,
+        "estado":  "detenida",
+        "temp":  30.41,
+        "ts":  "2026-10-18T05:00:00Z",
+        "vib":  0.079
+    },
+    {
+        "combustible_lph":  1.72,
+        "estado":  "detenida",
+        "temp":  30.08,
+        "ts":  "2026-10-18T06:00:00Z",
+        "vib":  0.286
+    },
+    {
+        "combustible_lph":  55.34,
+        "estado":  "operativa",
+        "temp":  58.63,
+        "ts":  "2026-10-18T07:00:00Z",
+        "vib":  4.663
+    },
+    {
+        "combustible_lph":  55.69,
+        "estado":  "operativa",
+        "temp":  74.49,
+        "ts":  "2026-10-18T08:00:00Z",
+        "vib":  7.024
+    },
+    {
+        "combustible_lph":  53.75,
+        "estado":  "operativa",
+        "temp":  83.63,
+        "ts":  "2026-10-18T09:00:00Z",
+        "vib":  7.707
+    },
+    {
+        "combustible_lph":  53.84,
+        "estado":  "operativa",
+        "temp":  86.06,
+        "ts":  "2026-10-18T10:00:00Z",
+        "vib":  8.119
+    },
+    {
+        "combustible_lph":  55.32,
+        "estado":  "operativa",
+        "temp":  89.84,
+        "ts":  "2026-10-18T11:00:00Z",
+        "vib":  8.164
+    },
+    {
+        "combustible_lph":  55.61,
+        "estado":  "operativa",
+        "temp":  92.57,
+        "ts":  "2026-10-18T12:00:00Z",
+        "vib":  8.553
+    },
+    {
+        "combustible_lph":  56.34,
+        "estado":  "operativa",
+        "temp":  93.88,
+        "ts":  "2026-10-18T13:00:00Z",
+        "vib":  8.492
+    },
+    {
+        "combustible_lph":  57.99,
+        "estado":  "operativa",
+        "temp":  94.38,
+        "ts":  "2026-10-18T14:00:00Z",
+        "vib":  8.904
+    },
+    {
+        "combustible_lph":  56.91,
+        "estado":  "operativa",
+        "temp":  95.29,
+        "ts":  "2026-10-18T15:00:00Z",
+        "vib":  8.592
+    },
+    {
+        "combustible_lph":  57.25,
+        "estado":  "operativa",
+        "temp":  94.47,
+        "ts":  "2026-10-18T16:00:00Z",
+        "vib":  9.088
+    },
+    {
+        "combustible_lph":  57.12,
+        "estado":  "operativa",
+        "temp":  94.44,
+        "ts":  "2026-10-18T17:00:00Z",
+        "vib":  9.087
+    },
+    {
+        "combustible_lph":  56.11,
+        "estado":  "operativa",
+        "temp":  94.36,
+        "ts":  "2026-10-18T18:00:00Z",
+        "vib":  8.947
+    },
+    {
+        "combustible_lph":  42.96,
+        "estado":  "operativa",
+        "temp":  94.77,
+        "ts":  "2026-10-18T19:00:00Z",
+        "vib":  7.971
+    },
+    {
+        "combustible_lph":  43.71,
+        "estado":  "operativa",
+        "temp":  93.91,
+        "ts":  "2026-10-18T20:00:00Z",
+        "vib":  7.679
+    },
+    {
+        "combustible_lph":  44.53,
+        "estado":  "operativa",
+        "temp":  96.09,
+        "ts":  "2026-10-18T21:00:00Z",
+        "vib":  8.022
+    },
+    {
+        "combustible_lph":  43.02,
+        "estado":  "operativa",
+        "temp":  94.41,
+        "ts":  "2026-10-18T22:00:00Z",
+        "vib":  7.842
+    },
+    {
+        "combustible_lph":  0.53,
+        "estado":  "detenida",
+        "temp":  70.86,
+        "ts":  "2026-10-18T23:00:00Z",
+        "vib":  4.025
+    },
+    {
+        "combustible_lph":  1.63,
+        "estado":  "detenida",
+        "temp":  55.43,
+        "ts":  "2026-10-19T00:00:00Z",
+        "vib":  2.131
+    },
+    {
+        "combustible_lph":  2.45,
+        "estado":  "detenida",
+        "temp":  45.04,
+        "ts":  "2026-10-19T01:00:00Z",
+        "vib":  1.05
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  39.46,
+        "ts":  "2026-10-19T02:00:00Z",
+        "vib":  0.159
+    },
+    {
+        "combustible_lph":  0.84,
+        "estado":  "detenida",
+        "temp":  35.01,
+        "ts":  "2026-10-19T03:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  0.46,
+        "estado":  "detenida",
+        "temp":  32.41,
+        "ts":  "2026-10-19T04:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  1.68,
+        "estado":  "detenida",
+        "temp":  30.85,
+        "ts":  "2026-10-19T05:00:00Z",
+        "vib":  0.049
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  29.78,
+        "ts":  "2026-10-19T06:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  53.71,
+        "estado":  "operativa",
+        "temp":  58.79,
+        "ts":  "2026-10-19T07:00:00Z",
+        "vib":  5.202
+    },
+    {
+        "combustible_lph":  57.86,
+        "estado":  "operativa",
+        "temp":  74.36,
+        "ts":  "2026-10-19T08:00:00Z",
+        "vib":  7.467
+    },
+    {
+        "combustible_lph":  56.12,
+        "estado":  "operativa",
+        "temp":  82.49,
+        "ts":  "2026-10-19T09:00:00Z",
+        "vib":  8.474
+    },
+    {
+        "combustible_lph":  58.87,
+        "estado":  "operativa",
+        "temp":  88.36,
+        "ts":  "2026-10-19T10:00:00Z",
+        "vib":  9.116
+    },
+    {
+        "combustible_lph":  55.63,
+        "estado":  "operativa",
+        "temp":  91.25,
+        "ts":  "2026-10-19T11:00:00Z",
+        "vib":  9.385
+    },
+    {
+        "combustible_lph":  57.68,
+        "estado":  "operativa",
+        "temp":  93.53,
+        "ts":  "2026-10-19T12:00:00Z",
+        "vib":  9.536
+    },
+    {
+        "combustible_lph":  56.61,
+        "estado":  "operativa",
+        "temp":  94.6,
+        "ts":  "2026-10-19T13:00:00Z",
+        "vib":  9.3
+    },
+    {
+        "combustible_lph":  57.09,
+        "estado":  "operativa",
+        "temp":  94.94,
+        "ts":  "2026-10-19T14:00:00Z",
+        "vib":  9.292
+    },
+    {
+        "combustible_lph":  54.18,
+        "estado":  "operativa",
+        "temp":  95.84,
+        "ts":  "2026-10-19T15:00:00Z",
+        "vib":  9.503
+    },
+    {
+        "combustible_lph":  56.49,
+        "estado":  "operativa",
+        "temp":  95.29,
+        "ts":  "2026-10-19T16:00:00Z",
+        "vib":  9.634
+    },
+    {
+        "combustible_lph":  58.41,
+        "estado":  "operativa",
+        "temp":  95.49,
+        "ts":  "2026-10-19T17:00:00Z",
+        "vib":  9.594
+    },
+    {
+        "combustible_lph":  55.32,
+        "estado":  "operativa",
+        "temp":  96.29,
+        "ts":  "2026-10-19T18:00:00Z",
+        "vib":  9.126
+    },
+    {
+        "combustible_lph":  46.67,
+        "estado":  "operativa",
+        "temp":  96.51,
+        "ts":  "2026-10-19T19:00:00Z",
+        "vib":  8.589
+    },
+    {
+        "combustible_lph":  44.47,
+        "estado":  "operativa",
+        "temp":  96.92,
+        "ts":  "2026-10-19T20:00:00Z",
+        "vib":  8.978
+    },
+    {
+        "combustible_lph":  46.6,
+        "estado":  "operativa",
+        "temp":  96.25,
+        "ts":  "2026-10-19T21:00:00Z",
+        "vib":  8.449
+    },
+    {
+        "combustible_lph":  43.37,
+        "estado":  "operativa",
+        "temp":  96.55,
+        "ts":  "2026-10-19T22:00:00Z",
+        "vib":  8.712
+    },
+    {
+        "combustible_lph":  1.39,
+        "estado":  "detenida",
+        "temp":  72.83,
+        "ts":  "2026-10-19T23:00:00Z",
+        "vib":  4.535
+    },
+    {
+        "combustible_lph":  0.4,
+        "estado":  "detenida",
+        "temp":  56.98,
+        "ts":  "2026-10-20T00:00:00Z",
+        "vib":  2.556
+    },
+    {
+        "combustible_lph":  1.02,
+        "estado":  "detenida",
+        "temp":  45.59,
+        "ts":  "2026-10-20T01:00:00Z",
+        "vib":  1.486
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  40.26,
+        "ts":  "2026-10-20T02:00:00Z",
+        "vib":  0.752
+    },
+    {
+        "combustible_lph":  1.49,
+        "estado":  "detenida",
+        "temp":  36.54,
+        "ts":  "2026-10-20T03:00:00Z",
+        "vib":  0.688
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  33.61,
+        "ts":  "2026-10-20T04:00:00Z",
+        "vib":  0.438
+    },
+    {
+        "combustible_lph":  1.67,
+        "estado":  "detenida",
+        "temp":  31.33,
+        "ts":  "2026-10-20T05:00:00Z",
+        "vib":  0.515
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  30.86,
+        "ts":  "2026-10-20T06:00:00Z",
+        "vib":  0.306
+    },
+    {
+        "combustible_lph":  58.74,
+        "estado":  "operativa",
+        "temp":  59.93,
+        "ts":  "2026-10-20T07:00:00Z",
+        "vib":  5.653
+    },
+    {
+        "combustible_lph":  58.45,
+        "estado":  "operativa",
+        "temp":  76.8,
+        "ts":  "2026-10-20T08:00:00Z",
+        "vib":  8.102
+    },
+    {
+        "combustible_lph":  58.82,
+        "estado":  "operativa",
+        "temp":  85.26,
+        "ts":  "2026-10-20T09:00:00Z",
+        "vib":  9.13
+    },
+    {
+        "combustible_lph":  60.14,
+        "estado":  "operativa",
+        "temp":  89.48,
+        "ts":  "2026-10-20T10:00:00Z",
+        "vib":  9.331
+    },
+    {
+        "combustible_lph":  57.85,
+        "estado":  "operativa",
+        "temp":  93.18,
+        "ts":  "2026-10-20T11:00:00Z",
+        "vib":  9.658
+    },
+    {
+        "combustible_lph":  56.66,
+        "estado":  "operativa",
+        "temp":  95.41,
+        "ts":  "2026-10-20T12:00:00Z",
+        "vib":  9.989
+    },
+    {
+        "combustible_lph":  57.4,
+        "estado":  "operativa",
+        "temp":  96.15,
+        "ts":  "2026-10-20T13:00:00Z",
+        "vib":  9.798
+    },
+    {
+        "combustible_lph":  57.65,
+        "estado":  "operativa",
+        "temp":  95.4,
+        "ts":  "2026-10-20T14:00:00Z",
+        "vib":  10.046
+    },
+    {
+        "combustible_lph":  58.68,
+        "estado":  "operativa",
+        "temp":  96.15,
+        "ts":  "2026-10-20T15:00:00Z",
+        "vib":  10.158
+    },
+    {
+        "combustible_lph":  57.08,
+        "estado":  "operativa",
+        "temp":  96.6,
+        "ts":  "2026-10-20T16:00:00Z",
+        "vib":  9.948
+    },
+    {
+        "combustible_lph":  57.76,
+        "estado":  "operativa",
+        "temp":  96.92,
+        "ts":  "2026-10-20T17:00:00Z",
+        "vib":  9.94
+    },
+    {
+        "combustible_lph":  58.93,
+        "estado":  "operativa",
+        "temp":  96.67,
+        "ts":  "2026-10-20T18:00:00Z",
+        "vib":  10.107
+    },
+    {
+        "combustible_lph":  45.52,
+        "estado":  "operativa",
+        "temp":  96.94,
+        "ts":  "2026-10-20T19:00:00Z",
+        "vib":  9.389
+    },
+    {
+        "combustible_lph":  46.9,
+        "estado":  "operativa",
+        "temp":  96.37,
+        "ts":  "2026-10-20T20:00:00Z",
+        "vib":  9.249
+    },
+    {
+        "combustible_lph":  46.22,
+        "estado":  "operativa",
+        "temp":  95.54,
+        "ts":  "2026-10-20T21:00:00Z",
+        "vib":  8.835
+    },
+    {
+        "combustible_lph":  45.81,
+        "estado":  "operativa",
+        "temp":  95.19,
+        "ts":  "2026-10-20T22:00:00Z",
+        "vib":  9.202
+    },
+    {
+        "combustible_lph":  1.33,
+        "estado":  "detenida",
+        "temp":  72.09,
+        "ts":  "2026-10-20T23:00:00Z",
+        "vib":  4.882
+    },
+    {
+        "combustible_lph":  1.37,
+        "estado":  "detenida",
+        "temp":  57.27,
+        "ts":  "2026-10-21T00:00:00Z",
+        "vib":  2.632
+    },
+    {
+        "combustible_lph":  0.45,
+        "estado":  "detenida",
+        "temp":  47.09,
+        "ts":  "2026-10-21T01:00:00Z",
+        "vib":  1.422
+    },
+    {
+        "combustible_lph":  0.06,
+        "estado":  "detenida",
+        "temp":  41.03,
+        "ts":  "2026-10-21T02:00:00Z",
+        "vib":  1.044
+    },
+    {
+        "combustible_lph":  1.57,
+        "estado":  "detenida",
+        "temp":  36.55,
+        "ts":  "2026-10-21T03:00:00Z",
+        "vib":  0.681
+    },
+    {
+        "combustible_lph":  0.96,
+        "estado":  "detenida",
+        "temp":  33.41,
+        "ts":  "2026-10-21T04:00:00Z",
+        "vib":  0.518
+    },
+    {
+        "combustible_lph":  1.91,
+        "estado":  "detenida",
+        "temp":  31,
+        "ts":  "2026-10-21T05:00:00Z",
+        "vib":  0.144
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  31.28,
+        "ts":  "2026-10-21T06:00:00Z",
+        "vib":  0.325
+    },
+    {
+        "combustible_lph":  60.44,
+        "estado":  "operativa",
+        "temp":  60.23,
+        "ts":  "2026-10-21T07:00:00Z",
+        "vib":  5.884
+    },
+    {
+        "combustible_lph":  58.41,
+        "estado":  "operativa",
+        "temp":  78.59,
+        "ts":  "2026-10-21T08:00:00Z",
+        "vib":  8.444
+    },
+    {
+        "combustible_lph":  60.04,
+        "estado":  "operativa",
+        "temp":  87.81,
+        "ts":  "2026-10-21T09:00:00Z",
+        "vib":  9.494
+    },
+    {
+        "combustible_lph":  57.5,
+        "estado":  "operativa",
+        "temp":  91.66,
+        "ts":  "2026-10-21T10:00:00Z",
+        "vib":  9.787
+    },
+    {
+        "combustible_lph":  59.82,
+        "estado":  "operativa",
+        "temp":  94.72,
+        "ts":  "2026-10-21T11:00:00Z",
+        "vib":  10.141
+    },
+    {
+        "combustible_lph":  58.33,
+        "estado":  "operativa",
+        "temp":  97.7,
+        "ts":  "2026-10-21T12:00:00Z",
+        "vib":  10.504
+    },
+    {
+        "combustible_lph":  60.32,
+        "estado":  "operativa",
+        "temp":  98.99,
+        "ts":  "2026-10-21T13:00:00Z",
+        "vib":  10.521
+    },
+    {
+        "combustible_lph":  59.83,
+        "estado":  "operativa",
+        "temp":  99.2,
+        "ts":  "2026-10-21T14:00:00Z",
+        "vib":  10.944
+    },
+    {
+        "combustible_lph":  59.79,
+        "estado":  "operativa",
+        "temp":  99.02,
+        "ts":  "2026-10-21T15:00:00Z",
+        "vib":  10.698
+    },
+    {
+        "combustible_lph":  61.44,
+        "estado":  "operativa",
+        "temp":  98.88,
+        "ts":  "2026-10-21T16:00:00Z",
+        "vib":  10.512
+    },
+    {
+        "combustible_lph":  59.34,
+        "estado":  "operativa",
+        "temp":  98.78,
+        "ts":  "2026-10-21T17:00:00Z",
+        "vib":  10.681
+    },
+    {
+        "combustible_lph":  51.06,
+        "estado":  "requiere_intervencion",
+        "temp":  105.6,
+        "ts":  "2026-10-21T18:00:00Z",
+        "vib":  12.309
+    },
+    {
+        "combustible_lph":  50.74,
+        "estado":  "requiere_intervencion",
+        "temp":  109.58,
+        "ts":  "2026-10-21T19:00:00Z",
+        "vib":  13.544
+    },
+    {
+        "combustible_lph":  0.69,
+        "estado":  "detenida",
+        "temp":  86.25,
+        "ts":  "2026-10-21T20:00:00Z",
+        "vib":  8.328
+    },
+    {
+        "combustible_lph":  1.16,
+        "estado":  "detenida",
+        "temp":  71.02,
+        "ts":  "2026-10-21T21:00:00Z",
+        "vib":  4.839
+    },
+    {
+        "combustible_lph":  0.74,
+        "estado":  "detenida",
+        "temp":  59.32,
+        "ts":  "2026-10-21T22:00:00Z",
+        "vib":  2.683
+    },
+    {
+        "combustible_lph":  2.17,
+        "estado":  "detenida",
+        "temp":  50.42,
+        "ts":  "2026-10-21T23:00:00Z",
+        "vib":  1.682
+    },
+    {
+        "combustible_lph":  0.98,
+        "estado":  "detenida",
+        "temp":  45.05,
+        "ts":  "2026-10-22T00:00:00Z",
+        "vib":  0.99
+    },
+    {
+        "combustible_lph":  1.65,
+        "estado":  "detenida",
+        "temp":  40.52,
+        "ts":  "2026-10-22T01:00:00Z",
+        "vib":  0.936
+    },
+    {
+        "combustible_lph":  1.73,
+        "estado":  "detenida",
+        "temp":  35.27,
+        "ts":  "2026-10-22T02:00:00Z",
+        "vib":  0.674
+    },
+    {
+        "combustible_lph":  1.45,
+        "estado":  "detenida",
+        "temp":  32.04,
+        "ts":  "2026-10-22T03:00:00Z",
+        "vib":  0.175
+    },
+    {
+        "combustible_lph":  1.84,
+        "estado":  "detenida",
+        "temp":  31.02,
+        "ts":  "2026-10-22T04:00:00Z",
+        "vib":  0.366
+    },
+    {
+        "combustible_lph":  1.44,
+        "estado":  "detenida",
+        "temp":  28.93,
+        "ts":  "2026-10-22T05:00:00Z",
+        "vib":  0.362
+    },
+    {
+        "combustible_lph":  0.53,
+        "estado":  "detenida",
+        "temp":  29.22,
+        "ts":  "2026-10-22T06:00:00Z",
+        "vib":  0.495
+    },
+    {
+        "combustible_lph":  49.68,
+        "estado":  "operativa",
+        "temp":  56.62,
+        "ts":  "2026-10-22T07:00:00Z",
+        "vib":  3.841
+    },
+    {
+        "combustible_lph":  51,
+        "estado":  "operativa",
+        "temp":  70.54,
+        "ts":  "2026-10-22T08:00:00Z",
+        "vib":  5.308
+    },
+    {
+        "combustible_lph":  51.21,
+        "estado":  "operativa",
+        "temp":  78.52,
+        "ts":  "2026-10-22T09:00:00Z",
+        "vib":  5.584
+    },
+    {
+        "combustible_lph":  50.13,
+        "estado":  "operativa",
+        "temp":  83.11,
+        "ts":  "2026-10-22T10:00:00Z",
+        "vib":  5.758
+    },
+    {
+        "combustible_lph":  49.52,
+        "estado":  "operativa",
+        "temp":  84.84,
+        "ts":  "2026-10-22T11:00:00Z",
+        "vib":  6.087
+    },
+    {
+        "combustible_lph":  50.31,
+        "estado":  "operativa",
+        "temp":  86.72,
+        "ts":  "2026-10-22T12:00:00Z",
+        "vib":  6.031
+    },
+    {
+        "combustible_lph":  48.7,
+        "estado":  "operativa",
+        "temp":  87.9,
+        "ts":  "2026-10-22T13:00:00Z",
+        "vib":  5.87
+    },
+    {
+        "combustible_lph":  51.18,
+        "estado":  "operativa",
+        "temp":  88.37,
+        "ts":  "2026-10-22T14:00:00Z",
+        "vib":  6.296
+    },
+    {
+        "combustible_lph":  48.75,
+        "estado":  "operativa",
+        "temp":  88.05,
+        "ts":  "2026-10-22T15:00:00Z",
+        "vib":  6.597
+    },
+    {
+        "combustible_lph":  50.54,
+        "estado":  "operativa",
+        "temp":  88.75,
+        "ts":  "2026-10-22T16:00:00Z",
+        "vib":  6.52
+    },
+    {
+        "combustible_lph":  49.92,
+        "estado":  "operativa",
+        "temp":  88.07,
+        "ts":  "2026-10-22T17:00:00Z",
+        "vib":  6.308
+    },
+    {
+        "combustible_lph":  48.74,
+        "estado":  "operativa",
+        "temp":  87.21,
+        "ts":  "2026-10-22T18:00:00Z",
+        "vib":  6.097
+    },
+    {
+        "combustible_lph":  39.85,
+        "estado":  "operativa",
+        "temp":  87.84,
+        "ts":  "2026-10-22T19:00:00Z",
+        "vib":  5.403
+    },
+    {
+        "combustible_lph":  41.38,
+        "estado":  "operativa",
+        "temp":  89.16,
+        "ts":  "2026-10-22T20:00:00Z",
+        "vib":  5.163
+    },
+    {
+        "combustible_lph":  40.66,
+        "estado":  "operativa",
+        "temp":  88.79,
+        "ts":  "2026-10-22T21:00:00Z",
+        "vib":  5.1
+    },
+    {
+        "combustible_lph":  39.78,
+        "estado":  "operativa",
+        "temp":  88.41,
+        "ts":  "2026-10-22T22:00:00Z",
+        "vib":  5.314
+    },
+    {
+        "combustible_lph":  1.26,
+        "estado":  "detenida",
+        "temp":  66.92,
+        "ts":  "2026-10-22T23:00:00Z",
+        "vib":  2.619
+    },
+    {
+        "combustible_lph":  0.9,
+        "estado":  "detenida",
+        "temp":  53.03,
+        "ts":  "2026-10-23T00:00:00Z",
+        "vib":  1.556
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  44.08,
+        "ts":  "2026-10-23T01:00:00Z",
+        "vib":  0.904
+    },
+    {
+        "combustible_lph":  0.36,
+        "estado":  "detenida",
+        "temp":  39.1,
+        "ts":  "2026-10-23T02:00:00Z",
+        "vib":  0.563
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  36.04,
+        "ts":  "2026-10-23T03:00:00Z",
+        "vib":  0.315
+    },
+    {
+        "combustible_lph":  0.1,
+        "estado":  "detenida",
+        "temp":  32.87,
+        "ts":  "2026-10-23T04:00:00Z",
+        "vib":  0.17
+    },
+    {
+        "combustible_lph":  1.29,
+        "estado":  "detenida",
+        "temp":  30.29,
+        "ts":  "2026-10-23T05:00:00Z",
+        "vib":  0.259
+    },
+    {
+        "combustible_lph":  1.39,
+        "estado":  "detenida",
+        "temp":  30.19,
+        "ts":  "2026-10-23T06:00:00Z",
+        "vib":  0.034
+    },
+    {
+        "combustible_lph":  51.36,
+        "estado":  "operativa",
+        "temp":  56.65,
+        "ts":  "2026-10-23T07:00:00Z",
+        "vib":  3.381
+    },
+    {
+        "combustible_lph":  48.86,
+        "estado":  "operativa",
+        "temp":  71.54,
+        "ts":  "2026-10-23T08:00:00Z",
+        "vib":  5.192
+    },
+    {
+        "combustible_lph":  49.11,
+        "estado":  "operativa",
+        "temp":  78.95,
+        "ts":  "2026-10-23T09:00:00Z",
+        "vib":  5.876
+    },
+    {
+        "combustible_lph":  48.9,
+        "estado":  "operativa",
+        "temp":  83.46,
+        "ts":  "2026-10-23T10:00:00Z",
+        "vib":  6.004
+    },
+    {
+        "combustible_lph":  51.18,
+        "estado":  "operativa",
+        "temp":  86.59,
+        "ts":  "2026-10-23T11:00:00Z",
+        "vib":  6.413
+    },
+    {
+        "combustible_lph":  50.16,
+        "estado":  "operativa",
+        "temp":  87.86,
+        "ts":  "2026-10-23T12:00:00Z",
+        "vib":  6.172
+    },
+    {
+        "combustible_lph":  49.33,
+        "estado":  "operativa",
+        "temp":  87.42,
+        "ts":  "2026-10-23T13:00:00Z",
+        "vib":  6.056
+    },
+    {
+        "combustible_lph":  50.09,
+        "estado":  "operativa",
+        "temp":  87.86,
+        "ts":  "2026-10-23T14:00:00Z",
+        "vib":  6.1
+    },
+    {
+        "combustible_lph":  50.14,
+        "estado":  "operativa",
+        "temp":  88.11,
+        "ts":  "2026-10-23T15:00:00Z",
+        "vib":  6.277
+    },
+    {
+        "combustible_lph":  48.33,
+        "estado":  "operativa",
+        "temp":  87.24,
+        "ts":  "2026-10-23T16:00:00Z",
+        "vib":  6.239
+    },
+    {
+        "combustible_lph":  50.65,
+        "estado":  "operativa",
+        "temp":  86.69,
+        "ts":  "2026-10-23T17:00:00Z",
+        "vib":  6.17
+    },
+    {
+        "combustible_lph":  50.09,
+        "estado":  "operativa",
+        "temp":  86.82,
+        "ts":  "2026-10-23T18:00:00Z",
+        "vib":  6.405
+    },
+    {
+        "combustible_lph":  39.4,
+        "estado":  "operativa",
+        "temp":  87.13,
+        "ts":  "2026-10-23T19:00:00Z",
+        "vib":  5.811
+    },
+    {
+        "combustible_lph":  38.09,
+        "estado":  "operativa",
+        "temp":  88.33,
+        "ts":  "2026-10-23T20:00:00Z",
+        "vib":  5.545
+    },
+    {
+        "combustible_lph":  36.43,
+        "estado":  "operativa",
+        "temp":  88.08,
+        "ts":  "2026-10-23T21:00:00Z",
+        "vib":  5.255
+    },
+    {
+        "combustible_lph":  37.72,
+        "estado":  "operativa",
+        "temp":  89.46,
+        "ts":  "2026-10-23T22:00:00Z",
+        "vib":  5.104
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  68.41,
+        "ts":  "2026-10-23T23:00:00Z",
+        "vib":  2.911
+    },
+    {
+        "combustible_lph":  1.62,
+        "estado":  "detenida",
+        "temp":  54.26,
+        "ts":  "2026-10-24T00:00:00Z",
+        "vib":  1.492
+    },
+    {
+        "combustible_lph":  0.39,
+        "estado":  "detenida",
+        "temp":  44.12,
+        "ts":  "2026-10-24T01:00:00Z",
+        "vib":  0.553
+    },
+    {
+        "combustible_lph":  0.57,
+        "estado":  "detenida",
+        "temp":  37.08,
+        "ts":  "2026-10-24T02:00:00Z",
+        "vib":  0.186
+    },
+    {
+        "combustible_lph":  2.05,
+        "estado":  "detenida",
+        "temp":  34.07,
+        "ts":  "2026-10-24T03:00:00Z",
+        "vib":  0.44
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  32.29,
+        "ts":  "2026-10-24T04:00:00Z",
+        "vib":  0.152
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  30.72,
+        "ts":  "2026-10-24T05:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  29.22,
+        "ts":  "2026-10-24T06:00:00Z",
+        "vib":  0.282
+    },
+    {
+        "combustible_lph":  49.12,
+        "estado":  "operativa",
+        "temp":  55.9,
+        "ts":  "2026-10-24T07:00:00Z",
+        "vib":  3.67
+    },
+    {
+        "combustible_lph":  52.02,
+        "estado":  "operativa",
+        "temp":  71,
+        "ts":  "2026-10-24T08:00:00Z",
+        "vib":  5.006
+    },
+    {
+        "combustible_lph":  48.19,
+        "estado":  "operativa",
+        "temp":  79.95,
+        "ts":  "2026-10-24T09:00:00Z",
+        "vib":  5.686
+    },
+    {
+        "combustible_lph":  50.79,
+        "estado":  "operativa",
+        "temp":  83.77,
+        "ts":  "2026-10-24T10:00:00Z",
+        "vib":  6.318
+    },
+    {
+        "combustible_lph":  48.35,
+        "estado":  "operativa",
+        "temp":  86.35,
+        "ts":  "2026-10-24T11:00:00Z",
+        "vib":  6.365
+    },
+    {
+        "combustible_lph":  51.42,
+        "estado":  "operativa",
+        "temp":  87.67,
+        "ts":  "2026-10-24T12:00:00Z",
+        "vib":  5.944
+    },
+    {
+        "combustible_lph":  50.85,
+        "estado":  "operativa",
+        "temp":  88.38,
+        "ts":  "2026-10-24T13:00:00Z",
+        "vib":  5.908
+    },
+    {
+        "combustible_lph":  48.68,
+        "estado":  "operativa",
+        "temp":  88.12,
+        "ts":  "2026-10-24T14:00:00Z",
+        "vib":  5.918
+    },
+    {
+        "combustible_lph":  50.24,
+        "estado":  "operativa",
+        "temp":  88.55,
+        "ts":  "2026-10-24T15:00:00Z",
+        "vib":  5.978
+    },
+    {
+        "combustible_lph":  46.39,
+        "estado":  "operativa",
+        "temp":  88.5,
+        "ts":  "2026-10-24T16:00:00Z",
+        "vib":  6.128
+    },
+    {
+        "combustible_lph":  49.02,
+        "estado":  "operativa",
+        "temp":  88.63,
+        "ts":  "2026-10-24T17:00:00Z",
+        "vib":  5.719
+    },
+    {
+        "combustible_lph":  49.99,
+        "estado":  "operativa",
+        "temp":  88.39,
+        "ts":  "2026-10-24T18:00:00Z",
+        "vib":  6.182
+    },
+    {
+        "combustible_lph":  41.08,
+        "estado":  "operativa",
+        "temp":  89.01,
+        "ts":  "2026-10-24T19:00:00Z",
+        "vib":  5.29
+    },
+    {
+        "combustible_lph":  38.29,
+        "estado":  "operativa",
+        "temp":  88.64,
+        "ts":  "2026-10-24T20:00:00Z",
+        "vib":  5.229
+    },
+    {
+        "combustible_lph":  39.61,
+        "estado":  "operativa",
+        "temp":  88.08,
+        "ts":  "2026-10-24T21:00:00Z",
+        "vib":  5.059
+    },
+    {
+        "combustible_lph":  39.33,
+        "estado":  "operativa",
+        "temp":  88.51,
+        "ts":  "2026-10-24T22:00:00Z",
+        "vib":  4.554
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  67.27,
+        "ts":  "2026-10-24T23:00:00Z",
+        "vib":  2.381
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  53.33,
+        "ts":  "2026-10-25T00:00:00Z",
+        "vib":  1.522
+    },
+    {
+        "combustible_lph":  0.27,
+        "estado":  "detenida",
+        "temp":  45.29,
+        "ts":  "2026-10-25T01:00:00Z",
+        "vib":  0.727
+    },
+    {
+        "combustible_lph":  1.28,
+        "estado":  "detenida",
+        "temp":  39.34,
+        "ts":  "2026-10-25T02:00:00Z",
+        "vib":  0.325
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  35.65,
+        "ts":  "2026-10-25T03:00:00Z",
+        "vib":  0.627
+    },
+    {
+        "combustible_lph":  1.4,
+        "estado":  "detenida",
+        "temp":  33.35,
+        "ts":  "2026-10-25T04:00:00Z",
+        "vib":  0.385
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  31.39,
+        "ts":  "2026-10-25T05:00:00Z",
+        "vib":  0.152
+    },
+    {
+        "combustible_lph":  1.52,
+        "estado":  "detenida",
+        "temp":  30.64,
+        "ts":  "2026-10-25T06:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  47.6,
+        "estado":  "operativa",
+        "temp":  57.92,
+        "ts":  "2026-10-25T07:00:00Z",
+        "vib":  4.274
+    },
+    {
+        "combustible_lph":  48.35,
+        "estado":  "operativa",
+        "temp":  73.38,
+        "ts":  "2026-10-25T08:00:00Z",
+        "vib":  5.949
+    },
+    {
+        "combustible_lph":  48.36,
+        "estado":  "operativa",
+        "temp":  82.29,
+        "ts":  "2026-10-25T09:00:00Z",
+        "vib":  6.626
+    },
+    {
+        "combustible_lph":  47.11,
+        "estado":  "operativa",
+        "temp":  86.58,
+        "ts":  "2026-10-25T10:00:00Z",
+        "vib":  7.182
+    },
+    {
+        "combustible_lph":  45.53,
+        "estado":  "operativa",
+        "temp":  89.56,
+        "ts":  "2026-10-25T11:00:00Z",
+        "vib":  6.83
+    },
+    {
+        "combustible_lph":  48.97,
+        "estado":  "operativa",
+        "temp":  90.46,
+        "ts":  "2026-10-25T12:00:00Z",
+        "vib":  7.022
+    },
+    {
+        "combustible_lph":  48.01,
+        "estado":  "operativa",
+        "temp":  91.67,
+        "ts":  "2026-10-25T13:00:00Z",
+        "vib":  6.727
+    },
+    {
+        "combustible_lph":  47.4,
+        "estado":  "operativa",
+        "temp":  90.91,
+        "ts":  "2026-10-25T14:00:00Z",
+        "vib":  7.154
+    },
+    {
+        "combustible_lph":  45.27,
+        "estado":  "operativa",
+        "temp":  91.67,
+        "ts":  "2026-10-25T15:00:00Z",
+        "vib":  7.092
+    },
+    {
+        "combustible_lph":  48.42,
+        "estado":  "operativa",
+        "temp":  91.92,
+        "ts":  "2026-10-25T16:00:00Z",
+        "vib":  6.903
+    },
+    {
+        "combustible_lph":  46.65,
+        "estado":  "operativa",
+        "temp":  91.3,
+        "ts":  "2026-10-25T17:00:00Z",
+        "vib":  6.994
+    },
+    {
+        "combustible_lph":  47.59,
+        "estado":  "operativa",
+        "temp":  90.75,
+        "ts":  "2026-10-25T18:00:00Z",
+        "vib":  7.025
+    },
+    {
+        "combustible_lph":  38.26,
+        "estado":  "operativa",
+        "temp":  91.12,
+        "ts":  "2026-10-25T19:00:00Z",
+        "vib":  6.164
+    },
+    {
+        "combustible_lph":  37.71,
+        "estado":  "operativa",
+        "temp":  91.37,
+        "ts":  "2026-10-25T20:00:00Z",
+        "vib":  5.883
+    },
+    {
+        "combustible_lph":  36.79,
+        "estado":  "operativa",
+        "temp":  91.59,
+        "ts":  "2026-10-25T21:00:00Z",
+        "vib":  6.275
+    },
+    {
+        "combustible_lph":  36.49,
+        "estado":  "operativa",
+        "temp":  92.3,
+        "ts":  "2026-10-25T22:00:00Z",
+        "vib":  5.99
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  70,
+        "ts":  "2026-10-25T23:00:00Z",
+        "vib":  3.173
+    },
+    {
+        "combustible_lph":  0.76,
+        "estado":  "detenida",
+        "temp":  55.25,
+        "ts":  "2026-10-26T00:00:00Z",
+        "vib":  1.627
+    },
+    {
+        "combustible_lph":  3.1,
+        "estado":  "detenida",
+        "temp":  45.22,
+        "ts":  "2026-10-26T01:00:00Z",
+        "vib":  0.834
+    },
+    {
+        "combustible_lph":  1.88,
+        "estado":  "detenida",
+        "temp":  37.87,
+        "ts":  "2026-10-26T02:00:00Z",
+        "vib":  0.384
+    },
+    {
+        "combustible_lph":  0.45,
+        "estado":  "detenida",
+        "temp":  34.11,
+        "ts":  "2026-10-26T03:00:00Z",
+        "vib":  0.567
+    },
+    {
+        "combustible_lph":  0.13,
+        "estado":  "detenida",
+        "temp":  31.74,
+        "ts":  "2026-10-26T04:00:00Z",
+        "vib":  0.39
+    },
+    {
+        "combustible_lph":  0.13,
+        "estado":  "detenida",
+        "temp":  30.11,
+        "ts":  "2026-10-26T05:00:00Z",
+        "vib":  0.231
+    },
+    {
+        "combustible_lph":  0.79,
+        "estado":  "detenida",
+        "temp":  29.46,
+        "ts":  "2026-10-26T06:00:00Z",
+        "vib":  0.046
+    },
+    {
+        "combustible_lph":  45.89,
+        "estado":  "operativa",
+        "temp":  58.08,
+        "ts":  "2026-10-26T07:00:00Z",
+        "vib":  3.98
+    },
+    {
+        "combustible_lph":  44.63,
+        "estado":  "operativa",
+        "temp":  72.68,
+        "ts":  "2026-10-26T08:00:00Z",
+        "vib":  5.722
+    },
+    {
+        "combustible_lph":  47.09,
+        "estado":  "operativa",
+        "temp":  81.5,
+        "ts":  "2026-10-26T09:00:00Z",
+        "vib":  6.653
+    },
+    {
+        "combustible_lph":  47.64,
+        "estado":  "operativa",
+        "temp":  86.02,
+        "ts":  "2026-10-26T10:00:00Z",
+        "vib":  7.105
+    },
+    {
+        "combustible_lph":  48.67,
+        "estado":  "operativa",
+        "temp":  87.92,
+        "ts":  "2026-10-26T11:00:00Z",
+        "vib":  7.457
+    },
+    {
+        "combustible_lph":  49.75,
+        "estado":  "operativa",
+        "temp":  89.73,
+        "ts":  "2026-10-26T12:00:00Z",
+        "vib":  7.101
+    },
+    {
+        "combustible_lph":  46.2,
+        "estado":  "operativa",
+        "temp":  90.91,
+        "ts":  "2026-10-26T13:00:00Z",
+        "vib":  7.105
+    },
+    {
+        "combustible_lph":  47.76,
+        "estado":  "operativa",
+        "temp":  91.64,
+        "ts":  "2026-10-26T14:00:00Z",
+        "vib":  7.224
+    },
+    {
+        "combustible_lph":  46.91,
+        "estado":  "operativa",
+        "temp":  90.8,
+        "ts":  "2026-10-26T15:00:00Z",
+        "vib":  6.563
+    },
+    {
+        "combustible_lph":  47.39,
+        "estado":  "operativa",
+        "temp":  92.41,
+        "ts":  "2026-10-26T16:00:00Z",
+        "vib":  6.952
+    },
+    {
+        "combustible_lph":  47.44,
+        "estado":  "operativa",
+        "temp":  92.85,
+        "ts":  "2026-10-26T17:00:00Z",
+        "vib":  7.09
+    },
+    {
+        "combustible_lph":  47.34,
+        "estado":  "operativa",
+        "temp":  92.67,
+        "ts":  "2026-10-26T18:00:00Z",
+        "vib":  7.179
+    },
+    {
+        "combustible_lph":  38.4,
+        "estado":  "operativa",
+        "temp":  92.47,
+        "ts":  "2026-10-26T19:00:00Z",
+        "vib":  6.375
+    },
+    {
+        "combustible_lph":  36.34,
+        "estado":  "operativa",
+        "temp":  91.92,
+        "ts":  "2026-10-26T20:00:00Z",
+        "vib":  6.184
+    },
+    {
+        "combustible_lph":  40.29,
+        "estado":  "operativa",
+        "temp":  92.97,
+        "ts":  "2026-10-26T21:00:00Z",
+        "vib":  6.199
+    },
+    {
+        "combustible_lph":  36.59,
+        "estado":  "operativa",
+        "temp":  93.35,
+        "ts":  "2026-10-26T22:00:00Z",
+        "vib":  5.836
+    },
+    {
+        "combustible_lph":  2.72,
+        "estado":  "detenida",
+        "temp":  69.52,
+        "ts":  "2026-10-26T23:00:00Z",
+        "vib":  3.193
+    },
+    {
+        "combustible_lph":  1.82,
+        "estado":  "detenida",
+        "temp":  55.35,
+        "ts":  "2026-10-27T00:00:00Z",
+        "vib":  1.687
+    },
+    {
+        "combustible_lph":  0.98,
+        "estado":  "detenida",
+        "temp":  46.56,
+        "ts":  "2026-10-27T01:00:00Z",
+        "vib":  1.151
+    },
+    {
+        "combustible_lph":  0.63,
+        "estado":  "detenida",
+        "temp":  40.91,
+        "ts":  "2026-10-27T02:00:00Z",
+        "vib":  0.776
+    },
+    {
+        "combustible_lph":  0.54,
+        "estado":  "detenida",
+        "temp":  35.74,
+        "ts":  "2026-10-27T03:00:00Z",
+        "vib":  0.574
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  32.65,
+        "ts":  "2026-10-27T04:00:00Z",
+        "vib":  0.12
+    },
+    {
+        "combustible_lph":  1.1,
+        "estado":  "detenida",
+        "temp":  31.33,
+        "ts":  "2026-10-27T05:00:00Z",
+        "vib":  0.457
+    },
+    {
+        "combustible_lph":  1.34,
+        "estado":  "detenida",
+        "temp":  31.1,
+        "ts":  "2026-10-27T06:00:00Z",
+        "vib":  0.178
+    },
+    {
+        "combustible_lph":  46.13,
+        "estado":  "operativa",
+        "temp":  58.4,
+        "ts":  "2026-10-27T07:00:00Z",
+        "vib":  3.934
+    },
+    {
+        "combustible_lph":  47.49,
+        "estado":  "operativa",
+        "temp":  73.01,
+        "ts":  "2026-10-27T08:00:00Z",
+        "vib":  5.614
+    },
+    {
+        "combustible_lph":  47.21,
+        "estado":  "operativa",
+        "temp":  81.01,
+        "ts":  "2026-10-27T09:00:00Z",
+        "vib":  6.428
+    },
+    {
+        "combustible_lph":  46.51,
+        "estado":  "operativa",
+        "temp":  85.55,
+        "ts":  "2026-10-27T10:00:00Z",
+        "vib":  6.605
+    },
+    {
+        "combustible_lph":  48.57,
+        "estado":  "operativa",
+        "temp":  87.17,
+        "ts":  "2026-10-27T11:00:00Z",
+        "vib":  6.732
+    },
+    {
+        "combustible_lph":  46.07,
+        "estado":  "operativa",
+        "temp":  89.57,
+        "ts":  "2026-10-27T12:00:00Z",
+        "vib":  6.684
+    },
+    {
+        "combustible_lph":  46.86,
+        "estado":  "operativa",
+        "temp":  89.84,
+        "ts":  "2026-10-27T13:00:00Z",
+        "vib":  6.675
+    },
+    {
+        "combustible_lph":  47.19,
+        "estado":  "operativa",
+        "temp":  91.02,
+        "ts":  "2026-10-27T14:00:00Z",
+        "vib":  6.825
+    },
+    {
+        "combustible_lph":  45.16,
+        "estado":  "operativa",
+        "temp":  91.24,
+        "ts":  "2026-10-27T15:00:00Z",
+        "vib":  7.25
+    },
+    {
+        "combustible_lph":  47.15,
+        "estado":  "operativa",
+        "temp":  90.75,
+        "ts":  "2026-10-27T16:00:00Z",
+        "vib":  7.321
+    },
+    {
+        "combustible_lph":  47.55,
+        "estado":  "operativa",
+        "temp":  90.94,
+        "ts":  "2026-10-27T17:00:00Z",
+        "vib":  7.096
+    },
+    {
+        "combustible_lph":  46.88,
+        "estado":  "operativa",
+        "temp":  91.94,
+        "ts":  "2026-10-27T18:00:00Z",
+        "vib":  7.132
+    },
+    {
+        "combustible_lph":  39.77,
+        "estado":  "operativa",
+        "temp":  92.81,
+        "ts":  "2026-10-27T19:00:00Z",
+        "vib":  6.583
+    },
+    {
+        "combustible_lph":  38.54,
+        "estado":  "operativa",
+        "temp":  93.34,
+        "ts":  "2026-10-27T20:00:00Z",
+        "vib":  6.429
+    },
+    {
+        "combustible_lph":  39.6,
+        "estado":  "operativa",
+        "temp":  92.9,
+        "ts":  "2026-10-27T21:00:00Z",
+        "vib":  6.114
+    },
+    {
+        "combustible_lph":  36.49,
+        "estado":  "operativa",
+        "temp":  91.39,
+        "ts":  "2026-10-27T22:00:00Z",
+        "vib":  5.982
+    },
+    {
+        "combustible_lph":  2.47,
+        "estado":  "detenida",
+        "temp":  69.73,
+        "ts":  "2026-10-27T23:00:00Z",
+        "vib":  2.826
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  55.09,
+        "ts":  "2026-10-28T00:00:00Z",
+        "vib":  1.337
+    },
+    {
+        "combustible_lph":  1.1,
+        "estado":  "detenida",
+        "temp":  45.32,
+        "ts":  "2026-10-28T01:00:00Z",
+        "vib":  0.716
+    },
+    {
+        "combustible_lph":  2.11,
+        "estado":  "detenida",
+        "temp":  39.63,
+        "ts":  "2026-10-28T02:00:00Z",
+        "vib":  0.535
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  35.5,
+        "ts":  "2026-10-28T03:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  0.62,
+        "estado":  "detenida",
+        "temp":  32.04,
+        "ts":  "2026-10-28T04:00:00Z",
+        "vib":  0.25
+    },
+    {
+        "combustible_lph":  1.61,
+        "estado":  "detenida",
+        "temp":  30.02,
+        "ts":  "2026-10-28T05:00:00Z",
+        "vib":  0.285
+    },
+    {
+        "combustible_lph":  1.73,
+        "estado":  "detenida",
+        "temp":  28.95,
+        "ts":  "2026-10-28T06:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  46.47,
+        "estado":  "operativa",
+        "temp":  57.12,
+        "ts":  "2026-10-28T07:00:00Z",
+        "vib":  4.128
+    },
+    {
+        "combustible_lph":  48.99,
+        "estado":  "operativa",
+        "temp":  74.1,
+        "ts":  "2026-10-28T08:00:00Z",
+        "vib":  5.782
+    },
+    {
+        "combustible_lph":  49.35,
+        "estado":  "operativa",
+        "temp":  81.93,
+        "ts":  "2026-10-28T09:00:00Z",
+        "vib":  6.583
+    },
+    {
+        "combustible_lph":  46.99,
+        "estado":  "operativa",
+        "temp":  86.71,
+        "ts":  "2026-10-28T10:00:00Z",
+        "vib":  6.801
+    },
+    {
+        "combustible_lph":  46.66,
+        "estado":  "operativa",
+        "temp":  88.97,
+        "ts":  "2026-10-28T11:00:00Z",
+        "vib":  7.175
+    },
+    {
+        "combustible_lph":  45.59,
+        "estado":  "operativa",
+        "temp":  89.94,
+        "ts":  "2026-10-28T12:00:00Z",
+        "vib":  7.034
+    },
+    {
+        "combustible_lph":  48.03,
+        "estado":  "operativa",
+        "temp":  91.07,
+        "ts":  "2026-10-28T13:00:00Z",
+        "vib":  6.898
+    },
+    {
+        "combustible_lph":  47.46,
+        "estado":  "operativa",
+        "temp":  90.99,
+        "ts":  "2026-10-28T14:00:00Z",
+        "vib":  7.229
+    },
+    {
+        "combustible_lph":  46.93,
+        "estado":  "operativa",
+        "temp":  91.1,
+        "ts":  "2026-10-28T15:00:00Z",
+        "vib":  6.87
+    },
+    {
+        "combustible_lph":  46.82,
+        "estado":  "operativa",
+        "temp":  90.51,
+        "ts":  "2026-10-28T16:00:00Z",
+        "vib":  7.081
+    },
+    {
+        "combustible_lph":  48.15,
+        "estado":  "operativa",
+        "temp":  91.76,
+        "ts":  "2026-10-28T17:00:00Z",
+        "vib":  7.047
+    },
+    {
+        "combustible_lph":  46.31,
+        "estado":  "operativa",
+        "temp":  91.83,
+        "ts":  "2026-10-28T18:00:00Z",
+        "vib":  7.219
+    },
+    {
+        "combustible_lph":  36.63,
+        "estado":  "operativa",
+        "temp":  92.93,
+        "ts":  "2026-10-28T19:00:00Z",
+        "vib":  6.581
+    },
+    {
+        "combustible_lph":  37.8,
+        "estado":  "operativa",
+        "temp":  92.05,
+        "ts":  "2026-10-28T20:00:00Z",
+        "vib":  5.912
+    },
+    {
+        "combustible_lph":  37.2,
+        "estado":  "operativa",
+        "temp":  92.56,
+        "ts":  "2026-10-28T21:00:00Z",
+        "vib":  5.948
+    },
+    {
+        "combustible_lph":  38.73,
+        "estado":  "operativa",
+        "temp":  91.93,
+        "ts":  "2026-10-28T22:00:00Z",
+        "vib":  6.438
+    },
+    {
+        "combustible_lph":  3.68,
+        "estado":  "detenida",
+        "temp":  70.17,
+        "ts":  "2026-10-28T23:00:00Z",
+        "vib":  2.96
+    },
+    {
+        "combustible_lph":  0.52,
+        "estado":  "detenida",
+        "temp":  55.62,
+        "ts":  "2026-10-29T00:00:00Z",
+        "vib":  1.531
+    },
+    {
+        "combustible_lph":  0.75,
+        "estado":  "detenida",
+        "temp":  45.2,
+        "ts":  "2026-10-29T01:00:00Z",
+        "vib":  0.6
+    },
+    {
+        "combustible_lph":  0.99,
+        "estado":  "detenida",
+        "temp":  37.99,
+        "ts":  "2026-10-29T02:00:00Z",
+        "vib":  0.664
+    },
+    {
+        "combustible_lph":  0.27,
+        "estado":  "detenida",
+        "temp":  35.18,
+        "ts":  "2026-10-29T03:00:00Z",
+        "vib":  0.191
+    },
+    {
+        "combustible_lph":  1.78,
+        "estado":  "detenida",
+        "temp":  31.28,
+        "ts":  "2026-10-29T04:00:00Z",
+        "vib":  0.139
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  30.43,
+        "ts":  "2026-10-29T05:00:00Z",
+        "vib":  0.126
+    },
+    {
+        "combustible_lph":  2.17,
+        "estado":  "detenida",
+        "temp":  29.1,
+        "ts":  "2026-10-29T06:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  50.49,
+        "estado":  "operativa",
+        "temp":  58.12,
+        "ts":  "2026-10-29T07:00:00Z",
+        "vib":  4.266
+    },
+    {
+        "combustible_lph":  47.75,
+        "estado":  "operativa",
+        "temp":  73.13,
+        "ts":  "2026-10-29T08:00:00Z",
+        "vib":  6.077
+    },
+    {
+        "combustible_lph":  49.33,
+        "estado":  "operativa",
+        "temp":  81.11,
+        "ts":  "2026-10-29T09:00:00Z",
+        "vib":  6.85
+    },
+    {
+        "combustible_lph":  48.95,
+        "estado":  "operativa",
+        "temp":  85.96,
+        "ts":  "2026-10-29T10:00:00Z",
+        "vib":  6.988
+    },
+    {
+        "combustible_lph":  47.77,
+        "estado":  "operativa",
+        "temp":  88.92,
+        "ts":  "2026-10-29T11:00:00Z",
+        "vib":  6.719
+    },
+    {
+        "combustible_lph":  46.69,
+        "estado":  "operativa",
+        "temp":  90.97,
+        "ts":  "2026-10-29T12:00:00Z",
+        "vib":  6.935
+    },
+    {
+        "combustible_lph":  47.21,
+        "estado":  "operativa",
+        "temp":  91.14,
+        "ts":  "2026-10-29T13:00:00Z",
+        "vib":  6.958
+    },
+    {
+        "combustible_lph":  49.06,
+        "estado":  "operativa",
+        "temp":  91.27,
+        "ts":  "2026-10-29T14:00:00Z",
+        "vib":  6.816
+    },
+    {
+        "combustible_lph":  45.14,
+        "estado":  "operativa",
+        "temp":  91.76,
+        "ts":  "2026-10-29T15:00:00Z",
+        "vib":  6.872
+    },
+    {
+        "combustible_lph":  48.43,
+        "estado":  "operativa",
+        "temp":  92.14,
+        "ts":  "2026-10-29T16:00:00Z",
+        "vib":  6.913
+    },
+    {
+        "combustible_lph":  48.89,
+        "estado":  "operativa",
+        "temp":  92.06,
+        "ts":  "2026-10-29T17:00:00Z",
+        "vib":  6.913
+    },
+    {
+        "combustible_lph":  44.84,
+        "estado":  "operativa",
+        "temp":  92.72,
+        "ts":  "2026-10-29T18:00:00Z",
+        "vib":  7.267
+    },
+    {
+        "combustible_lph":  38.12,
+        "estado":  "operativa",
+        "temp":  91.8,
+        "ts":  "2026-10-29T19:00:00Z",
+        "vib":  6.969
+    },
+    {
+        "combustible_lph":  38.48,
+        "estado":  "operativa",
+        "temp":  92.24,
+        "ts":  "2026-10-29T20:00:00Z",
+        "vib":  6.186
+    },
+    {
+        "combustible_lph":  39.82,
+        "estado":  "operativa",
+        "temp":  91.97,
+        "ts":  "2026-10-29T21:00:00Z",
+        "vib":  5.893
+    },
+    {
+        "combustible_lph":  36.39,
+        "estado":  "operativa",
+        "temp":  92.5,
+        "ts":  "2026-10-29T22:00:00Z",
+        "vib":  5.876
+    },
+    {
+        "combustible_lph":  1.39,
+        "estado":  "detenida",
+        "temp":  69.03,
+        "ts":  "2026-10-29T23:00:00Z",
+        "vib":  3.039
+    },
+    {
+        "combustible_lph":  1.1,
+        "estado":  "detenida",
+        "temp":  54.87,
+        "ts":  "2026-10-30T00:00:00Z",
+        "vib":  1.738
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  46.59,
+        "ts":  "2026-10-30T01:00:00Z",
+        "vib":  0.79
+    },
+    {
+        "combustible_lph":  0.27,
+        "estado":  "detenida",
+        "temp":  39.88,
+        "ts":  "2026-10-30T02:00:00Z",
+        "vib":  0.539
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  35.35,
+        "ts":  "2026-10-30T03:00:00Z",
+        "vib":  0.372
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  32.62,
+        "ts":  "2026-10-30T04:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  2.12,
+        "estado":  "detenida",
+        "temp":  32.16,
+        "ts":  "2026-10-30T05:00:00Z",
+        "vib":  0.275
+    },
+    {
+        "combustible_lph":  1.13,
+        "estado":  "detenida",
+        "temp":  30.38,
+        "ts":  "2026-10-30T06:00:00Z",
+        "vib":  0.473
+    },
+    {
+        "combustible_lph":  48.49,
+        "estado":  "operativa",
+        "temp":  57.74,
+        "ts":  "2026-10-30T07:00:00Z",
+        "vib":  3.937
+    },
+    {
+        "combustible_lph":  46.67,
+        "estado":  "operativa",
+        "temp":  73.32,
+        "ts":  "2026-10-30T08:00:00Z",
+        "vib":  5.759
+    },
+    {
+        "combustible_lph":  47.95,
+        "estado":  "operativa",
+        "temp":  81.71,
+        "ts":  "2026-10-30T09:00:00Z",
+        "vib":  6.708
+    },
+    {
+        "combustible_lph":  46.42,
+        "estado":  "operativa",
+        "temp":  87.36,
+        "ts":  "2026-10-30T10:00:00Z",
+        "vib":  6.657
+    },
+    {
+        "combustible_lph":  46.09,
+        "estado":  "operativa",
+        "temp":  89.68,
+        "ts":  "2026-10-30T11:00:00Z",
+        "vib":  6.543
+    },
+    {
+        "combustible_lph":  45.86,
+        "estado":  "operativa",
+        "temp":  91.52,
+        "ts":  "2026-10-30T12:00:00Z",
+        "vib":  7.071
+    },
+    {
+        "combustible_lph":  47,
+        "estado":  "operativa",
+        "temp":  93.11,
+        "ts":  "2026-10-30T13:00:00Z",
+        "vib":  7.083
+    },
+    {
+        "combustible_lph":  50.23,
+        "estado":  "operativa",
+        "temp":  92.84,
+        "ts":  "2026-10-30T14:00:00Z",
+        "vib":  7.003
+    },
+    {
+        "combustible_lph":  48.86,
+        "estado":  "operativa",
+        "temp":  91.7,
+        "ts":  "2026-10-30T15:00:00Z",
+        "vib":  6.734
+    },
+    {
+        "combustible_lph":  48.93,
+        "estado":  "operativa",
+        "temp":  91.73,
+        "ts":  "2026-10-30T16:00:00Z",
+        "vib":  7.009
+    },
+    {
+        "combustible_lph":  46.89,
+        "estado":  "operativa",
+        "temp":  91.42,
+        "ts":  "2026-10-30T17:00:00Z",
+        "vib":  7.032
+    },
+    {
+        "combustible_lph":  46.93,
+        "estado":  "operativa",
+        "temp":  92.38,
+        "ts":  "2026-10-30T18:00:00Z",
+        "vib":  7
+    },
+    {
+        "combustible_lph":  37.47,
+        "estado":  "operativa",
+        "temp":  91.97,
+        "ts":  "2026-10-30T19:00:00Z",
+        "vib":  6.433
+    },
+    {
+        "combustible_lph":  39.14,
+        "estado":  "operativa",
+        "temp":  91.33,
+        "ts":  "2026-10-30T20:00:00Z",
+        "vib":  6.263
+    },
+    {
+        "combustible_lph":  37.07,
+        "estado":  "operativa",
+        "temp":  91.72,
+        "ts":  "2026-10-30T21:00:00Z",
+        "vib":  6.107
+    },
+    {
+        "combustible_lph":  37.63,
+        "estado":  "operativa",
+        "temp":  92.14,
+        "ts":  "2026-10-30T22:00:00Z",
+        "vib":  5.955
+    },
+    {
+        "combustible_lph":  2.24,
+        "estado":  "detenida",
+        "temp":  69.73,
+        "ts":  "2026-10-30T23:00:00Z",
+        "vib":  3.024
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  54.54,
+        "ts":  "2026-10-31T00:00:00Z",
+        "vib":  1.258
+    },
+    {
+        "combustible_lph":  0.14,
+        "estado":  "detenida",
+        "temp":  46.8,
+        "ts":  "2026-10-31T01:00:00Z",
+        "vib":  0.948
+    },
+    {
+        "combustible_lph":  0.08,
+        "estado":  "detenida",
+        "temp":  41.15,
+        "ts":  "2026-10-31T02:00:00Z",
+        "vib":  0.697
+    },
+    {
+        "combustible_lph":  0.54,
+        "estado":  "detenida",
+        "temp":  37.19,
+        "ts":  "2026-10-31T03:00:00Z",
+        "vib":  0.233
+    },
+    {
+        "combustible_lph":  1.08,
+        "estado":  "detenida",
+        "temp":  33.29,
+        "ts":  "2026-10-31T04:00:00Z",
+        "vib":  0.065
+    },
+    {
+        "combustible_lph":  1.56,
+        "estado":  "detenida",
+        "temp":  31.16,
+        "ts":  "2026-10-31T05:00:00Z",
+        "vib":  0.514
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  29.16,
+        "ts":  "2026-10-31T06:00:00Z",
+        "vib":  0.837
+    },
+    {
+        "combustible_lph":  48.43,
+        "estado":  "operativa",
+        "temp":  57.62,
+        "ts":  "2026-10-31T07:00:00Z",
+        "vib":  4.391
+    },
+    {
+        "combustible_lph":  48.85,
+        "estado":  "operativa",
+        "temp":  73.03,
+        "ts":  "2026-10-31T08:00:00Z",
+        "vib":  5.635
+    },
+    {
+        "combustible_lph":  48.8,
+        "estado":  "operativa",
+        "temp":  81.78,
+        "ts":  "2026-10-31T09:00:00Z",
+        "vib":  6.385
+    },
+    {
+        "combustible_lph":  48.7,
+        "estado":  "operativa",
+        "temp":  87.29,
+        "ts":  "2026-10-31T10:00:00Z",
+        "vib":  6.596
+    },
+    {
+        "combustible_lph":  46.55,
+        "estado":  "operativa",
+        "temp":  89.46,
+        "ts":  "2026-10-31T11:00:00Z",
+        "vib":  6.715
+    },
+    {
+        "combustible_lph":  48.37,
+        "estado":  "operativa",
+        "temp":  90.59,
+        "ts":  "2026-10-31T12:00:00Z",
+        "vib":  7.112
+    },
+    {
+        "combustible_lph":  48.2,
+        "estado":  "operativa",
+        "temp":  90.98,
+        "ts":  "2026-10-31T13:00:00Z",
+        "vib":  7.006
+    },
+    {
+        "combustible_lph":  47.58,
+        "estado":  "operativa",
+        "temp":  90.69,
+        "ts":  "2026-10-31T14:00:00Z",
+        "vib":  6.83
+    },
+    {
+        "combustible_lph":  48.61,
+        "estado":  "operativa",
+        "temp":  90.99,
+        "ts":  "2026-10-31T15:00:00Z",
+        "vib":  6.74
+    },
+    {
+        "combustible_lph":  45.76,
+        "estado":  "operativa",
+        "temp":  90.92,
+        "ts":  "2026-10-31T16:00:00Z",
+        "vib":  6.541
+    },
+    {
+        "combustible_lph":  45.45,
+        "estado":  "operativa",
+        "temp":  92.77,
+        "ts":  "2026-10-31T17:00:00Z",
+        "vib":  6.608
+    },
+    {
+        "combustible_lph":  46.57,
+        "estado":  "operativa",
+        "temp":  91.86,
+        "ts":  "2026-10-31T18:00:00Z",
+        "vib":  6.672
+    },
+    {
+        "combustible_lph":  38.88,
+        "estado":  "operativa",
+        "temp":  91.69,
+        "ts":  "2026-10-31T19:00:00Z",
+        "vib":  6.333
+    },
+    {
+        "combustible_lph":  38.38,
+        "estado":  "operativa",
+        "temp":  91.93,
+        "ts":  "2026-10-31T20:00:00Z",
+        "vib":  6.068
+    },
+    {
+        "combustible_lph":  37.01,
+        "estado":  "operativa",
+        "temp":  91.43,
+        "ts":  "2026-10-31T21:00:00Z",
+        "vib":  6.256
+    },
+    {
+        "combustible_lph":  40.43,
+        "estado":  "operativa",
+        "temp":  92.78,
+        "ts":  "2026-10-31T22:00:00Z",
+        "vib":  6.508
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  71.47,
+        "ts":  "2026-10-31T23:00:00Z",
+        "vib":  3.031
+    },
+    {
+        "combustible_lph":  3.35,
+        "estado":  "detenida",
+        "temp":  57.59,
+        "ts":  "2026-11-01T00:00:00Z",
+        "vib":  1.741
+    },
+    {
+        "combustible_lph":  0.71,
+        "estado":  "detenida",
+        "temp":  47.52,
+        "ts":  "2026-11-01T01:00:00Z",
+        "vib":  0.916
+    },
+    {
+        "combustible_lph":  0.14,
+        "estado":  "detenida",
+        "temp":  42.42,
+        "ts":  "2026-11-01T02:00:00Z",
+        "vib":  0.797
+    },
+    {
+        "combustible_lph":  0.23,
+        "estado":  "detenida",
+        "temp":  38.25,
+        "ts":  "2026-11-01T03:00:00Z",
+        "vib":  0.841
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  34.88,
+        "ts":  "2026-11-01T04:00:00Z",
+        "vib":  0.492
+    },
+    {
+        "combustible_lph":  2.84,
+        "estado":  "detenida",
+        "temp":  32.96,
+        "ts":  "2026-11-01T05:00:00Z",
+        "vib":  0.075
+    },
+    {
+        "combustible_lph":  0.36,
+        "estado":  "detenida",
+        "temp":  30.72,
+        "ts":  "2026-11-01T06:00:00Z",
+        "vib":  0.075
+    },
+    {
+        "combustible_lph":  47.08,
+        "estado":  "operativa",
+        "temp":  59.13,
+        "ts":  "2026-11-01T07:00:00Z",
+        "vib":  4.065
+    },
+    {
+        "combustible_lph":  48.25,
+        "estado":  "operativa",
+        "temp":  73.95,
+        "ts":  "2026-11-01T08:00:00Z",
+        "vib":  5.33
+    },
+    {
+        "combustible_lph":  46.05,
+        "estado":  "operativa",
+        "temp":  82.42,
+        "ts":  "2026-11-01T09:00:00Z",
+        "vib":  6.38
+    },
+    {
+        "combustible_lph":  48.56,
+        "estado":  "operativa",
+        "temp":  87.48,
+        "ts":  "2026-11-01T10:00:00Z",
+        "vib":  6.938
+    },
+    {
+        "combustible_lph":  45.35,
+        "estado":  "operativa",
+        "temp":  90.33,
+        "ts":  "2026-11-01T11:00:00Z",
+        "vib":  7.319
+    },
+    {
+        "combustible_lph":  46.77,
+        "estado":  "operativa",
+        "temp":  89.76,
+        "ts":  "2026-11-01T12:00:00Z",
+        "vib":  7.088
+    },
+    {
+        "combustible_lph":  47.54,
+        "estado":  "operativa",
+        "temp":  90.85,
+        "ts":  "2026-11-01T13:00:00Z",
+        "vib":  7.082
+    },
+    {
+        "combustible_lph":  46.15,
+        "estado":  "operativa",
+        "temp":  91.66,
+        "ts":  "2026-11-01T14:00:00Z",
+        "vib":  6.913
+    },
+    {
+        "combustible_lph":  47.64,
+        "estado":  "operativa",
+        "temp":  92.27,
+        "ts":  "2026-11-01T15:00:00Z",
+        "vib":  7.395
+    },
+    {
+        "combustible_lph":  47.81,
+        "estado":  "operativa",
+        "temp":  92.28,
+        "ts":  "2026-11-01T16:00:00Z",
+        "vib":  7.423
+    },
+    {
+        "combustible_lph":  45.25,
+        "estado":  "operativa",
+        "temp":  92.95,
+        "ts":  "2026-11-01T17:00:00Z",
+        "vib":  6.955
+    },
+    {
+        "combustible_lph":  45.36,
+        "estado":  "operativa",
+        "temp":  91.63,
+        "ts":  "2026-11-01T18:00:00Z",
+        "vib":  6.913
+    },
+    {
+        "combustible_lph":  38.82,
+        "estado":  "operativa",
+        "temp":  92.07,
+        "ts":  "2026-11-01T19:00:00Z",
+        "vib":  6.014
+    },
+    {
+        "combustible_lph":  36.34,
+        "estado":  "operativa",
+        "temp":  91.84,
+        "ts":  "2026-11-01T20:00:00Z",
+        "vib":  5.759
+    },
+    {
+        "combustible_lph":  37.24,
+        "estado":  "operativa",
+        "temp":  91.97,
+        "ts":  "2026-11-01T21:00:00Z",
+        "vib":  5.869
+    },
+    {
+        "combustible_lph":  38.56,
+        "estado":  "operativa",
+        "temp":  91.95,
+        "ts":  "2026-11-01T22:00:00Z",
+        "vib":  5.92
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  69.43,
+        "ts":  "2026-11-01T23:00:00Z",
+        "vib":  2.811
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  54.06,
+        "ts":  "2026-11-02T00:00:00Z",
+        "vib":  1.481
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  45.52,
+        "ts":  "2026-11-02T01:00:00Z",
+        "vib":  0.861
+    },
+    {
+        "combustible_lph":  0.66,
+        "estado":  "detenida",
+        "temp":  39.51,
+        "ts":  "2026-11-02T02:00:00Z",
+        "vib":  0.384
+    },
+    {
+        "combustible_lph":  2.87,
+        "estado":  "detenida",
+        "temp":  36.12,
+        "ts":  "2026-11-02T03:00:00Z",
+        "vib":  0.16
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  32.19,
+        "ts":  "2026-11-02T04:00:00Z",
+        "vib":  0.537
+    },
+    {
+        "combustible_lph":  0.75,
+        "estado":  "detenida",
+        "temp":  30.44,
+        "ts":  "2026-11-02T05:00:00Z",
+        "vib":  0.085
+    },
+    {
+        "combustible_lph":  1.25,
+        "estado":  "detenida",
+        "temp":  30.7,
+        "ts":  "2026-11-02T06:00:00Z",
+        "vib":  0.598
+    },
+    {
+        "combustible_lph":  46.79,
+        "estado":  "operativa",
+        "temp":  58.76,
+        "ts":  "2026-11-02T07:00:00Z",
+        "vib":  4.038
+    },
+    {
+        "combustible_lph":  45.43,
+        "estado":  "operativa",
+        "temp":  74.13,
+        "ts":  "2026-11-02T08:00:00Z",
+        "vib":  5.454
+    },
+    {
+        "combustible_lph":  48.34,
+        "estado":  "operativa",
+        "temp":  83.59,
+        "ts":  "2026-11-02T09:00:00Z",
+        "vib":  6.302
+    },
+    {
+        "combustible_lph":  48.43,
+        "estado":  "operativa",
+        "temp":  86.8,
+        "ts":  "2026-11-02T10:00:00Z",
+        "vib":  6.739
+    },
+    {
+        "combustible_lph":  47.81,
+        "estado":  "operativa",
+        "temp":  89.04,
+        "ts":  "2026-11-02T11:00:00Z",
+        "vib":  6.908
+    },
+    {
+        "combustible_lph":  44.9,
+        "estado":  "operativa",
+        "temp":  90.5,
+        "ts":  "2026-11-02T12:00:00Z",
+        "vib":  6.944
+    },
+    {
+        "combustible_lph":  48.35,
+        "estado":  "operativa",
+        "temp":  91.19,
+        "ts":  "2026-11-02T13:00:00Z",
+        "vib":  7.225
+    },
+    {
+        "combustible_lph":  49.46,
+        "estado":  "operativa",
+        "temp":  92.54,
+        "ts":  "2026-11-02T14:00:00Z",
+        "vib":  7.027
+    },
+    {
+        "combustible_lph":  47.65,
+        "estado":  "operativa",
+        "temp":  93.39,
+        "ts":  "2026-11-02T15:00:00Z",
+        "vib":  7.122
+    },
+    {
+        "combustible_lph":  46.35,
+        "estado":  "operativa",
+        "temp":  93.24,
+        "ts":  "2026-11-02T16:00:00Z",
+        "vib":  6.906
+    },
+    {
+        "combustible_lph":  46.81,
+        "estado":  "operativa",
+        "temp":  92.36,
+        "ts":  "2026-11-02T17:00:00Z",
+        "vib":  6.762
+    },
+    {
+        "combustible_lph":  47.19,
+        "estado":  "operativa",
+        "temp":  92.82,
+        "ts":  "2026-11-02T18:00:00Z",
+        "vib":  6.868
+    },
+    {
+        "combustible_lph":  38.28,
+        "estado":  "operativa",
+        "temp":  92.02,
+        "ts":  "2026-11-02T19:00:00Z",
+        "vib":  6.12
+    },
+    {
+        "combustible_lph":  37.11,
+        "estado":  "operativa",
+        "temp":  92.78,
+        "ts":  "2026-11-02T20:00:00Z",
+        "vib":  6.306
+    },
+    {
+        "combustible_lph":  36.7,
+        "estado":  "operativa",
+        "temp":  93.39,
+        "ts":  "2026-11-02T21:00:00Z",
+        "vib":  6.083
+    },
+    {
+        "combustible_lph":  38.4,
+        "estado":  "operativa",
+        "temp":  92.5,
+        "ts":  "2026-11-02T22:00:00Z",
+        "vib":  6.037
+    },
+    {
+        "combustible_lph":  1.74,
+        "estado":  "detenida",
+        "temp":  70.32,
+        "ts":  "2026-11-02T23:00:00Z",
+        "vib":  2.972
+    },
+    {
+        "combustible_lph":  0.09,
+        "estado":  "detenida",
+        "temp":  54.73,
+        "ts":  "2026-11-03T00:00:00Z",
+        "vib":  1.588
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  44.81,
+        "ts":  "2026-11-03T01:00:00Z",
+        "vib":  0.894
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  38.6,
+        "ts":  "2026-11-03T02:00:00Z",
+        "vib":  0.387
+    },
+    {
+        "combustible_lph":  1.3,
+        "estado":  "detenida",
+        "temp":  34.68,
+        "ts":  "2026-11-03T03:00:00Z",
+        "vib":  0.54
+    },
+    {
+        "combustible_lph":  1.38,
+        "estado":  "detenida",
+        "temp":  32.96,
+        "ts":  "2026-11-03T04:00:00Z",
+        "vib":  0.224
+    },
+    {
+        "combustible_lph":  0.62,
+        "estado":  "detenida",
+        "temp":  31.52,
+        "ts":  "2026-11-03T05:00:00Z",
+        "vib":  0.015
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  29.54,
+        "ts":  "2026-11-03T06:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  48.06,
+        "estado":  "operativa",
+        "temp":  60.08,
+        "ts":  "2026-11-03T07:00:00Z",
+        "vib":  3.593
+    },
+    {
+        "combustible_lph":  45.48,
+        "estado":  "operativa",
+        "temp":  77.35,
+        "ts":  "2026-11-03T08:00:00Z",
+        "vib":  5.136
+    },
+    {
+        "combustible_lph":  46.44,
+        "estado":  "operativa",
+        "temp":  85.58,
+        "ts":  "2026-11-03T09:00:00Z",
+        "vib":  5.739
+    },
+    {
+        "combustible_lph":  47.14,
+        "estado":  "operativa",
+        "temp":  90.26,
+        "ts":  "2026-11-03T10:00:00Z",
+        "vib":  5.785
+    },
+    {
+        "combustible_lph":  44.87,
+        "estado":  "operativa",
+        "temp":  93.02,
+        "ts":  "2026-11-03T11:00:00Z",
+        "vib":  6.137
+    },
+    {
+        "combustible_lph":  46.5,
+        "estado":  "operativa",
+        "temp":  94.96,
+        "ts":  "2026-11-03T12:00:00Z",
+        "vib":  6.521
+    },
+    {
+        "combustible_lph":  50.43,
+        "estado":  "operativa",
+        "temp":  96.4,
+        "ts":  "2026-11-03T13:00:00Z",
+        "vib":  6.329
+    },
+    {
+        "combustible_lph":  47.36,
+        "estado":  "operativa",
+        "temp":  97.21,
+        "ts":  "2026-11-03T14:00:00Z",
+        "vib":  5.966
+    },
+    {
+        "combustible_lph":  46.52,
+        "estado":  "operativa",
+        "temp":  96.71,
+        "ts":  "2026-11-03T15:00:00Z",
+        "vib":  6.243
+    },
+    {
+        "combustible_lph":  45.9,
+        "estado":  "operativa",
+        "temp":  94.87,
+        "ts":  "2026-11-03T16:00:00Z",
+        "vib":  6.355
+    },
+    {
+        "combustible_lph":  47.93,
+        "estado":  "operativa",
+        "temp":  96.17,
+        "ts":  "2026-11-03T17:00:00Z",
+        "vib":  6.545
+    },
+    {
+        "combustible_lph":  46.06,
+        "estado":  "operativa",
+        "temp":  95.46,
+        "ts":  "2026-11-03T18:00:00Z",
+        "vib":  6.302
+    },
+    {
+        "combustible_lph":  37.23,
+        "estado":  "operativa",
+        "temp":  95.5,
+        "ts":  "2026-11-03T19:00:00Z",
+        "vib":  5.581
+    },
+    {
+        "combustible_lph":  38.83,
+        "estado":  "operativa",
+        "temp":  95.57,
+        "ts":  "2026-11-03T20:00:00Z",
+        "vib":  5.237
+    },
+    {
+        "combustible_lph":  37.27,
+        "estado":  "operativa",
+        "temp":  96.48,
+        "ts":  "2026-11-03T21:00:00Z",
+        "vib":  5.306
+    },
+    {
+        "combustible_lph":  37.23,
+        "estado":  "operativa",
+        "temp":  97.64,
+        "ts":  "2026-11-03T22:00:00Z",
+        "vib":  5.31
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  73.01,
+        "ts":  "2026-11-03T23:00:00Z",
+        "vib":  2.711
+    },
+    {
+        "combustible_lph":  1.21,
+        "estado":  "detenida",
+        "temp":  58.67,
+        "ts":  "2026-11-04T00:00:00Z",
+        "vib":  1.862
+    },
+    {
+        "combustible_lph":  0.17,
+        "estado":  "detenida",
+        "temp":  47.44,
+        "ts":  "2026-11-04T01:00:00Z",
+        "vib":  1.081
+    },
+    {
+        "combustible_lph":  0.06,
+        "estado":  "detenida",
+        "temp":  41.46,
+        "ts":  "2026-11-04T02:00:00Z",
+        "vib":  0.472
+    },
+    {
+        "combustible_lph":  0.27,
+        "estado":  "detenida",
+        "temp":  37.4,
+        "ts":  "2026-11-04T03:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  0.72,
+        "estado":  "detenida",
+        "temp":  34.43,
+        "ts":  "2026-11-04T04:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  2.23,
+        "estado":  "detenida",
+        "temp":  32.89,
+        "ts":  "2026-11-04T05:00:00Z",
+        "vib":  0.002
+    },
+    {
+        "combustible_lph":  1.43,
+        "estado":  "detenida",
+        "temp":  31.07,
+        "ts":  "2026-11-04T06:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  46.41,
+        "estado":  "operativa",
+        "temp":  61.05,
+        "ts":  "2026-11-04T07:00:00Z",
+        "vib":  3.653
+    },
+    {
+        "combustible_lph":  47.52,
+        "estado":  "operativa",
+        "temp":  76.25,
+        "ts":  "2026-11-04T08:00:00Z",
+        "vib":  4.943
+    },
+    {
+        "combustible_lph":  47.69,
+        "estado":  "operativa",
+        "temp":  84.25,
+        "ts":  "2026-11-04T09:00:00Z",
+        "vib":  5.443
+    },
+    {
+        "combustible_lph":  45.5,
+        "estado":  "operativa",
+        "temp":  89.97,
+        "ts":  "2026-11-04T10:00:00Z",
+        "vib":  5.683
+    },
+    {
+        "combustible_lph":  46.36,
+        "estado":  "operativa",
+        "temp":  93.75,
+        "ts":  "2026-11-04T11:00:00Z",
+        "vib":  6.1
+    },
+    {
+        "combustible_lph":  47.59,
+        "estado":  "operativa",
+        "temp":  95.07,
+        "ts":  "2026-11-04T12:00:00Z",
+        "vib":  6.164
+    },
+    {
+        "combustible_lph":  47.85,
+        "estado":  "operativa",
+        "temp":  96.51,
+        "ts":  "2026-11-04T13:00:00Z",
+        "vib":  6.343
+    },
+    {
+        "combustible_lph":  47.06,
+        "estado":  "operativa",
+        "temp":  96.74,
+        "ts":  "2026-11-04T14:00:00Z",
+        "vib":  6.229
+    },
+    {
+        "combustible_lph":  46.24,
+        "estado":  "operativa",
+        "temp":  97.38,
+        "ts":  "2026-11-04T15:00:00Z",
+        "vib":  6.138
+    },
+    {
+        "combustible_lph":  47.5,
+        "estado":  "operativa",
+        "temp":  96.85,
+        "ts":  "2026-11-04T16:00:00Z",
+        "vib":  6.023
+    },
+    {
+        "combustible_lph":  46.68,
+        "estado":  "operativa",
+        "temp":  97.9,
+        "ts":  "2026-11-04T17:00:00Z",
+        "vib":  6.332
+    },
+    {
+        "combustible_lph":  47.81,
+        "estado":  "operativa",
+        "temp":  97.81,
+        "ts":  "2026-11-04T18:00:00Z",
+        "vib":  6.18
+    },
+    {
+        "combustible_lph":  38.08,
+        "estado":  "operativa",
+        "temp":  96.13,
+        "ts":  "2026-11-04T19:00:00Z",
+        "vib":  6.27
+    },
+    {
+        "combustible_lph":  37.81,
+        "estado":  "operativa",
+        "temp":  96.65,
+        "ts":  "2026-11-04T20:00:00Z",
+        "vib":  5.751
+    },
+    {
+        "combustible_lph":  37.55,
+        "estado":  "operativa",
+        "temp":  96.52,
+        "ts":  "2026-11-04T21:00:00Z",
+        "vib":  5.253
+    },
+    {
+        "combustible_lph":  37.72,
+        "estado":  "operativa",
+        "temp":  96.64,
+        "ts":  "2026-11-04T22:00:00Z",
+        "vib":  5.435
+    },
+    {
+        "combustible_lph":  2.19,
+        "estado":  "detenida",
+        "temp":  72.14,
+        "ts":  "2026-11-04T23:00:00Z",
+        "vib":  3.227
+    },
+    {
+        "combustible_lph":  0.8,
+        "estado":  "detenida",
+        "temp":  56.63,
+        "ts":  "2026-11-05T00:00:00Z",
+        "vib":  1.444
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  46.66,
+        "ts":  "2026-11-05T01:00:00Z",
+        "vib":  1.17
+    },
+    {
+        "combustible_lph":  0.87,
+        "estado":  "detenida",
+        "temp":  39.9,
+        "ts":  "2026-11-05T02:00:00Z",
+        "vib":  0.902
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  36,
+        "ts":  "2026-11-05T03:00:00Z",
+        "vib":  0.478
+    },
+    {
+        "combustible_lph":  1.89,
+        "estado":  "detenida",
+        "temp":  32.77,
+        "ts":  "2026-11-05T04:00:00Z",
+        "vib":  0.319
+    },
+    {
+        "combustible_lph":  0.28,
+        "estado":  "detenida",
+        "temp":  31.9,
+        "ts":  "2026-11-05T05:00:00Z",
+        "vib":  0.664
+    },
+    {
+        "combustible_lph":  1.05,
+        "estado":  "detenida",
+        "temp":  30.77,
+        "ts":  "2026-11-05T06:00:00Z",
+        "vib":  0.438
+    },
+    {
+        "combustible_lph":  48.1,
+        "estado":  "operativa",
+        "temp":  61.41,
+        "ts":  "2026-11-05T07:00:00Z",
+        "vib":  4.044
+    },
+    {
+        "combustible_lph":  48.11,
+        "estado":  "operativa",
+        "temp":  78.24,
+        "ts":  "2026-11-05T08:00:00Z",
+        "vib":  5.459
+    },
+    {
+        "combustible_lph":  49.77,
+        "estado":  "operativa",
+        "temp":  87.02,
+        "ts":  "2026-11-05T09:00:00Z",
+        "vib":  5.924
+    },
+    {
+        "combustible_lph":  50.16,
+        "estado":  "operativa",
+        "temp":  91.35,
+        "ts":  "2026-11-05T10:00:00Z",
+        "vib":  6.734
+    },
+    {
+        "combustible_lph":  47.03,
+        "estado":  "operativa",
+        "temp":  93.79,
+        "ts":  "2026-11-05T11:00:00Z",
+        "vib":  7.332
+    },
+    {
+        "combustible_lph":  48.22,
+        "estado":  "operativa",
+        "temp":  96.46,
+        "ts":  "2026-11-05T12:00:00Z",
+        "vib":  7.32
+    },
+    {
+        "combustible_lph":  48.43,
+        "estado":  "operativa",
+        "temp":  97.34,
+        "ts":  "2026-11-05T13:00:00Z",
+        "vib":  7.06
+    },
+    {
+        "combustible_lph":  47.13,
+        "estado":  "operativa",
+        "temp":  97.31,
+        "ts":  "2026-11-05T14:00:00Z",
+        "vib":  7.038
+    },
+    {
+        "combustible_lph":  49.09,
+        "estado":  "operativa",
+        "temp":  97.11,
+        "ts":  "2026-11-05T15:00:00Z",
+        "vib":  6.916
+    },
+    {
+        "combustible_lph":  48.26,
+        "estado":  "operativa",
+        "temp":  98.3,
+        "ts":  "2026-11-05T16:00:00Z",
+        "vib":  7.137
+    },
+    {
+        "combustible_lph":  48.05,
+        "estado":  "operativa",
+        "temp":  99.18,
+        "ts":  "2026-11-05T17:00:00Z",
+        "vib":  7.104
+    },
+    {
+        "combustible_lph":  48.69,
+        "estado":  "operativa",
+        "temp":  98.08,
+        "ts":  "2026-11-05T18:00:00Z",
+        "vib":  6.883
+    },
+    {
+        "combustible_lph":  41.64,
+        "estado":  "operativa",
+        "temp":  98.41,
+        "ts":  "2026-11-05T19:00:00Z",
+        "vib":  6.168
+    },
+    {
+        "combustible_lph":  41.55,
+        "estado":  "operativa",
+        "temp":  98.49,
+        "ts":  "2026-11-05T20:00:00Z",
+        "vib":  6.024
+    },
+    {
+        "combustible_lph":  40.5,
+        "estado":  "operativa",
+        "temp":  98.78,
+        "ts":  "2026-11-05T21:00:00Z",
+        "vib":  5.959
+    },
+    {
+        "combustible_lph":  39.43,
+        "estado":  "operativa",
+        "temp":  99.09,
+        "ts":  "2026-11-05T22:00:00Z",
+        "vib":  5.984
+    },
+    {
+        "combustible_lph":  2.29,
+        "estado":  "detenida",
+        "temp":  74.07,
+        "ts":  "2026-11-05T23:00:00Z",
+        "vib":  2.959
+    },
+    {
+        "combustible_lph":  0.8,
+        "estado":  "detenida",
+        "temp":  57.86,
+        "ts":  "2026-11-06T00:00:00Z",
+        "vib":  1.654
+    },
+    {
+        "combustible_lph":  0.07,
+        "estado":  "detenida",
+        "temp":  47.75,
+        "ts":  "2026-11-06T01:00:00Z",
+        "vib":  0.953
+    },
+    {
+        "combustible_lph":  0.81,
+        "estado":  "detenida",
+        "temp":  39.81,
+        "ts":  "2026-11-06T02:00:00Z",
+        "vib":  0.556
+    },
+    {
+        "combustible_lph":  1.21,
+        "estado":  "detenida",
+        "temp":  36.15,
+        "ts":  "2026-11-06T03:00:00Z",
+        "vib":  0.539
+    },
+    {
+        "combustible_lph":  0.74,
+        "estado":  "detenida",
+        "temp":  34.47,
+        "ts":  "2026-11-06T04:00:00Z",
+        "vib":  0.668
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  32.75,
+        "ts":  "2026-11-06T05:00:00Z",
+        "vib":  0.868
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  31.59,
+        "ts":  "2026-11-06T06:00:00Z",
+        "vib":  0.665
+    },
+    {
+        "combustible_lph":  50.64,
+        "estado":  "operativa",
+        "temp":  63.69,
+        "ts":  "2026-11-06T07:00:00Z",
+        "vib":  4.565
+    },
+    {
+        "combustible_lph":  50.79,
+        "estado":  "operativa",
+        "temp":  80.66,
+        "ts":  "2026-11-06T08:00:00Z",
+        "vib":  6.415
+    },
+    {
+        "combustible_lph":  52.79,
+        "estado":  "operativa",
+        "temp":  89.21,
+        "ts":  "2026-11-06T09:00:00Z",
+        "vib":  7.069
+    },
+    {
+        "combustible_lph":  49.86,
+        "estado":  "operativa",
+        "temp":  94.75,
+        "ts":  "2026-11-06T10:00:00Z",
+        "vib":  7.632
+    },
+    {
+        "combustible_lph":  49.56,
+        "estado":  "operativa",
+        "temp":  97.48,
+        "ts":  "2026-11-06T11:00:00Z",
+        "vib":  7.629
+    },
+    {
+        "combustible_lph":  50.26,
+        "estado":  "operativa",
+        "temp":  97.1,
+        "ts":  "2026-11-06T12:00:00Z",
+        "vib":  7.734
+    },
+    {
+        "combustible_lph":  47.73,
+        "estado":  "operativa",
+        "temp":  98.35,
+        "ts":  "2026-11-06T13:00:00Z",
+        "vib":  7.687
+    },
+    {
+        "combustible_lph":  50.14,
+        "estado":  "operativa",
+        "temp":  98.54,
+        "ts":  "2026-11-06T14:00:00Z",
+        "vib":  7.608
+    },
+    {
+        "combustible_lph":  49.66,
+        "estado":  "operativa",
+        "temp":  99.65,
+        "ts":  "2026-11-06T15:00:00Z",
+        "vib":  7.735
+    },
+    {
+        "combustible_lph":  49.7,
+        "estado":  "operativa",
+        "temp":  99.52,
+        "ts":  "2026-11-06T16:00:00Z",
+        "vib":  7.697
+    },
+    {
+        "combustible_lph":  49.88,
+        "estado":  "operativa",
+        "temp":  99.96,
+        "ts":  "2026-11-06T17:00:00Z",
+        "vib":  7.599
+    },
+    {
+        "combustible_lph":  49.22,
+        "estado":  "operativa",
+        "temp":  100.15,
+        "ts":  "2026-11-06T18:00:00Z",
+        "vib":  7.74
+    },
+    {
+        "combustible_lph":  40.47,
+        "estado":  "operativa",
+        "temp":  99.93,
+        "ts":  "2026-11-06T19:00:00Z",
+        "vib":  7.392
+    },
+    {
+        "combustible_lph":  38.86,
+        "estado":  "operativa",
+        "temp":  98.69,
+        "ts":  "2026-11-06T20:00:00Z",
+        "vib":  6.792
+    },
+    {
+        "combustible_lph":  38.74,
+        "estado":  "operativa",
+        "temp":  99.69,
+        "ts":  "2026-11-06T21:00:00Z",
+        "vib":  6.693
+    },
+    {
+        "combustible_lph":  42.32,
+        "estado":  "operativa",
+        "temp":  99.66,
+        "ts":  "2026-11-06T22:00:00Z",
+        "vib":  6.821
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  75.46,
+        "ts":  "2026-11-06T23:00:00Z",
+        "vib":  3.543
+    },
+    {
+        "combustible_lph":  1.14,
+        "estado":  "detenida",
+        "temp":  58.42,
+        "ts":  "2026-11-07T00:00:00Z",
+        "vib":  2.001
+    },
+    {
+        "combustible_lph":  0.33,
+        "estado":  "detenida",
+        "temp":  47.38,
+        "ts":  "2026-11-07T01:00:00Z",
+        "vib":  1.46
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  40.57,
+        "ts":  "2026-11-07T02:00:00Z",
+        "vib":  0.394
+    },
+    {
+        "combustible_lph":  1.35,
+        "estado":  "detenida",
+        "temp":  36.1,
+        "ts":  "2026-11-07T03:00:00Z",
+        "vib":  0.421
+    },
+    {
+        "combustible_lph":  0.9,
+        "estado":  "detenida",
+        "temp":  32.8,
+        "ts":  "2026-11-07T04:00:00Z",
+        "vib":  0.261
+    },
+    {
+        "combustible_lph":  1.91,
+        "estado":  "detenida",
+        "temp":  30.84,
+        "ts":  "2026-11-07T05:00:00Z",
+        "vib":  0.1
+    },
+    {
+        "combustible_lph":  1,
+        "estado":  "detenida",
+        "temp":  29.22,
+        "ts":  "2026-11-07T06:00:00Z",
+        "vib":  0.083
+    },
+    {
+        "combustible_lph":  51.69,
+        "estado":  "operativa",
+        "temp":  61.65,
+        "ts":  "2026-11-07T07:00:00Z",
+        "vib":  4.572
+    },
+    {
+        "combustible_lph":  48.83,
+        "estado":  "operativa",
+        "temp":  79.05,
+        "ts":  "2026-11-07T08:00:00Z",
+        "vib":  6.593
+    },
+    {
+        "combustible_lph":  51.72,
+        "estado":  "operativa",
+        "temp":  88.28,
+        "ts":  "2026-11-07T09:00:00Z",
+        "vib":  7.386
+    },
+    {
+        "combustible_lph":  50.53,
+        "estado":  "operativa",
+        "temp":  93.51,
+        "ts":  "2026-11-07T10:00:00Z",
+        "vib":  8.331
+    },
+    {
+        "combustible_lph":  49.45,
+        "estado":  "operativa",
+        "temp":  97.24,
+        "ts":  "2026-11-07T11:00:00Z",
+        "vib":  8.317
+    },
+    {
+        "combustible_lph":  52.97,
+        "estado":  "operativa",
+        "temp":  99.36,
+        "ts":  "2026-11-07T12:00:00Z",
+        "vib":  8.281
+    },
+    {
+        "combustible_lph":  50.95,
+        "estado":  "operativa",
+        "temp":  100.61,
+        "ts":  "2026-11-07T13:00:00Z",
+        "vib":  8.038
+    },
+    {
+        "combustible_lph":  51.28,
+        "estado":  "operativa",
+        "temp":  101.71,
+        "ts":  "2026-11-07T14:00:00Z",
+        "vib":  8.538
+    },
+    {
+        "combustible_lph":  49.57,
+        "estado":  "operativa",
+        "temp":  101.97,
+        "ts":  "2026-11-07T15:00:00Z",
+        "vib":  8.276
+    },
+    {
+        "combustible_lph":  50.42,
+        "estado":  "operativa",
+        "temp":  101.97,
+        "ts":  "2026-11-07T16:00:00Z",
+        "vib":  8.527
+    },
+    {
+        "combustible_lph":  51.97,
+        "estado":  "operativa",
+        "temp":  102.23,
+        "ts":  "2026-11-07T17:00:00Z",
+        "vib":  8.309
+    },
+    {
+        "combustible_lph":  50.86,
+        "estado":  "operativa",
+        "temp":  101.62,
+        "ts":  "2026-11-07T18:00:00Z",
+        "vib":  8.466
+    },
+    {
+        "combustible_lph":  38.69,
+        "estado":  "operativa",
+        "temp":  101.67,
+        "ts":  "2026-11-07T19:00:00Z",
+        "vib":  7.789
+    },
+    {
+        "combustible_lph":  41.56,
+        "estado":  "operativa",
+        "temp":  103.01,
+        "ts":  "2026-11-07T20:00:00Z",
+        "vib":  7.853
+    },
+    {
+        "combustible_lph":  42.26,
+        "estado":  "operativa",
+        "temp":  102.48,
+        "ts":  "2026-11-07T21:00:00Z",
+        "vib":  7.902
+    },
+    {
+        "combustible_lph":  42.93,
+        "estado":  "operativa",
+        "temp":  101.61,
+        "ts":  "2026-11-07T22:00:00Z",
+        "vib":  7.461
+    },
+    {
+        "combustible_lph":  0.22,
+        "estado":  "detenida",
+        "temp":  75.47,
+        "ts":  "2026-11-07T23:00:00Z",
+        "vib":  3.863
+    },
+    {
+        "combustible_lph":  0.77,
+        "estado":  "detenida",
+        "temp":  59.13,
+        "ts":  "2026-11-08T00:00:00Z",
+        "vib":  1.871
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  49.3,
+        "ts":  "2026-11-08T01:00:00Z",
+        "vib":  0.958
+    },
+    {
+        "combustible_lph":  1.49,
+        "estado":  "detenida",
+        "temp":  41.84,
+        "ts":  "2026-11-08T02:00:00Z",
+        "vib":  0.43
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  37.06,
+        "ts":  "2026-11-08T03:00:00Z",
+        "vib":  0.22
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  34.29,
+        "ts":  "2026-11-08T04:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  31.8,
+        "ts":  "2026-11-08T05:00:00Z",
+        "vib":  0.323
+    },
+    {
+        "combustible_lph":  1.57,
+        "estado":  "detenida",
+        "temp":  30.98,
+        "ts":  "2026-11-08T06:00:00Z",
+        "vib":  0.006
+    },
+    {
+        "combustible_lph":  53.88,
+        "estado":  "operativa",
+        "temp":  62.94,
+        "ts":  "2026-11-08T07:00:00Z",
+        "vib":  5.354
+    },
+    {
+        "combustible_lph":  51.57,
+        "estado":  "operativa",
+        "temp":  81.1,
+        "ts":  "2026-11-08T08:00:00Z",
+        "vib":  7.671
+    },
+    {
+        "combustible_lph":  54.22,
+        "estado":  "operativa",
+        "temp":  90.78,
+        "ts":  "2026-11-08T09:00:00Z",
+        "vib":  8.513
+    },
+    {
+        "combustible_lph":  52.28,
+        "estado":  "operativa",
+        "temp":  96.21,
+        "ts":  "2026-11-08T10:00:00Z",
+        "vib":  8.989
+    },
+    {
+        "combustible_lph":  53.11,
+        "estado":  "operativa",
+        "temp":  99.56,
+        "ts":  "2026-11-08T11:00:00Z",
+        "vib":  8.672
+    },
+    {
+        "combustible_lph":  52.13,
+        "estado":  "operativa",
+        "temp":  101.68,
+        "ts":  "2026-11-08T12:00:00Z",
+        "vib":  9.353
+    },
+    {
+        "combustible_lph":  51.26,
+        "estado":  "operativa",
+        "temp":  102.12,
+        "ts":  "2026-11-08T13:00:00Z",
+        "vib":  9.276
+    },
+    {
+        "combustible_lph":  53.8,
+        "estado":  "operativa",
+        "temp":  103.29,
+        "ts":  "2026-11-08T14:00:00Z",
+        "vib":  9.482
+    },
+    {
+        "combustible_lph":  52.11,
+        "estado":  "operativa",
+        "temp":  103.44,
+        "ts":  "2026-11-08T15:00:00Z",
+        "vib":  9.304
+    },
+    {
+        "combustible_lph":  52.13,
+        "estado":  "operativa",
+        "temp":  103.57,
+        "ts":  "2026-11-08T16:00:00Z",
+        "vib":  9.502
+    },
+    {
+        "combustible_lph":  54.17,
+        "estado":  "operativa",
+        "temp":  103.2,
+        "ts":  "2026-11-08T17:00:00Z",
+        "vib":  9.19
+    },
+    {
+        "combustible_lph":  55.4,
+        "estado":  "operativa",
+        "temp":  103.28,
+        "ts":  "2026-11-08T18:00:00Z",
+        "vib":  9.218
+    },
+    {
+        "combustible_lph":  42.73,
+        "estado":  "operativa",
+        "temp":  104.73,
+        "ts":  "2026-11-08T19:00:00Z",
+        "vib":  8.246
+    },
+    {
+        "combustible_lph":  42.34,
+        "estado":  "operativa",
+        "temp":  103.31,
+        "ts":  "2026-11-08T20:00:00Z",
+        "vib":  8.395
+    },
+    {
+        "combustible_lph":  43.72,
+        "estado":  "operativa",
+        "temp":  102.77,
+        "ts":  "2026-11-08T21:00:00Z",
+        "vib":  8.58
+    },
+    {
+        "combustible_lph":  41.63,
+        "estado":  "operativa",
+        "temp":  102.65,
+        "ts":  "2026-11-08T22:00:00Z",
+        "vib":  8.364
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  76.74,
+        "ts":  "2026-11-08T23:00:00Z",
+        "vib":  4.363
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  59.91,
+        "ts":  "2026-11-09T00:00:00Z",
+        "vib":  2.712
+    },
+    {
+        "combustible_lph":  2.24,
+        "estado":  "detenida",
+        "temp":  48.7,
+        "ts":  "2026-11-09T01:00:00Z",
+        "vib":  1.547
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  41.99,
+        "ts":  "2026-11-09T02:00:00Z",
+        "vib":  1.074
+    },
+    {
+        "combustible_lph":  2.15,
+        "estado":  "detenida",
+        "temp":  36.71,
+        "ts":  "2026-11-09T03:00:00Z",
+        "vib":  0.335
+    },
+    {
+        "combustible_lph":  2.01,
+        "estado":  "detenida",
+        "temp":  33.52,
+        "ts":  "2026-11-09T04:00:00Z",
+        "vib":  0.317
+    },
+    {
+        "combustible_lph":  3.33,
+        "estado":  "detenida",
+        "temp":  32.27,
+        "ts":  "2026-11-09T05:00:00Z",
+        "vib":  0.015
+    },
+    {
+        "combustible_lph":  2.64,
+        "estado":  "detenida",
+        "temp":  31.33,
+        "ts":  "2026-11-09T06:00:00Z",
+        "vib":  0.124
+    },
+    {
+        "combustible_lph":  53.16,
+        "estado":  "operativa",
+        "temp":  63.45,
+        "ts":  "2026-11-09T07:00:00Z",
+        "vib":  5.464
+    },
+    {
+        "combustible_lph":  56.08,
+        "estado":  "operativa",
+        "temp":  82.94,
+        "ts":  "2026-11-09T08:00:00Z",
+        "vib":  7.994
+    },
+    {
+        "combustible_lph":  55.5,
+        "estado":  "operativa",
+        "temp":  92.19,
+        "ts":  "2026-11-09T09:00:00Z",
+        "vib":  9.146
+    },
+    {
+        "combustible_lph":  53.23,
+        "estado":  "operativa",
+        "temp":  97.41,
+        "ts":  "2026-11-09T10:00:00Z",
+        "vib":  9.765
+    },
+    {
+        "combustible_lph":  54.88,
+        "estado":  "operativa",
+        "temp":  100.15,
+        "ts":  "2026-11-09T11:00:00Z",
+        "vib":  10.051
+    },
+    {
+        "combustible_lph":  55.77,
+        "estado":  "operativa",
+        "temp":  103.2,
+        "ts":  "2026-11-09T12:00:00Z",
+        "vib":  10.007
+    },
+    {
+        "combustible_lph":  54.29,
+        "estado":  "operativa",
+        "temp":  104.21,
+        "ts":  "2026-11-09T13:00:00Z",
+        "vib":  9.677
+    },
+    {
+        "combustible_lph":  54.03,
+        "estado":  "operativa",
+        "temp":  104.98,
+        "ts":  "2026-11-09T14:00:00Z",
+        "vib":  9.883
+    },
+    {
+        "combustible_lph":  56.5,
+        "estado":  "operativa",
+        "temp":  104.22,
+        "ts":  "2026-11-09T15:00:00Z",
+        "vib":  9.906
+    },
+    {
+        "combustible_lph":  55.58,
+        "estado":  "operativa",
+        "temp":  105.87,
+        "ts":  "2026-11-09T16:00:00Z",
+        "vib":  10.205
+    },
+    {
+        "combustible_lph":  54.76,
+        "estado":  "operativa",
+        "temp":  105.82,
+        "ts":  "2026-11-09T17:00:00Z",
+        "vib":  10.169
+    },
+    {
+        "combustible_lph":  54.01,
+        "estado":  "operativa",
+        "temp":  105.78,
+        "ts":  "2026-11-09T18:00:00Z",
+        "vib":  10.405
+    },
+    {
+        "combustible_lph":  44.65,
+        "estado":  "operativa",
+        "temp":  105.8,
+        "ts":  "2026-11-09T19:00:00Z",
+        "vib":  9.735
+    },
+    {
+        "combustible_lph":  44.71,
+        "estado":  "operativa",
+        "temp":  106.78,
+        "ts":  "2026-11-09T20:00:00Z",
+        "vib":  9.513
+    },
+    {
+        "combustible_lph":  45.65,
+        "estado":  "operativa",
+        "temp":  106.57,
+        "ts":  "2026-11-09T21:00:00Z",
+        "vib":  9.431
+    },
+    {
+        "combustible_lph":  43.88,
+        "estado":  "operativa",
+        "temp":  106.58,
+        "ts":  "2026-11-09T22:00:00Z",
+        "vib":  9.11
+    },
+    {
+        "combustible_lph":  2.24,
+        "estado":  "detenida",
+        "temp":  79.22,
+        "ts":  "2026-11-09T23:00:00Z",
+        "vib":  4.325
+    },
+    {
+        "combustible_lph":  1.99,
+        "estado":  "detenida",
+        "temp":  60.34,
+        "ts":  "2026-11-10T00:00:00Z",
+        "vib":  2.382
+    },
+    {
+        "combustible_lph":  0.53,
+        "estado":  "detenida",
+        "temp":  49.11,
+        "ts":  "2026-11-10T01:00:00Z",
+        "vib":  0.863
+    },
+    {
+        "combustible_lph":  1.38,
+        "estado":  "detenida",
+        "temp":  41.75,
+        "ts":  "2026-11-10T02:00:00Z",
+        "vib":  0.384
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  38.34,
+        "ts":  "2026-11-10T03:00:00Z",
+        "vib":  0.27
+    },
+    {
+        "combustible_lph":  0.98,
+        "estado":  "detenida",
+        "temp":  35.44,
+        "ts":  "2026-11-10T04:00:00Z",
+        "vib":  0.401
+    },
+    {
+        "combustible_lph":  1.14,
+        "estado":  "detenida",
+        "temp":  32.32,
+        "ts":  "2026-11-10T05:00:00Z",
+        "vib":  0.544
+    },
+    {
+        "combustible_lph":  1.6,
+        "estado":  "detenida",
+        "temp":  30.38,
+        "ts":  "2026-11-10T06:00:00Z",
+        "vib":  0.258
+    },
+    {
+        "combustible_lph":  55.28,
+        "estado":  "operativa",
+        "temp":  64.36,
+        "ts":  "2026-11-10T07:00:00Z",
+        "vib":  6.887
+    },
+    {
+        "combustible_lph":  57.44,
+        "estado":  "operativa",
+        "temp":  83.17,
+        "ts":  "2026-11-10T08:00:00Z",
+        "vib":  10.086
+    },
+    {
+        "combustible_lph":  56.21,
+        "estado":  "operativa",
+        "temp":  92.72,
+        "ts":  "2026-11-10T09:00:00Z",
+        "vib":  11.312
+    },
+    {
+        "combustible_lph":  57.15,
+        "estado":  "operativa",
+        "temp":  98.74,
+        "ts":  "2026-11-10T10:00:00Z",
+        "vib":  12.265
+    },
+    {
+        "combustible_lph":  50.72,
+        "estado":  "requiere_intervencion",
+        "temp":  107.07,
+        "ts":  "2026-11-10T11:00:00Z",
+        "vib":  13.291
+    },
+    {
+        "combustible_lph":  49.64,
+        "estado":  "requiere_intervencion",
+        "temp":  109.77,
+        "ts":  "2026-11-10T12:00:00Z",
+        "vib":  13.191
+    },
+    {
+        "combustible_lph":  52.54,
+        "estado":  "requiere_intervencion",
+        "temp":  111.65,
+        "ts":  "2026-11-10T13:00:00Z",
+        "vib":  13.419
+    },
+    {
+        "combustible_lph":  50.54,
+        "estado":  "requiere_intervencion",
+        "temp":  112.07,
+        "ts":  "2026-11-10T14:00:00Z",
+        "vib":  13.512
+    },
+    {
+        "combustible_lph":  50.46,
+        "estado":  "requiere_intervencion",
+        "temp":  111.66,
+        "ts":  "2026-11-10T15:00:00Z",
+        "vib":  13.626
+    },
+    {
+        "combustible_lph":  0.54,
+        "estado":  "detenida",
+        "temp":  88.75,
+        "ts":  "2026-11-10T16:00:00Z",
+        "vib":  8.66
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  72.52,
+        "ts":  "2026-11-10T17:00:00Z",
+        "vib":  5.457
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  60.51,
+        "ts":  "2026-11-10T18:00:00Z",
+        "vib":  3.116
+    },
+    {
+        "combustible_lph":  1.16,
+        "estado":  "detenida",
+        "temp":  52.19,
+        "ts":  "2026-11-10T19:00:00Z",
+        "vib":  2.124
+    },
+    {
+        "combustible_lph":  1.63,
+        "estado":  "detenida",
+        "temp":  46.58,
+        "ts":  "2026-11-10T20:00:00Z",
+        "vib":  1.351
+    },
+    {
+        "combustible_lph":  1.79,
+        "estado":  "detenida",
+        "temp":  41.33,
+        "ts":  "2026-11-10T21:00:00Z",
+        "vib":  1.088
+    },
+    {
+        "combustible_lph":  0.22,
+        "estado":  "detenida",
+        "temp":  37.98,
+        "ts":  "2026-11-10T22:00:00Z",
+        "vib":  0.375
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  36.6,
+        "ts":  "2026-11-10T23:00:00Z",
+        "vib":  0.257
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  35.94,
+        "ts":  "2026-11-11T00:00:00Z",
+        "vib":  0.147
+    },
+    {
+        "combustible_lph":  0.57,
+        "estado":  "detenida",
+        "temp":  35.8,
+        "ts":  "2026-11-11T01:00:00Z",
+        "vib":  0.197
+    },
+    {
+        "combustible_lph":  2.51,
+        "estado":  "detenida",
+        "temp":  34.04,
+        "ts":  "2026-11-11T02:00:00Z",
+        "vib":  0.338
+    },
+    {
+        "combustible_lph":  0.3,
+        "estado":  "detenida",
+        "temp":  32.28,
+        "ts":  "2026-11-11T03:00:00Z",
+        "vib":  0.537
+    },
+    {
+        "combustible_lph":  0.18,
+        "estado":  "detenida",
+        "temp":  34.1,
+        "ts":  "2026-11-11T04:00:00Z",
+        "vib":  0.386
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  33.5,
+        "ts":  "2026-11-11T05:00:00Z",
+        "vib":  0.622
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  31.19,
+        "ts":  "2026-11-11T06:00:00Z",
+        "vib":  0.266
+    },
+    {
+        "combustible_lph":  47.22,
+        "estado":  "operativa",
+        "temp":  61.06,
+        "ts":  "2026-11-11T07:00:00Z",
+        "vib":  3.883
+    },
+    {
+        "combustible_lph":  49.89,
+        "estado":  "operativa",
+        "temp":  77.8,
+        "ts":  "2026-11-11T08:00:00Z",
+        "vib":  4.847
+    },
+    {
+        "combustible_lph":  46.04,
+        "estado":  "operativa",
+        "temp":  86.64,
+        "ts":  "2026-11-11T09:00:00Z",
+        "vib":  5.705
+    },
+    {
+        "combustible_lph":  46.81,
+        "estado":  "operativa",
+        "temp":  90.79,
+        "ts":  "2026-11-11T10:00:00Z",
+        "vib":  6.103
+    },
+    {
+        "combustible_lph":  47.54,
+        "estado":  "operativa",
+        "temp":  94.52,
+        "ts":  "2026-11-11T11:00:00Z",
+        "vib":  6.261
+    },
+    {
+        "combustible_lph":  46.46,
+        "estado":  "operativa",
+        "temp":  94.99,
+        "ts":  "2026-11-11T12:00:00Z",
+        "vib":  6.176
+    },
+    {
+        "combustible_lph":  44.95,
+        "estado":  "operativa",
+        "temp":  96.38,
+        "ts":  "2026-11-11T13:00:00Z",
+        "vib":  6.214
+    },
+    {
+        "combustible_lph":  46.45,
+        "estado":  "operativa",
+        "temp":  96.7,
+        "ts":  "2026-11-11T14:00:00Z",
+        "vib":  6.39
+    },
+    {
+        "combustible_lph":  48.08,
+        "estado":  "operativa",
+        "temp":  96.92,
+        "ts":  "2026-11-11T15:00:00Z",
+        "vib":  6.43
+    },
+    {
+        "combustible_lph":  48.11,
+        "estado":  "operativa",
+        "temp":  97.68,
+        "ts":  "2026-11-11T16:00:00Z",
+        "vib":  6.192
+    },
+    {
+        "combustible_lph":  49.04,
+        "estado":  "operativa",
+        "temp":  97.94,
+        "ts":  "2026-11-11T17:00:00Z",
+        "vib":  6.371
+    },
+    {
+        "combustible_lph":  46.67,
+        "estado":  "operativa",
+        "temp":  98,
+        "ts":  "2026-11-11T18:00:00Z",
+        "vib":  6.324
+    },
+    {
+        "combustible_lph":  38.34,
+        "estado":  "operativa",
+        "temp":  97.49,
+        "ts":  "2026-11-11T19:00:00Z",
+        "vib":  5.426
+    },
+    {
+        "combustible_lph":  39.56,
+        "estado":  "operativa",
+        "temp":  96.93,
+        "ts":  "2026-11-11T20:00:00Z",
+        "vib":  5.377
+    },
+    {
+        "combustible_lph":  37.15,
+        "estado":  "operativa",
+        "temp":  97.09,
+        "ts":  "2026-11-11T21:00:00Z",
+        "vib":  5.324
+    },
+    {
+        "combustible_lph":  39.32,
+        "estado":  "operativa",
+        "temp":  96.84,
+        "ts":  "2026-11-11T22:00:00Z",
+        "vib":  4.892
+    },
+    {
+        "combustible_lph":  2.74,
+        "estado":  "detenida",
+        "temp":  71.85,
+        "ts":  "2026-11-11T23:00:00Z",
+        "vib":  2.861
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  55.32,
+        "ts":  "2026-11-12T00:00:00Z",
+        "vib":  1.627
+    },
+    {
+        "combustible_lph":  0.28,
+        "estado":  "detenida",
+        "temp":  45.8,
+        "ts":  "2026-11-12T01:00:00Z",
+        "vib":  0.629
+    },
+    {
+        "combustible_lph":  3.06,
+        "estado":  "detenida",
+        "temp":  39,
+        "ts":  "2026-11-12T02:00:00Z",
+        "vib":  0.416
+    },
+    {
+        "combustible_lph":  0.47,
+        "estado":  "detenida",
+        "temp":  34.67,
+        "ts":  "2026-11-12T03:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  1.23,
+        "estado":  "detenida",
+        "temp":  31.55,
+        "ts":  "2026-11-12T04:00:00Z",
+        "vib":  0.483
+    },
+    {
+        "combustible_lph":  1.13,
+        "estado":  "detenida",
+        "temp":  30.54,
+        "ts":  "2026-11-12T05:00:00Z",
+        "vib":  0.233
+    },
+    {
+        "combustible_lph":  0.81,
+        "estado":  "detenida",
+        "temp":  29.97,
+        "ts":  "2026-11-12T06:00:00Z",
+        "vib":  0.254
+    },
+    {
+        "combustible_lph":  47.52,
+        "estado":  "operativa",
+        "temp":  59.62,
+        "ts":  "2026-11-12T07:00:00Z",
+        "vib":  4.341
+    },
+    {
+        "combustible_lph":  45.81,
+        "estado":  "operativa",
+        "temp":  76.5,
+        "ts":  "2026-11-12T08:00:00Z",
+        "vib":  6.124
+    },
+    {
+        "combustible_lph":  47.29,
+        "estado":  "operativa",
+        "temp":  85.45,
+        "ts":  "2026-11-12T09:00:00Z",
+        "vib":  7.106
+    },
+    {
+        "combustible_lph":  46.12,
+        "estado":  "operativa",
+        "temp":  88.87,
+        "ts":  "2026-11-12T10:00:00Z",
+        "vib":  7.72
+    },
+    {
+        "combustible_lph":  47.67,
+        "estado":  "operativa",
+        "temp":  92.23,
+        "ts":  "2026-11-12T11:00:00Z",
+        "vib":  7.493
+    },
+    {
+        "combustible_lph":  47.41,
+        "estado":  "operativa",
+        "temp":  93.43,
+        "ts":  "2026-11-12T12:00:00Z",
+        "vib":  7.772
+    },
+    {
+        "combustible_lph":  48.23,
+        "estado":  "operativa",
+        "temp":  94.89,
+        "ts":  "2026-11-12T13:00:00Z",
+        "vib":  7.786
+    },
+    {
+        "combustible_lph":  48.13,
+        "estado":  "operativa",
+        "temp":  95.6,
+        "ts":  "2026-11-12T14:00:00Z",
+        "vib":  7.618
+    },
+    {
+        "combustible_lph":  47.33,
+        "estado":  "operativa",
+        "temp":  96.02,
+        "ts":  "2026-11-12T15:00:00Z",
+        "vib":  8.037
+    },
+    {
+        "combustible_lph":  47.65,
+        "estado":  "operativa",
+        "temp":  95.27,
+        "ts":  "2026-11-12T16:00:00Z",
+        "vib":  7.956
+    },
+    {
+        "combustible_lph":  47.55,
+        "estado":  "operativa",
+        "temp":  96.18,
+        "ts":  "2026-11-12T17:00:00Z",
+        "vib":  8.11
+    },
+    {
+        "combustible_lph":  49.07,
+        "estado":  "operativa",
+        "temp":  95.55,
+        "ts":  "2026-11-12T18:00:00Z",
+        "vib":  8.504
+    },
+    {
+        "combustible_lph":  36.67,
+        "estado":  "operativa",
+        "temp":  95.54,
+        "ts":  "2026-11-12T19:00:00Z",
+        "vib":  7.125
+    },
+    {
+        "combustible_lph":  37.36,
+        "estado":  "operativa",
+        "temp":  95.1,
+        "ts":  "2026-11-12T20:00:00Z",
+        "vib":  6.767
+    },
+    {
+        "combustible_lph":  39.89,
+        "estado":  "operativa",
+        "temp":  94.84,
+        "ts":  "2026-11-12T21:00:00Z",
+        "vib":  6.435
+    },
+    {
+        "combustible_lph":  34.76,
+        "estado":  "operativa",
+        "temp":  95.52,
+        "ts":  "2026-11-12T22:00:00Z",
+        "vib":  6.146
+    },
+    {
+        "combustible_lph":  0.88,
+        "estado":  "detenida",
+        "temp":  71.82,
+        "ts":  "2026-11-12T23:00:00Z",
+        "vib":  3.458
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  56.29,
+        "ts":  "2026-11-13T00:00:00Z",
+        "vib":  1.91
+    },
+    {
+        "combustible_lph":  2.56,
+        "estado":  "detenida",
+        "temp":  46.71,
+        "ts":  "2026-11-13T01:00:00Z",
+        "vib":  0.845
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  39.95,
+        "ts":  "2026-11-13T02:00:00Z",
+        "vib":  0.341
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  36.54,
+        "ts":  "2026-11-13T03:00:00Z",
+        "vib":  0.137
+    },
+    {
+        "combustible_lph":  0.99,
+        "estado":  "detenida",
+        "temp":  34.27,
+        "ts":  "2026-11-13T04:00:00Z",
+        "vib":  0.017
+    },
+    {
+        "combustible_lph":  2.03,
+        "estado":  "detenida",
+        "temp":  32.29,
+        "ts":  "2026-11-13T05:00:00Z",
+        "vib":  0.023
+    },
+    {
+        "combustible_lph":  1.68,
+        "estado":  "detenida",
+        "temp":  30.39,
+        "ts":  "2026-11-13T06:00:00Z",
+        "vib":  0
+    },
+    {
+        "combustible_lph":  45.11,
+        "estado":  "operativa",
+        "temp":  59.21,
+        "ts":  "2026-11-13T07:00:00Z",
+        "vib":  3.935
+    },
+    {
+        "combustible_lph":  49.8,
+        "estado":  "operativa",
+        "temp":  75.56,
+        "ts":  "2026-11-13T08:00:00Z",
+        "vib":  5.893
+    },
+    {
+        "combustible_lph":  46.91,
+        "estado":  "operativa",
+        "temp":  84.23,
+        "ts":  "2026-11-13T09:00:00Z",
+        "vib":  7.042
+    },
+    {
+        "combustible_lph":  49.53,
+        "estado":  "operativa",
+        "temp":  89.52,
+        "ts":  "2026-11-13T10:00:00Z",
+        "vib":  7.488
+    },
+    {
+        "combustible_lph":  45.32,
+        "estado":  "operativa",
+        "temp":  92.38,
+        "ts":  "2026-11-13T11:00:00Z",
+        "vib":  7.985
+    },
+    {
+        "combustible_lph":  45.69,
+        "estado":  "operativa",
+        "temp":  93.69,
+        "ts":  "2026-11-13T12:00:00Z",
+        "vib":  7.68
+    },
+    {
+        "combustible_lph":  47.68,
+        "estado":  "operativa",
+        "temp":  94.02,
+        "ts":  "2026-11-13T13:00:00Z",
+        "vib":  7.673
+    },
+    {
+        "combustible_lph":  48.52,
+        "estado":  "operativa",
+        "temp":  95.23,
+        "ts":  "2026-11-13T14:00:00Z",
+        "vib":  7.731
+    },
+    {
+        "combustible_lph":  46.12,
+        "estado":  "operativa",
+        "temp":  95.81,
+        "ts":  "2026-11-13T15:00:00Z",
+        "vib":  7.759
+    },
+    {
+        "combustible_lph":  50.24,
+        "estado":  "operativa",
+        "temp":  95.83,
+        "ts":  "2026-11-13T16:00:00Z",
+        "vib":  8.004
+    },
+    {
+        "combustible_lph":  47.58,
+        "estado":  "operativa",
+        "temp":  95.72,
+        "ts":  "2026-11-13T17:00:00Z",
+        "vib":  7.918
+    },
+    {
+        "combustible_lph":  45.18,
+        "estado":  "operativa",
+        "temp":  96.65,
+        "ts":  "2026-11-13T18:00:00Z",
+        "vib":  7.738
+    },
+    {
+        "combustible_lph":  35.1,
+        "estado":  "operativa",
+        "temp":  96.14,
+        "ts":  "2026-11-13T19:00:00Z",
+        "vib":  7.4
+    },
+    {
+        "combustible_lph":  38.19,
+        "estado":  "operativa",
+        "temp":  95.44,
+        "ts":  "2026-11-13T20:00:00Z",
+        "vib":  7.014
+    },
+    {
+        "combustible_lph":  36.86,
+        "estado":  "operativa",
+        "temp":  94.82,
+        "ts":  "2026-11-13T21:00:00Z",
+        "vib":  6.316
+    },
+    {
+        "combustible_lph":  37.95,
+        "estado":  "operativa",
+        "temp":  95.4,
+        "ts":  "2026-11-13T22:00:00Z",
+        "vib":  6.192
+    },
+    {
+        "combustible_lph":  1.38,
+        "estado":  "detenida",
+        "temp":  71,
+        "ts":  "2026-11-13T23:00:00Z",
+        "vib":  3.134
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  56.57,
+        "ts":  "2026-11-14T00:00:00Z",
+        "vib":  1.865
+    },
+    {
+        "combustible_lph":  0.03,
+        "estado":  "detenida",
+        "temp":  45.83,
+        "ts":  "2026-11-14T01:00:00Z",
+        "vib":  0.793
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  38.2,
+        "ts":  "2026-11-14T02:00:00Z",
+        "vib":  0.251
+    },
+    {
+        "combustible_lph":  0.93,
+        "estado":  "detenida",
+        "temp":  35.65,
+        "ts":  "2026-11-14T03:00:00Z",
+        "vib":  0.463
+    },
+    {
+        "combustible_lph":  1.16,
+        "estado":  "detenida",
+        "temp":  32.67,
+        "ts":  "2026-11-14T04:00:00Z",
+        "vib":  0.48
+    },
+    {
+        "combustible_lph":  0,
+        "estado":  "detenida",
+        "temp":  32.15,
+        "ts":  "2026-11-14T05:00:00Z",
+        "vib":  0.368
+    },
+    {
+        "combustible_lph":  0.2,
+        "estado":  "detenida",
+        "temp":  30.01,
+        "ts":  "2026-11-14T06:00:00Z",
+        "vib":  0.532
+    },
+    {
+        "combustible_lph":  47.18,
+        "estado":  "operativa",
+        "temp":  59.63,
+        "ts":  "2026-11-14T07:00:00Z",
+        "vib":  4.933
+    },
+    {
+        "combustible_lph":  46.83,
+        "estado":  "operativa",
+        "temp":  75.49,
+        "ts":  "2026-11-14T08:00:00Z",
+        "vib":  6.457
+    },
+    {
+        "combustible_lph":  47.06,
+        "estado":  "operativa",
+        "temp":  84.09,
+        "ts":  "2026-11-14T09:00:00Z",
+        "vib":  6.912
+    },
+    {
+        "combustible_lph":  45.87,
+        "estado":  "operativa",
+        "temp":  89.4,
+        "ts":  "2026-11-14T10:00:00Z",
+        "vib":  7.605
+    },
+    {
+        "combustible_lph":  45.99,
+        "estado":  "operativa",
+        "temp":  92.87,
+        "ts":  "2026-11-14T11:00:00Z",
+        "vib":  7.545
+    },
+    {
+        "combustible_lph":  47.42,
+        "estado":  "operativa",
+        "temp":  94.88,
+        "ts":  "2026-11-14T12:00:00Z",
+        "vib":  7.726
+    },
+    {
+        "combustible_lph":  48.61,
+        "estado":  "operativa",
+        "temp":  95.18,
+        "ts":  "2026-11-14T13:00:00Z",
+        "vib":  7.665
+    },
+    {
+        "combustible_lph":  49.12,
+        "estado":  "operativa",
+        "temp":  95.32,
+        "ts":  "2026-11-14T14:00:00Z",
+        "vib":  7.973
+    },
+    {
+        "combustible_lph":  46.96,
+        "estado":  "operativa",
+        "temp":  95.37,
+        "ts":  "2026-11-14T15:00:00Z",
+        "vib":  7.701
+    },
+    {
+        "combustible_lph":  48.85,
+        "estado":  "operativa",
+        "temp":  95.38,
+        "ts":  "2026-11-14T16:00:00Z",
+        "vib":  7.53
+    },
+    {
+        "combustible_lph":  46.76,
+        "estado":  "operativa",
+        "temp":  95.88,
+        "ts":  "2026-11-14T17:00:00Z",
+        "vib":  7.654
+    },
+    {
+        "combustible_lph":  46.88,
+        "estado":  "operativa",
+        "temp":  96.32,
+        "ts":  "2026-11-14T18:00:00Z",
+        "vib":  7.491
+    },
+    {
+        "combustible_lph":  36.37,
+        "estado":  "operativa",
+        "temp":  96.2,
+        "ts":  "2026-11-14T19:00:00Z",
+        "vib":  6.933
+    },
+    {
+        "combustible_lph":  36.73,
+        "estado":  "operativa",
+        "temp":  95.96,
+        "ts":  "2026-11-14T20:00:00Z",
+        "vib":  6.782
+    },
+    {
+        "combustible_lph":  37.99,
+        "estado":  "operativa",
+        "temp":  96.46,
+        "ts":  "2026-11-14T21:00:00Z",
+        "vib":  6.931
+    },
+    {
+        "combustible_lph":  36.43,
+        "estado":  "operativa",
+        "temp":  95.25,
+        "ts":  "2026-11-14T22:00:00Z",
+        "vib":  6.958
+    },
+    {
+        "combustible_lph":  1.1,
+        "estado":  "detenida",
+        "temp":  71.61,
+        "ts":  "2026-11-14T23:00:00Z",
+        "vib":  3.433
+    }
+]

@@ -1,0 +1,97 @@
+{
+    "tipo":  "plan_semanal",
+    "generado_ts":  "2026-11-16T00:12:50Z",
+    "version_modelo":  "plan-v1",
+    "registros":  [
+                      {
+                          "accion":  "preventivo",
+                          "componente_probable":  null,
+                          "fecha_recomendada":  "2026-11-15",
+                          "maquina_id":  "M-003",
+                          "motivo":  "Preventivo cada 500 h: al llegar a 15500 h de operacion (fecha estimada 2026-11-15). Desvio inusual en vib (score 5.0). Riesgo relativo alto: 63%, dentro del 5% mas alto de la flota (sin llegar al umbral de 65%)",
+                          "prioridad":  2,
+                          "semana_inicio":  "2026-11-15"
+                      },
+                      {
+                          "accion":  "preventivo",
+                          "componente_probable":  null,
+                          "fecha_recomendada":  "2026-11-15",
+                          "maquina_id":  "M-010",
+                          "motivo":  "Preventivo cada 500 h: al llegar a 28500 h de operacion (fecha estimada 2026-11-15). Forma parte de un grupo con causa comun",
+                          "prioridad":  2,
+                          "semana_inicio":  "2026-11-15"
+                      },
+                      {
+                          "accion":  "preventivo",
+                          "componente_probable":  null,
+                          "fecha_recomendada":  "2026-11-15",
+                          "maquina_id":  "M-042",
+                          "motivo":  "Preventivo cada 500 h: al llegar a 26000 h de operacion (fecha estimada 2026-11-15)",
+                          "prioridad":  2,
+                          "semana_inicio":  "2026-11-15"
+                      },
+                      {
+                          "accion":  "preventivo",
+                          "componente_probable":  null,
+                          "fecha_recomendada":  "2026-11-15",
+                          "maquina_id":  "M-052",
+                          "motivo":  "Preventivo cada 500 h: al llegar a 20000 h de operacion (fecha estimada 2026-11-15)",
+                          "prioridad":  2,
+                          "semana_inicio":  "2026-11-15"
+                      },
+                      {
+                          "accion":  "preventivo",
+                          "componente_probable":  null,
+                          "fecha_recomendada":  "2026-11-15",
+                          "maquina_id":  "M-065",
+                          "motivo":  "Preventivo cada 500 h: al llegar a 11500 h de operacion (fecha estimada 2026-11-15)",
+                          "prioridad":  2,
+                          "semana_inicio":  "2026-11-15"
+                      },
+                      {
+                          "accion":  "preventivo",
+                          "componente_probable":  null,
+                          "fecha_recomendada":  "2026-11-15",
+                          "maquina_id":  "M-072",
+                          "motivo":  "Preventivo cada 500 h: al llegar a 31500 h de operacion (fecha estimada 2026-11-15)",
+                          "prioridad":  2,
+                          "semana_inicio":  "2026-11-15"
+                      },
+                      {
+                          "accion":  "preventivo",
+                          "componente_probable":  null,
+                          "fecha_recomendada":  "2026-11-15",
+                          "maquina_id":  "M-127",
+                          "motivo":  "Preventivo cada 500 h: al llegar a 23500 h de operacion (fecha estimada 2026-11-15)",
+                          "prioridad":  2,
+                          "semana_inicio":  "2026-11-15"
+                      },
+                      {
+                          "accion":  "preventivo",
+                          "componente_probable":  null,
+                          "fecha_recomendada":  "2026-11-15",
+                          "maquina_id":  "M-144",
+                          "motivo":  "Preventivo cada 500 h: al llegar a 7000 h de operacion (fecha estimada 2026-11-15)",
+                          "prioridad":  2,
+                          "semana_inicio":  "2026-11-15"
+                      },
+                      {
+                          "accion":  "preventivo",
+                          "componente_probable":  null,
+                          "fecha_recomendada":  "2026-11-16",
+                          "maquina_id":  "M-008",
+                          "motivo":  "Preventivo cada 500 h: al llegar a 30000 h de operacion (fecha estimada 2026-11-16)",
+                          "prioridad":  2,
+                          "semana_inicio":  "2026-11-15"
+                      },
+                      {
+                          "accion":  "preventivo",
+                          "componente_probable":  null,
+                          "fecha_recomendada":  "2026-11-16",
+                          "maquina_id":  "M-015",
+                          "motivo":  "Preventivo cada 500 h: al llegar a 11500 h de operacion (fecha estimada 2026-11-16)",
+                          "prioridad":  2,
+                          "semana_inicio":  "2026-11-15"
+                      }
+                  ]
+}

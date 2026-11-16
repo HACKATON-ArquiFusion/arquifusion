@@ -1,0 +1,87 @@
+{
+    "tipo":  "pron_repuestos",
+    "generado_ts":  "2026-11-16T00:12:44Z",
+    "version_modelo":  "arima-plus-v1",
+    "registros":  [
+                      {
+                          "componente":  "filtros",
+                          "demanda_prevista":  1.5166,
+                          "fecha":  "2026-11-15",
+                          "limite_inf":  0.4153,
+                          "limite_sup":  2.6179,
+                          "zona":  "Z1"
+                      },
+                      {
+                          "componente":  "filtros",
+                          "demanda_prevista":  1.8835,
+                          "fecha":  "2026-11-16",
+                          "limite_inf":  0.741,
+                          "limite_sup":  3.0261,
+                          "zona":  "Z1"
+                      },
+                      {
+                          "componente":  "filtros",
+                          "demanda_prevista":  2.3831,
+                          "fecha":  "2026-11-17",
+                          "limite_inf":  1.2405,
+                          "limite_sup":  3.5256,
+                          "zona":  "Z1"
+                      },
+                      {
+                          "componente":  "filtros",
+                          "demanda_prevista":  2.0954,
+                          "fecha":  "2026-11-18",
+                          "limite_inf":  0.9529,
+                          "limite_sup":  3.238,
+                          "zona":  "Z1"
+                      },
+                      {
+                          "componente":  "filtros",
+                          "demanda_prevista":  1.7045,
+                          "fecha":  "2026-11-19",
+                          "limite_inf":  0.5619,
+                          "limite_sup":  2.847,
+                          "zona":  "Z1"
+                      },
+                      {
+                          "componente":  "filtros",
+                          "demanda_prevista":  1.0651,
+                          "fecha":  "2026-11-20",
+                          "limite_inf":  0.0,
+                          "limite_sup":  2.2077,
+                          "zona":  "Z1"
+                      },
+                      {
+                          "componente":  "filtros",
+                          "demanda_prevista":  1.0912,
+                          "fecha":  "2026-11-21",
+                          "limite_inf":  0.0,
+                          "limite_sup":  2.2338,
+                          "zona":  "Z1"
+                      },
+                      {
+                          "componente":  "filtros",
+                          "demanda_prevista":  1.3307,
+                          "fecha":  "2026-11-22",
+                          "limite_inf":  0.1881,
+                          "limite_sup":  2.4733,
+                          "zona":  "Z1"
+                      },
+                      {
+                          "componente":  "filtros",
+                          "demanda_prevista":  1.8902,
+                          "fecha":  "2026-11-23",
+                          "limite_inf":  0.7477,
+                          "limite_sup":  3.0328,
+                          "zona":  "Z1"
+                      },
+                      {
+                          "componente":  "filtros",
+                          "demanda_prevista":  2.4285,
+                          "fecha":  "2026-11-24",
+                          "limite_inf":  1.2859,
+                          "limite_sup":  3.571,
+                          "zona":  "Z1"
+                      }
+                  ]
+}

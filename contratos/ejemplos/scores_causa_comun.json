@@ -1,0 +1,75 @@
+{
+    "tipo":  "causa_comun",
+    "generado_ts":  "2026-11-16T00:12:48Z",
+    "version_modelo":  "bqgis-v1",
+    "registros":  [
+                      {
+                          "centro_lat":  -15.5209,
+                          "centro_lon":  -71.5192,
+                          "grupo_id":  "CC-Z2-20260905-27c670",
+                          "hipotesis":  "lote_combustible",
+                          "maquina_ids":  [
+                                              "M-010",
+                                              "M-044",
+                                              "M-098",
+                                              "M-145"
+                                          ],
+                          "radio_m":  168.0,
+                          "ts_fin":  "2026-09-12T00:00:00Z",
+                          "ts_inicio":  "2026-09-05T00:00:00Z",
+                          "variable_comun":  "vib",
+                          "zona":  "Z2"
+                      },
+                      {
+                          "centro_lat":  -15.4997,
+                          "centro_lon":  -71.4794,
+                          "grupo_id":  "CC-Z3-20261010-8a5c70",
+                          "hipotesis":  "clima",
+                          "maquina_ids":  [
+                                              "M-034",
+                                              "M-035",
+                                              "M-101",
+                                              "M-122"
+                                          ],
+                          "radio_m":  386.0,
+                          "ts_fin":  "2026-10-16T00:00:00Z",
+                          "ts_inicio":  "2026-10-10T00:00:00Z",
+                          "variable_comun":  "vib",
+                          "zona":  "Z3"
+                      },
+                      {
+                          "centro_lat":  -15.5047,
+                          "centro_lon":  -71.5357,
+                          "grupo_id":  "CC-Z5-20261023-7cc075",
+                          "hipotesis":  "terreno",
+                          "maquina_ids":  [
+                                              "M-029",
+                                              "M-049",
+                                              "M-096",
+                                              "M-113",
+                                              "M-126"
+                                          ],
+                          "radio_m":  255.0,
+                          "ts_fin":  "2026-10-31T00:00:00Z",
+                          "ts_inicio":  "2026-10-23T00:00:00Z",
+                          "variable_comun":  "vib",
+                          "zona":  "Z5"
+                      },
+                      {
+                          "centro_lat":  -15.4991,
+                          "centro_lon":  -71.5614,
+                          "grupo_id":  "CC-Z4-20261103-2eebff",
+                          "hipotesis":  "clima",
+                          "maquina_ids":  [
+                                              "M-037",
+                                              "M-038",
+                                              "M-111"
+                                          ],
+                          "radio_m":  237.0,
+                          "ts_fin":  "2026-11-09T00:00:00Z",
+                          "ts_inicio":  "2026-11-03T00:00:00Z",
+                          "variable_comun":  "vib",
+                          "zona":  "Z4"
+                      }
+                  ]
+}

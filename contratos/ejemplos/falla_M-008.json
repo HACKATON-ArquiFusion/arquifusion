@@ -1,0 +1,20 @@
+[
+    {
+        "componente":  "refrigeracion",
+        "escenario":  "deriva_conjunta",
+        "falla_id":  "F-0064",
+        "maquina_id":  "M-008",
+        "ts_falla":  "2026-10-21T17:35:17Z",
+        "ts_inicio_deriva":  "2026-10-13T13:18:39Z",
+        "ts_reparacion":  "2026-10-22T01:02:20Z"
+    },
+    {
+        "componente":  "refrigeracion",
+        "escenario":  "deriva_conjunta",
+        "falla_id":  "F-0065",
+        "maquina_id":  "M-008",
+        "ts_falla":  "2026-11-10T10:17:44Z",
+        "ts_inicio_deriva":  "2026-11-04T08:51:53Z",
+        "ts_reparacion":  "2026-11-11T05:16:54Z"
+    }
+]

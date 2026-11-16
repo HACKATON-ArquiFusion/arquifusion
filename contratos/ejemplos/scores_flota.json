@@ -1,0 +1,87 @@
+{
+    "tipo":  "flota",
+    "generado_ts":  "2026-11-16T00:12:47Z",
+    "version_modelo":  "reglas-v1",
+    "registros":  [
+                      {
+                          "categoria":  "sobreuso",
+                          "costo_op":  29993.04,
+                          "horas_op":  140.0,
+                          "maquina_id":  "M-001",
+                          "periodo":  "2026-11-08",
+                          "utilizacion_pct":  83.33
+                      },
+                      {
+                          "categoria":  "normal",
+                          "costo_op":  21258.45,
+                          "horas_op":  112.0,
+                          "maquina_id":  "M-002",
+                          "periodo":  "2026-11-08",
+                          "utilizacion_pct":  66.67
+                      },
+                      {
+                          "categoria":  "baja_prod_alto_costo",
+                          "costo_op":  25635.38,
+                          "horas_op":  94.0,
+                          "maquina_id":  "M-003",
+                          "periodo":  "2026-11-08",
+                          "utilizacion_pct":  55.95
+                      },
+                      {
+                          "categoria":  "sobreuso",
+                          "costo_op":  29609.95,
+                          "horas_op":  140.0,
+                          "maquina_id":  "M-004",
+                          "periodo":  "2026-11-08",
+                          "utilizacion_pct":  83.33
+                      },
+                      {
+                          "categoria":  "sobreuso",
+                          "costo_op":  36394.92,
+                          "horas_op":  140.0,
+                          "maquina_id":  "M-005",
+                          "periodo":  "2026-11-08",
+                          "utilizacion_pct":  83.33
+                      },
+                      {
+                          "categoria":  "normal",
+                          "costo_op":  29851.96,
+                          "horas_op":  112.0,
+                          "maquina_id":  "M-006",
+                          "periodo":  "2026-11-08",
+                          "utilizacion_pct":  66.67
+                      },
+                      {
+                          "categoria":  "normal",
+                          "costo_op":  19855.31,
+                          "horas_op":  112.0,
+                          "maquina_id":  "M-007",
+                          "periodo":  "2026-11-08",
+                          "utilizacion_pct":  66.67
+                      },
+                      {
+                          "categoria":  "normal",
+                          "costo_op":  22732.56,
+                          "horas_op":  105.0,
+                          "maquina_id":  "M-008",
+                          "periodo":  "2026-11-08",
+                          "utilizacion_pct":  62.5
+                      },
+                      {
+                          "categoria":  "normal",
+                          "costo_op":  23915.25,
+                          "horas_op":  112.0,
+                          "maquina_id":  "M-009",
+                          "periodo":  "2026-11-08",
+                          "utilizacion_pct":  66.67
+                      },
+                      {
+                          "categoria":  "normal",
+                          "costo_op":  21242.65,
+                          "horas_op":  112.0,
+                          "maquina_id":  "M-010",
+                          "periodo":  "2026-11-08",
+                          "utilizacion_pct":  66.67
+                      }
+                  ]
+}

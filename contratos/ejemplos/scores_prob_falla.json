@@ -1,0 +1,77 @@
+{
+    "tipo":  "prob_falla",
+    "generado_ts":  "2026-11-16T00:12:43Z",
+    "version_modelo":  "logit-v1",
+    "registros":  [
+                      {
+                          "horizonte_dias":  7,
+                          "maquina_id":  "M-001",
+                          "modelo":  "logit-v1",
+                          "prob_falla":  0.5067,
+                          "ts":  "2026-11-14T23:00:00Z"
+                      },
+                      {
+                          "horizonte_dias":  7,
+                          "maquina_id":  "M-002",
+                          "modelo":  "logit-v1",
+                          "prob_falla":  0.5062,
+                          "ts":  "2026-11-14T23:00:00Z"
+                      },
+                      {
+                          "horizonte_dias":  7,
+                          "maquina_id":  "M-003",
+                          "modelo":  "logit-v1",
+                          "prob_falla":  0.6331,
+                          "ts":  "2026-11-14T23:00:00Z"
+                      },
+                      {
+                          "horizonte_dias":  7,
+                          "maquina_id":  "M-004",
+                          "modelo":  "logit-v1",
+                          "prob_falla":  0.4788,
+                          "ts":  "2026-11-14T23:00:00Z"
+                      },
+                      {
+                          "horizonte_dias":  7,
+                          "maquina_id":  "M-005",
+                          "modelo":  "logit-v1",
+                          "prob_falla":  0.5225,
+                          "ts":  "2026-11-14T23:00:00Z"
+                      },
+                      {
+                          "horizonte_dias":  7,
+                          "maquina_id":  "M-006",
+                          "modelo":  "logit-v1",
+                          "prob_falla":  0.5093,
+                          "ts":  "2026-11-14T23:00:00Z"
+                      },
+                      {
+                          "horizonte_dias":  7,
+                          "maquina_id":  "M-007",
+                          "modelo":  "logit-v1",
+                          "prob_falla":  0.4759,
+                          "ts":  "2026-11-14T23:00:00Z"
+                      },
+                      {
+                          "horizonte_dias":  7,
+                          "maquina_id":  "M-008",
+                          "modelo":  "logit-v1",
+                          "prob_falla":  0.5219,
+                          "ts":  "2026-11-14T23:00:00Z"
+                      },
+                      {
+                          "horizonte_dias":  7,
+                          "maquina_id":  "M-009",
+                          "modelo":  "logit-v1",
+                          "prob_falla":  0.4332,
+                          "ts":  "2026-11-14T23:00:00Z"
+                      },
+                      {
+                          "horizonte_dias":  7,
+                          "maquina_id":  "M-010",
+                          "modelo":  "logit-v1",
+                          "prob_falla":  0.4346,
+                          "ts":  "2026-11-14T23:00:00Z"
+                      }
+                  ]
+}

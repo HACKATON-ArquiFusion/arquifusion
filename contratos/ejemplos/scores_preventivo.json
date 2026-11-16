@@ -1,0 +1,67 @@
+{
+    "tipo":  "preventivo",
+    "generado_ts":  "2026-11-16T00:12:45Z",
+    "version_modelo":  "arima-plus-v1",
+    "registros":  [
+                      {
+                          "fecha_recomendada":  "2026-11-15",
+                          "horas_proyectadas":  15500.0,
+                          "maquina_id":  "M-003",
+                          "motivo":  "Preventivo cada 500 h de operacion; faltan 7.6 h"
+                      },
+                      {
+                          "fecha_recomendada":  "2026-11-15",
+                          "horas_proyectadas":  28500.0,
+                          "maquina_id":  "M-010",
+                          "motivo":  "Preventivo cada 500 h de operacion; faltan 15.1 h"
+                      },
+                      {
+                          "fecha_recomendada":  "2026-11-15",
+                          "horas_proyectadas":  26000.0,
+                          "maquina_id":  "M-042",
+                          "motivo":  "Preventivo cada 500 h de operacion; faltan 4.7 h"
+                      },
+                      {
+                          "fecha_recomendada":  "2026-11-15",
+                          "horas_proyectadas":  20000.0,
+                          "maquina_id":  "M-052",
+                          "motivo":  "Preventivo cada 500 h de operacion; faltan 9.2 h"
+                      },
+                      {
+                          "fecha_recomendada":  "2026-11-15",
+                          "horas_proyectadas":  11500.0,
+                          "maquina_id":  "M-065",
+                          "motivo":  "Preventivo cada 500 h de operacion; faltan 9.7 h"
+                      },
+                      {
+                          "fecha_recomendada":  "2026-11-15",
+                          "horas_proyectadas":  31500.0,
+                          "maquina_id":  "M-072",
+                          "motivo":  "Preventivo cada 500 h de operacion; faltan 2 h"
+                      },
+                      {
+                          "fecha_recomendada":  "2026-11-15",
+                          "horas_proyectadas":  23500.0,
+                          "maquina_id":  "M-127",
+                          "motivo":  "Preventivo cada 500 h de operacion; faltan 0.3 h"
+                      },
+                      {
+                          "fecha_recomendada":  "2026-11-15",
+                          "horas_proyectadas":  7000.0,
+                          "maquina_id":  "M-144",
+                          "motivo":  "Preventivo cada 500 h de operacion; faltan 15.2 h"
+                      },
+                      {
+                          "fecha_recomendada":  "2026-11-16",
+                          "horas_proyectadas":  30000.0,
+                          "maquina_id":  "M-008",
+                          "motivo":  "Preventivo cada 500 h de operacion; faltan 26.5 h"
+                      },
+                      {
+                          "fecha_recomendada":  "2026-11-16",
+                          "horas_proyectadas":  11500.0,
+                          "maquina_id":  "M-015",
+                          "motivo":  "Preventivo cada 500 h de operacion; faltan 30.9 h"
+                      }
+                  ]
+}

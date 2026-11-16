@@ -1,0 +1,67 @@
+{
+    "tipo":  "pares",
+    "generado_ts":  "2026-11-16T00:12:49Z",
+    "version_modelo":  "zscore-v1",
+    "registros":  [
+                      {
+                          "comparado_con":  "EXC-320",
+                          "maquina_id":  "M-064",
+                          "score_desvio":  13.03,
+                          "variable_principal":  "combustible_lph"
+                      },
+                      {
+                          "comparado_con":  "EXC-320",
+                          "maquina_id":  "M-100",
+                          "score_desvio":  7.7,
+                          "variable_principal":  "combustible_lph"
+                      },
+                      {
+                          "comparado_con":  "EXC-320",
+                          "maquina_id":  "M-057",
+                          "score_desvio":  6.12,
+                          "variable_principal":  "combustible_lph"
+                      },
+                      {
+                          "comparado_con":  "EXC-320",
+                          "maquina_id":  "M-022",
+                          "score_desvio":  6.1,
+                          "variable_principal":  "combustible_lph"
+                      },
+                      {
+                          "comparado_con":  "CAR-950",
+                          "maquina_id":  "M-136",
+                          "score_desvio":  5.52,
+                          "variable_principal":  "combustible_lph"
+                      },
+                      {
+                          "comparado_con":  "PER-ROC",
+                          "maquina_id":  "M-067",
+                          "score_desvio":  5.51,
+                          "variable_principal":  "combustible_lph"
+                      },
+                      {
+                          "comparado_con":  "TRC-D8",
+                          "maquina_id":  "M-003",
+                          "score_desvio":  4.95,
+                          "variable_principal":  "vib"
+                      },
+                      {
+                          "comparado_con":  "CAM-730",
+                          "maquina_id":  "M-110",
+                          "score_desvio":  4.46,
+                          "variable_principal":  "combustible_lph"
+                      },
+                      {
+                          "comparado_con":  "CAR-950",
+                          "maquina_id":  "M-132",
+                          "score_desvio":  3.93,
+                          "variable_principal":  "temp"
+                      },
+                      {
+                          "comparado_con":  "EXC-320",
+                          "maquina_id":  "M-055",
+                          "score_desvio":  3.84,
+                          "variable_principal":  "combustible_lph"
+                      }
+                  ]
+}

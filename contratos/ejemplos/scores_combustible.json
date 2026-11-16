@@ -1,0 +1,97 @@
+{
+    "tipo":  "combustible",
+    "generado_ts":  "2026-11-16T00:12:46Z",
+    "version_modelo":  "arima-plus-v1",
+    "registros":  [
+                      {
+                          "anomalia":  false,
+                          "consumo_esperado_lph":  50.1575,
+                          "consumo_real_lph":  49.1455,
+                          "desviacion_pct":  -2.0177,
+                          "fecha":  "2026-11-08",
+                          "maquina_id":  "M-001",
+                          "tendencia":  "estable"
+                      },
+                      {
+                          "anomalia":  false,
+                          "consumo_esperado_lph":  42.5041,
+                          "consumo_real_lph":  41.5369,
+                          "desviacion_pct":  -2.2755,
+                          "fecha":  "2026-11-08",
+                          "maquina_id":  "M-002",
+                          "tendencia":  "estable"
+                      },
+                      {
+                          "anomalia":  false,
+                          "consumo_esperado_lph":  59.0706,
+                          "consumo_real_lph":  59.99,
+                          "desviacion_pct":  1.5565,
+                          "fecha":  "2026-11-08",
+                          "maquina_id":  "M-003",
+                          "tendencia":  "estable"
+                      },
+                      {
+                          "anomalia":  false,
+                          "consumo_esperado_lph":  45.8012,
+                          "consumo_real_lph":  46.1405,
+                          "desviacion_pct":  0.7408,
+                          "fecha":  "2026-11-08",
+                          "maquina_id":  "M-004",
+                          "tendencia":  "creciente"
+                      },
+                      {
+                          "anomalia":  false,
+                          "consumo_esperado_lph":  57.5998,
+                          "consumo_real_lph":  57.249,
+                          "desviacion_pct":  -0.6091,
+                          "fecha":  "2026-11-08",
+                          "maquina_id":  "M-005",
+                          "tendencia":  "estable"
+                      },
+                      {
+                          "anomalia":  false,
+                          "consumo_esperado_lph":  58.7541,
+                          "consumo_real_lph":  58.2112,
+                          "desviacion_pct":  -0.9239,
+                          "fecha":  "2026-11-08",
+                          "maquina_id":  "M-006",
+                          "tendencia":  "estable"
+                      },
+                      {
+                          "anomalia":  false,
+                          "consumo_esperado_lph":  44.7174,
+                          "consumo_real_lph":  45.1138,
+                          "desviacion_pct":  0.8864,
+                          "fecha":  "2026-11-08",
+                          "maquina_id":  "M-007",
+                          "tendencia":  "decreciente"
+                      },
+                      {
+                          "anomalia":  false,
+                          "consumo_esperado_lph":  48.1715,
+                          "consumo_real_lph":  50.405,
+                          "desviacion_pct":  4.6366,
+                          "fecha":  "2026-11-08",
+                          "maquina_id":  "M-008",
+                          "tendencia":  "estable"
+                      },
+                      {
+                          "anomalia":  false,
+                          "consumo_esperado_lph":  46.0319,
+                          "consumo_real_lph":  47.4181,
+                          "desviacion_pct":  3.0114,
+                          "fecha":  "2026-11-08",
+                          "maquina_id":  "M-009",
+                          "tendencia":  "estable"
+                      },
+                      {
+                          "anomalia":  false,
+                          "consumo_esperado_lph":  41.7042,
+                          "consumo_real_lph":  41.6562,
+                          "desviacion_pct":  -0.115,
+                          "fecha":  "2026-11-08",
+                          "maquina_id":  "M-010",
+                          "tendencia":  "estable"
+                      }
+                  ]
+}

@@ -1,0 +1,1202 @@
+[
+    {
+        "estado":  "operativa",
+        "lat":  -15.481726,
+        "lon":  -71.521016,
+        "maquina_id":  "M-001",
+        "modelo":  "CAR-950",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.504579,
+        "lon":  -71.534986,
+        "maquina_id":  "M-002",
+        "modelo":  "TRC-D8",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.50216,
+        "lon":  -71.558191,
+        "maquina_id":  "M-003",
+        "modelo":  "TRC-D8",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.50209,
+        "lon":  -71.479213,
+        "maquina_id":  "M-004",
+        "modelo":  "CAR-950",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.501172,
+        "lon":  -71.481846,
+        "maquina_id":  "M-005",
+        "modelo":  "CAM-730",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.49752,
+        "lon":  -71.562134,
+        "maquina_id":  "M-006",
+        "modelo":  "CAM-730",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.501711,
+        "lon":  -71.558331,
+        "maquina_id":  "M-007",
+        "modelo":  "CAR-950",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.477841,
+        "lon":  -71.521982,
+        "maquina_id":  "M-008",
+        "modelo":  "CAR-950",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.521447,
+        "lon":  -71.520786,
+        "maquina_id":  "M-009",
+        "modelo":  "CAR-950",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.522246,
+        "lon":  -71.519329,
+        "maquina_id":  "M-010",
+        "modelo":  "TRC-D8",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.503794,
+        "lon":  -71.534742,
+        "maquina_id":  "M-011",
+        "modelo":  "PER-ROC",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.499587,
+        "lon":  -71.56176,
+        "maquina_id":  "M-012",
+        "modelo":  "EXC-320",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.481986,
+        "lon":  -71.518599,
+        "maquina_id":  "M-013",
+        "modelo":  "TRC-D8",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.501687,
+        "lon":  -71.478501,
+        "maquina_id":  "M-014",
+        "modelo":  "PER-ROC",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.49915,
+        "lon":  -71.478825,
+        "maquina_id":  "M-015",
+        "modelo":  "CAR-950",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.501388,
+        "lon":  -71.478417,
+        "maquina_id":  "M-016",
+        "modelo":  "TRC-D8",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.505859,
+        "lon":  -71.533178,
+        "maquina_id":  "M-017",
+        "modelo":  "EXC-320",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.505844,
+        "lon":  -71.537362,
+        "maquina_id":  "M-018",
+        "modelo":  "CAR-950",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.520772,
+        "lon":  -71.518568,
+        "maquina_id":  "M-019",
+        "modelo":  "CAM-730",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.522278,
+        "lon":  -71.52032,
+        "maquina_id":  "M-020",
+        "modelo":  "EXC-320",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.497896,
+        "lon":  -71.479384,
+        "maquina_id":  "M-021",
+        "modelo":  "PER-ROC",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.500488,
+        "lon":  -71.481022,
+        "maquina_id":  "M-022",
+        "modelo":  "EXC-320",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.49976,
+        "lon":  -71.562498,
+        "maquina_id":  "M-023",
+        "modelo":  "CAM-730",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.505289,
+        "lon":  -71.536431,
+        "maquina_id":  "M-024",
+        "modelo":  "CAM-730",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.479404,
+        "lon":  -71.522033,
+        "maquina_id":  "M-025",
+        "modelo":  "TRC-D8",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.482269,
+        "lon":  -71.51758,
+        "maquina_id":  "M-026",
+        "modelo":  "EXC-320",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.498908,
+        "lon":  -71.56058,
+        "maquina_id":  "M-027",
+        "modelo":  "CAR-950",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.498479,
+        "lon":  -71.55902,
+        "maquina_id":  "M-028",
+        "modelo":  "CAM-730",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.504844,
+        "lon":  -71.534705,
+        "maquina_id":  "M-029",
+        "modelo":  "TRC-D8",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.500366,
+        "lon":  -71.557966,
+        "maquina_id":  "M-030",
+        "modelo":  "PER-ROC",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.479312,
+        "lon":  -71.518671,
+        "maquina_id":  "M-031",
+        "modelo":  "TRC-D8",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.501141,
+        "lon":  -71.480901,
+        "maquina_id":  "M-032",
+        "modelo":  "CAR-950",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.502179,
+        "lon":  -71.480462,
+        "maquina_id":  "M-033",
+        "modelo":  "CAM-730",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.49777,
+        "lon":  -71.482402,
+        "maquina_id":  "M-034",
+        "modelo":  "CAR-950",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.50055,
+        "lon":  -71.478042,
+        "maquina_id":  "M-035",
+        "modelo":  "PER-ROC",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.506135,
+        "lon":  -71.535072,
+        "maquina_id":  "M-036",
+        "modelo":  "PER-ROC",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.497596,
+        "lon":  -71.559829,
+        "maquina_id":  "M-037",
+        "modelo":  "PER-ROC",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.500192,
+        "lon":  -71.562249,
+        "maquina_id":  "M-038",
+        "modelo":  "TRC-D8",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.49874,
+        "lon":  -71.47834,
+        "maquina_id":  "M-039",
+        "modelo":  "TRC-D8",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.521379,
+        "lon":  -71.522157,
+        "maquina_id":  "M-040",
+        "modelo":  "PER-ROC",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.521738,
+        "lon":  -71.521869,
+        "maquina_id":  "M-041",
+        "modelo":  "PER-ROC",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.501661,
+        "lon":  -71.479464,
+        "maquina_id":  "M-042",
+        "modelo":  "PER-ROC",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.52094,
+        "lon":  -71.519113,
+        "maquina_id":  "M-043",
+        "modelo":  "PER-ROC",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.521286,
+        "lon":  -71.519014,
+        "maquina_id":  "M-044",
+        "modelo":  "TRC-D8",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.505358,
+        "lon":  -71.535647,
+        "maquina_id":  "M-045",
+        "modelo":  "CAM-730",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.499322,
+        "lon":  -71.478356,
+        "maquina_id":  "M-046",
+        "modelo":  "PER-ROC",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.518627,
+        "lon":  -71.520176,
+        "maquina_id":  "M-047",
+        "modelo":  "PER-ROC",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.478092,
+        "lon":  -71.521281,
+        "maquina_id":  "M-048",
+        "modelo":  "EXC-320",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.506591,
+        "lon":  -71.536439,
+        "maquina_id":  "M-049",
+        "modelo":  "TRC-D8",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.501545,
+        "lon":  -71.481293,
+        "maquina_id":  "M-050",
+        "modelo":  "CAM-730",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.478535,
+        "lon":  -71.522035,
+        "maquina_id":  "M-051",
+        "modelo":  "EXC-320",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.500781,
+        "lon":  -71.477517,
+        "maquina_id":  "M-052",
+        "modelo":  "PER-ROC",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.518894,
+        "lon":  -71.520922,
+        "maquina_id":  "M-053",
+        "modelo":  "EXC-320",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.518877,
+        "lon":  -71.517617,
+        "maquina_id":  "M-054",
+        "modelo":  "CAR-950",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.520989,
+        "lon":  -71.51896,
+        "maquina_id":  "M-055",
+        "modelo":  "EXC-320",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.499311,
+        "lon":  -71.558736,
+        "maquina_id":  "M-056",
+        "modelo":  "PER-ROC",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.517673,
+        "lon":  -71.521238,
+        "maquina_id":  "M-057",
+        "modelo":  "EXC-320",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.499068,
+        "lon":  -71.561741,
+        "maquina_id":  "M-058",
+        "modelo":  "CAM-730",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.499468,
+        "lon":  -71.558546,
+        "maquina_id":  "M-059",
+        "modelo":  "CAR-950",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.500356,
+        "lon":  -71.479657,
+        "maquina_id":  "M-060",
+        "modelo":  "CAM-730",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.482094,
+        "lon":  -71.521301,
+        "maquina_id":  "M-061",
+        "modelo":  "CAR-950",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.482337,
+        "lon":  -71.521059,
+        "maquina_id":  "M-062",
+        "modelo":  "TRC-D8",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.519375,
+        "lon":  -71.519194,
+        "maquina_id":  "M-063",
+        "modelo":  "CAR-950",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.503367,
+        "lon":  -71.537143,
+        "maquina_id":  "M-064",
+        "modelo":  "EXC-320",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.50098,
+        "lon":  -71.480487,
+        "maquina_id":  "M-065",
+        "modelo":  "CAM-730",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.498827,
+        "lon":  -71.559481,
+        "maquina_id":  "M-066",
+        "modelo":  "TRC-D8",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.519139,
+        "lon":  -71.521152,
+        "maquina_id":  "M-067",
+        "modelo":  "PER-ROC",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.501593,
+        "lon":  -71.559573,
+        "maquina_id":  "M-068",
+        "modelo":  "EXC-320",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.519149,
+        "lon":  -71.518211,
+        "maquina_id":  "M-069",
+        "modelo":  "EXC-320",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.480226,
+        "lon":  -71.520927,
+        "maquina_id":  "M-070",
+        "modelo":  "EXC-320",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.518153,
+        "lon":  -71.52019,
+        "maquina_id":  "M-071",
+        "modelo":  "EXC-320",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.506482,
+        "lon":  -71.534754,
+        "maquina_id":  "M-072",
+        "modelo":  "CAM-730",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.518503,
+        "lon":  -71.518951,
+        "maquina_id":  "M-073",
+        "modelo":  "CAR-950",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.481933,
+        "lon":  -71.517765,
+        "maquina_id":  "M-074",
+        "modelo":  "TRC-D8",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.520088,
+        "lon":  -71.520139,
+        "maquina_id":  "M-075",
+        "modelo":  "CAM-730",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.50318,
+        "lon":  -71.536119,
+        "maquina_id":  "M-076",
+        "modelo":  "CAM-730",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.506007,
+        "lon":  -71.534565,
+        "maquina_id":  "M-077",
+        "modelo":  "CAR-950",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.50474,
+        "lon":  -71.534783,
+        "maquina_id":  "M-078",
+        "modelo":  "PER-ROC",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.478622,
+        "lon":  -71.522282,
+        "maquina_id":  "M-079",
+        "modelo":  "CAM-730",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.49924,
+        "lon":  -71.481739,
+        "maquina_id":  "M-080",
+        "modelo":  "CAR-950",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.480298,
+        "lon":  -71.51987,
+        "maquina_id":  "M-081",
+        "modelo":  "PER-ROC",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.481175,
+        "lon":  -71.519384,
+        "maquina_id":  "M-082",
+        "modelo":  "PER-ROC",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.518906,
+        "lon":  -71.518703,
+        "maquina_id":  "M-083",
+        "modelo":  "EXC-320",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.517513,
+        "lon":  -71.518766,
+        "maquina_id":  "M-084",
+        "modelo":  "EXC-320",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.502355,
+        "lon":  -71.560878,
+        "maquina_id":  "M-085",
+        "modelo":  "CAR-950",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.504091,
+        "lon":  -71.5366,
+        "maquina_id":  "M-086",
+        "modelo":  "TRC-D8",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.479584,
+        "lon":  -71.521339,
+        "maquina_id":  "M-087",
+        "modelo":  "TRC-D8",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.50671,
+        "lon":  -71.535291,
+        "maquina_id":  "M-088",
+        "modelo":  "CAR-950",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.497503,
+        "lon":  -71.478233,
+        "maquina_id":  "M-089",
+        "modelo":  "CAM-730",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.48239,
+        "lon":  -71.51835,
+        "maquina_id":  "M-090",
+        "modelo":  "EXC-320",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.502985,
+        "lon":  -71.533621,
+        "maquina_id":  "M-091",
+        "modelo":  "CAR-950",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.503895,
+        "lon":  -71.534204,
+        "maquina_id":  "M-092",
+        "modelo":  "CAM-730",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.500676,
+        "lon":  -71.561843,
+        "maquina_id":  "M-093",
+        "modelo":  "CAM-730",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.478118,
+        "lon":  -71.520671,
+        "maquina_id":  "M-094",
+        "modelo":  "CAR-950",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.477663,
+        "lon":  -71.521024,
+        "maquina_id":  "M-095",
+        "modelo":  "TRC-D8",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.503199,
+        "lon":  -71.533879,
+        "maquina_id":  "M-096",
+        "modelo":  "EXC-320",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.501178,
+        "lon":  -71.561882,
+        "maquina_id":  "M-097",
+        "modelo":  "CAM-730",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.520643,
+        "lon":  -71.519126,
+        "maquina_id":  "M-098",
+        "modelo":  "CAM-730",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.507184,
+        "lon":  -71.533381,
+        "maquina_id":  "M-099",
+        "modelo":  "CAM-730",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.480978,
+        "lon":  -71.520037,
+        "maquina_id":  "M-100",
+        "modelo":  "EXC-320",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.498784,
+        "lon":  -71.47777,
+        "maquina_id":  "M-101",
+        "modelo":  "TRC-D8",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.499422,
+        "lon":  -71.557805,
+        "maquina_id":  "M-102",
+        "modelo":  "PER-ROC",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.480687,
+        "lon":  -71.517595,
+        "maquina_id":  "M-103",
+        "modelo":  "CAM-730",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.521889,
+        "lon":  -71.51826,
+        "maquina_id":  "M-104",
+        "modelo":  "PER-ROC",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.477556,
+        "lon":  -71.518565,
+        "maquina_id":  "M-105",
+        "modelo":  "EXC-320",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.501335,
+        "lon":  -71.558628,
+        "maquina_id":  "M-106",
+        "modelo":  "PER-ROC",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.498507,
+        "lon":  -71.56195,
+        "maquina_id":  "M-107",
+        "modelo":  "CAR-950",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.501173,
+        "lon":  -71.561866,
+        "maquina_id":  "M-108",
+        "modelo":  "PER-ROC",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.479532,
+        "lon":  -71.52024,
+        "maquina_id":  "M-109",
+        "modelo":  "TRC-D8",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.502196,
+        "lon":  -71.560105,
+        "maquina_id":  "M-110",
+        "modelo":  "CAM-730",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.499459,
+        "lon":  -71.562172,
+        "maquina_id":  "M-111",
+        "modelo":  "EXC-320",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.501026,
+        "lon":  -71.479972,
+        "maquina_id":  "M-112",
+        "modelo":  "EXC-320",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.505242,
+        "lon":  -71.536358,
+        "maquina_id":  "M-113",
+        "modelo":  "PER-ROC",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.521226,
+        "lon":  -71.517732,
+        "maquina_id":  "M-114",
+        "modelo":  "PER-ROC",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.478806,
+        "lon":  -71.518441,
+        "maquina_id":  "M-115",
+        "modelo":  "CAM-730",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.500732,
+        "lon":  -71.479173,
+        "maquina_id":  "M-116",
+        "modelo":  "TRC-D8",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.49961,
+        "lon":  -71.561436,
+        "maquina_id":  "M-117",
+        "modelo":  "TRC-D8",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.518687,
+        "lon":  -71.519629,
+        "maquina_id":  "M-118",
+        "modelo":  "CAR-950",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.499455,
+        "lon":  -71.559211,
+        "maquina_id":  "M-119",
+        "modelo":  "TRC-D8",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.506593,
+        "lon":  -71.536784,
+        "maquina_id":  "M-120",
+        "modelo":  "PER-ROC",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.500401,
+        "lon":  -71.480796,
+        "maquina_id":  "M-121",
+        "modelo":  "CAR-950",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.501713,
+        "lon":  -71.479411,
+        "maquina_id":  "M-122",
+        "modelo":  "TRC-D8",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.506422,
+        "lon":  -71.534938,
+        "maquina_id":  "M-123",
+        "modelo":  "TRC-D8",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.481397,
+        "lon":  -71.517578,
+        "maquina_id":  "M-124",
+        "modelo":  "EXC-320",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.5019,
+        "lon":  -71.560013,
+        "maquina_id":  "M-125",
+        "modelo":  "CAM-730",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.503469,
+        "lon":  -71.53714,
+        "maquina_id":  "M-126",
+        "modelo":  "CAR-950",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.504621,
+        "lon":  -71.534633,
+        "maquina_id":  "M-127",
+        "modelo":  "CAR-950",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.478493,
+        "lon":  -71.519409,
+        "maquina_id":  "M-128",
+        "modelo":  "TRC-D8",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.519556,
+        "lon":  -71.51988,
+        "maquina_id":  "M-129",
+        "modelo":  "PER-ROC",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.519948,
+        "lon":  -71.52193,
+        "maquina_id":  "M-130",
+        "modelo":  "CAM-730",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.503425,
+        "lon":  -71.536319,
+        "maquina_id":  "M-131",
+        "modelo":  "TRC-D8",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.521614,
+        "lon":  -71.518636,
+        "maquina_id":  "M-132",
+        "modelo":  "CAR-950",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.499285,
+        "lon":  -71.477567,
+        "maquina_id":  "M-133",
+        "modelo":  "TRC-D8",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.479343,
+        "lon":  -71.518518,
+        "maquina_id":  "M-134",
+        "modelo":  "PER-ROC",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.505656,
+        "lon":  -71.536065,
+        "maquina_id":  "M-135",
+        "modelo":  "EXC-320",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.504598,
+        "lon":  -71.532729,
+        "maquina_id":  "M-136",
+        "modelo":  "CAR-950",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.506746,
+        "lon":  -71.537191,
+        "maquina_id":  "M-137",
+        "modelo":  "EXC-320",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.481261,
+        "lon":  -71.520311,
+        "maquina_id":  "M-138",
+        "modelo":  "EXC-320",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.500456,
+        "lon":  -71.560808,
+        "maquina_id":  "M-139",
+        "modelo":  "TRC-D8",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.500567,
+        "lon":  -71.48124,
+        "maquina_id":  "M-140",
+        "modelo":  "CAM-730",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.501793,
+        "lon":  -71.560751,
+        "maquina_id":  "M-141",
+        "modelo":  "EXC-320",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.500952,
+        "lon":  -71.560617,
+        "maquina_id":  "M-142",
+        "modelo":  "PER-ROC",
+        "zona":  "Z4"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.500691,
+        "lon":  -71.480687,
+        "maquina_id":  "M-143",
+        "modelo":  "EXC-320",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.507114,
+        "lon":  -71.533278,
+        "maquina_id":  "M-144",
+        "modelo":  "CAM-730",
+        "zona":  "Z5"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.51941,
+        "lon":  -71.519514,
+        "maquina_id":  "M-145",
+        "modelo":  "CAM-730",
+        "zona":  "Z2"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.480679,
+        "lon":  -71.518902,
+        "maquina_id":  "M-146",
+        "modelo":  "CAR-950",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.498457,
+        "lon":  -71.480155,
+        "maquina_id":  "M-147",
+        "modelo":  "PER-ROC",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.500591,
+        "lon":  -71.479863,
+        "maquina_id":  "M-148",
+        "modelo":  "EXC-320",
+        "zona":  "Z3"
+    },
+    {
+        "estado":  "detenida",
+        "lat":  -15.480097,
+        "lon":  -71.520644,
+        "maquina_id":  "M-149",
+        "modelo":  "TRC-D8",
+        "zona":  "Z1"
+    },
+    {
+        "estado":  "operativa",
+        "lat":  -15.521136,
+        "lon":  -71.517973,
+        "maquina_id":  "M-150",
+        "modelo":  "CAR-950",
+        "zona":  "Z2"
+    }
+]
