@@ -347,6 +347,7 @@ def indice():
                 {"metodo": "POST", "ruta": "/ia/predecir", "api_key": True},
                 {"metodo": "POST", "ruta": "/ia/explicar", "api_key": True},
                 {"metodo": "POST", "ruta": "/ia/chat", "api_key": True},
+                {"metodo": "POST", "ruta": "/ia/resumen", "api_key": True},
                 {"metodo": "GET", "ruta": "/api/<recurso>", "api_key": False},
                 {"metodo": "POST", "ruta": "/api/chat", "api_key": False},
             ],
@@ -574,6 +575,51 @@ def resumen_kpis(kpis):
     abiertos = kpis.get("incidentes_abiertos", 0)
     partes.append(f"{abiertos} incidente abierto" if abiertos == 1 else f"{abiertos} incidentes abiertos")
     return ", ".join(partes)
+
+
+ESQUEMA_RESUMEN = {
+    "type": "OBJECT",
+    "properties": {"resumen": {"type": "STRING"}},
+    "required": ["resumen"],
+}
+
+INSTRUCCION_RESUMEN = (
+    "Eres el responsable de operaciones de una mina. Reescribes un parte técnico como resumen "
+    "ejecutivo en español, en 4 frases como máximo, para quien decide presupuesto y flota. "
+    "No inventes ninguna cifra: usa solo las que aparecen en el parte. Empieza por lo que exige "
+    "una decisión. Nada de jerga ni de listas."
+)
+
+
+@app.post("/ia/resumen")
+def resumen():
+    if not autorizado():
+        return jsonify({"error": "api key inválida"}), 401
+    try:
+        d = cuerpo()
+        texto = exigir(d, "texto")
+        if len(str(texto)) > 4000:
+            raise ErrorValidacion("texto no puede superar 4000 caracteres")
+        rol = d.get("rol") or "gerente"
+        if rol not in ROLES:
+            raise ErrorValidacion(f"rol debe ser uno de {ROLES}")
+    except ErrorValidacion as e:
+        return jsonify({"error": "validación", "detalle": str(e)}), 400
+
+    prompt = json.dumps({"parte_tecnico": texto, "dirigido_a": rol}, ensure_ascii=False)
+    try:
+        datos, ms = generar(prompt, ESQUEMA_RESUMEN, INSTRUCCION_RESUMEN)
+        salida = recortar(datos["resumen"], 900)
+        if not salida:
+            raise ValueError("resumen vacío")
+        fuente = "modelo"
+    except Exception as e:
+        logging.warning("resumen con plantilla: %s", e)
+        salida = recortar(texto, 900)
+        ms = 0
+        fuente = "plantilla"
+
+    return jsonify({"resumen": salida, "rol": rol, "fuente": fuente, "latencia_ms": ms})
 
 
 @app.post("/ia/chat")

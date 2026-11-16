@@ -178,3 +178,30 @@ comprobar en el pitch que el asistente lee datos reales y no alucina.
 - Confirmar que `score_modelo` de `/ia/predecir` se llena con el mismo formato que `prob_falla`
   de `puente-b-a.md`.
 - `roles` y `urgencia` no están en `catalogos.json`: conviene añadirlos ahí para no repetirlos.
+
+---
+
+## `POST /ia/resumen`
+
+Reescribe un parte técnico como resumen ejecutivo. Lo usa el flujo nocturno de A para
+`GET /resumen-ejecutivo`. Existe aparte de `/ia/chat` porque el parte supera los 500
+caracteres que admite el chat.
+
+### Petición
+
+| Campo | Tipo | Oblig. | Descripción |
+|---|---|---|---|
+| `texto` | string | sí | Parte técnico ya calculado, hasta 4000 caracteres |
+| `rol` | string | no | A quién va dirigido. Por defecto `gerente`. |
+
+### Respuesta `200`
+
+| Campo | Tipo | Valores |
+|---|---|---|
+| `resumen` | string | 4 frases como máximo, ≤ 900 caracteres |
+| `rol` | string | eco de la petición |
+| `fuente` | string | `modelo` \| `plantilla` |
+| `latencia_ms` | integer | ms |
+
+No inventa cifras: solo reordena y prioriza las que vienen en `texto`. Si el modelo falla,
+devuelve el `texto` recortado tal cual, que ya es una respuesta válida.

@@ -1830,6 +1830,21 @@ def accion_resumen(ev):
                 texto, fuente = t, "bedrock"
         except Exception as ex:
             print("Bedrock no disponible, uso plantilla:", type(ex).__name__)
+    if fuente == "plantilla" and IA_URL:
+        # Sin Bedrock, el resumen ejecutivo lo redacta Gemini via /ia/chat en Cloud Run.
+        try:
+            base = IA_URL.rsplit("/ia/", 1)[0]
+            cuerpo = json.dumps({"rol": "gerente", "texto": texto},
+                                ensure_ascii=False).encode("utf-8")
+            pet = urllib.request.Request(base + "/ia/resumen", data=cuerpo, method="POST")
+            pet.add_header("Content-Type", "application/json")
+            pet.add_header("x-api-key", api_key())
+            with urllib.request.urlopen(pet, timeout=IA_TIMEOUT) as r:
+                d = json.loads(r.read().decode("utf-8"))
+            if d.get("resumen"):
+                texto, fuente = d["resumen"], "gemini"
+        except Exception as ex:
+            print("IA no disponible para el resumen, uso plantilla:", type(ex).__name__)
     datos = {"generado": ahora_iso(), "texto": texto, "fuente": fuente, "kpis": k, "top_riesgo": top,
              "alertas_repuestos": alertas, "causas_comunes": len(causas), "tareas_semana": len(tareas)}
     guardar_score("resumen_ejecutivo", "ultimo", datos)
